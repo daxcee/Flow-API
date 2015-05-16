@@ -71,7 +71,9 @@ To run the Mocha tests, from `root` run:
       npm test
       
 ## Deploy backend to Heroku
-To be documented.      
-      
-      
-      
+Every change to the Master branch will trigger an automatic deployment
+of the backend to Heroku, after an success build by Circle CI.
+
+The backend is deployed to and accessed via:
+
+[https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)

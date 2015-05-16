@@ -1,6 +1,8 @@
 {
   "name": "flow",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "Rest API",
+  "main": "index.js",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -25,5 +27,10 @@
   },
   "scripts": {
     "test": "mocha --reporter list"
-  }
+  },
+  "keywords": [
+    "Flow",
+    "API"
+  ],
+  "author": "SR"
 }
