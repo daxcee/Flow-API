@@ -15,5 +15,11 @@
     "mongoskin": "*",
     "debug": "~2.0.0",
     "jade": "~1.6.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  },
+  "scripts": {
+    "test": "mocha --reporter list"
   }
 }
