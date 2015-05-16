@@ -1,12 +1,13 @@
 # FlowAPI
 Rest API
 
-
 ## Prerequisites
 
 [NodeJS](https://nodejs.org)
 
 [NPM](https://www.npmjs.com)
+
+[MongoDB](https://www.mongodb.org)
 
 Or via brew (OSX):
 
@@ -19,19 +20,24 @@ Install nodejs package:
     brew install node
     
 ## Install dependencies
-We use NPM as the dependencies/packagemanager.
 
-To install the needed modules for this Nodejs app, got to root of project:
-and runt the following command:
+We use NPM as the dependencies/package manager.
+
+To install the needed modules for this NodeJS app, 
+run the following command from to the `root`of the project:
 
     sudo npm install
 
-Note that these dependencies are not checked in on the repo and thus are only available 
-on the local machine
+Note that these dependencies are not checked in on the repo 
+and thus are only available on the local machine.
 
-## Build 
+## Build and Run
 
-Navigate to `root` of project and run:
+First startup mongo by running:
+
+	   mongodb
+		
+then, from the `root` of the project run:
  
      bin/www
 
