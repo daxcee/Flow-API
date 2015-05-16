@@ -1,11 +1,13 @@
 var assert = require("assert");
 var server = require('../bin/www');
 var request = require('request');
-var basePath = 'http://localhost:3000';
+var basePath = 'http://localhost';
+var port = 3000;
+var baseURL = basePath + ':' + port;
 
 describe('server', function () {
     before(function () {
-        server.listen(3000);
+        server.listen(port);
     });
 
     after(function () {
@@ -16,7 +18,7 @@ describe('server', function () {
 describe('/', function () {
     //Test whether the server is running
     it('GET /', function (done) {
-        request(basePath, function (err,resp) {
+        request(baseURL, function (err,resp) {
             assert(!err);
             assert.equal(200, resp.statusCode);
             done();
@@ -24,8 +26,8 @@ describe('/', function () {
     });
 
     //Test artists endpoint, GET response code
-    it('GET /players', function (done) {
-        request(basePath + '/api/artist', function (err,resp) {
+    it('GET /artists', function (done) {
+        request(baseURL + '/api/artist', function (err,resp) {
             assert(!err);
             assert.equal(200, resp.statusCode);
             done();
@@ -33,8 +35,8 @@ describe('/', function () {
     });
 
     //Test tracks endpoint, GET Request content body, JSON list size
-    it('GET /players', function(done){
-        request(basePath + '/api/tracks', function(err,resp,body){
+    it('GET /tracks', function(done){
+        request(baseURL + '/api/tracks', function(err,resp,body){
             assert(!err);
             assert.equal(200, resp.statusCode);
             tracklist = JSON.parse(body);
