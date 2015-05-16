@@ -61,3 +61,17 @@ To be documented.
 
 #### Events
 /api/events
+
+## MochaJS tests
+
+For every Endpoint there are tests, see test dir.
+
+To run the Mocha tests, from `root` run:
+
+      npm test
+      
+## Deploy backend to Heroku
+To be documented.      
+      
+      
+      
