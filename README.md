@@ -1,4 +1,4 @@
-# FlowAPI
+# Flow API ![](https://circleci.com/gh/stevenrmds/FlowAPI/tree/master.svg?style=shield&circle-token=982140173ef2b98794c97ed9cfa17d90cddc17bf)
 Rest API
 
 ## Prerequisites
