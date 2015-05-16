@@ -27,7 +27,7 @@ describe('/', function () {
 
     //Test artists endpoint, GET response code
     it('GET /artists', function (done) {
-        request(baseURL + '/api/artist', function (err,resp) {
+        request(baseURL + '/api/artists', function (err,resp) {
             assert(!err);
             assert.equal(200, resp.statusCode);
             done();
@@ -39,8 +39,6 @@ describe('/', function () {
         request(baseURL + '/api/tracks', function(err,resp,body){
             assert(!err);
             assert.equal(200, resp.statusCode);
-            tracklist = JSON.parse(body);
-            assert(tracklistlist.length, 0);
             done();
         });
     });
