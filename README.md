@@ -4,11 +4,24 @@ Rest API
 
 ## Prerequisites
 
-[NodeJS](NodeJS)
-[NPM]()
+[NodeJS](https://nodejs.org)
 
+[NPM](https://www.npmjs.com)
+
+Or via brew (OSX):
+
+Install brew:
+
+[http://brew.sh](http://brew.sh)
+
+Install nodejs package:
+
+    brew install node
+    
 ## Install dependencies
-TBD
+We use NPM as the dependecie/ package manager.
+
+To be documented.
 
 ## Build 
 
@@ -18,9 +31,21 @@ Navigate to `root` of project and run:
 
 ## API
 
-Open up a browser and go to check if server is properly running:
+Open up a browser and go to the follow to check if server is properly running:
 
 [http://localhost:3000](http://localhost:3000)
 
 ### API Endpoints
-TBD
+To be documented.
+
+#### Artists
+/api/artist
+
+#### Tracks
+/api/tracks
+
+#### Videos
+/api/videos
+
+#### Events
+/api/events
