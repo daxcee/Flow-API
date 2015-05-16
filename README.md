@@ -19,7 +19,7 @@ Install nodejs package:
     brew install node
     
 ## Install dependencies
-We use NPM as the dependecie/ package manager.
+We use NPM as the dependencies/packagemanager.
 
 To be documented.
 
