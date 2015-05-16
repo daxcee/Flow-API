@@ -21,7 +21,13 @@ Install nodejs package:
 ## Install dependencies
 We use NPM as the dependencies/packagemanager.
 
-To be documented.
+To install the needed modules for this Nodejs app, got to root of project:
+and runt the following command:
+
+    sudo npm install
+
+Note that these dependencies are not checked in on the repo and thus are only available 
+on the local machine
 
 ## Build 
 
