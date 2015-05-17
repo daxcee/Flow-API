@@ -1,3 +1,4 @@
+require('dotenv').load();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -6,7 +7,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var app = express();
-
+var host = process.env.DB_HOST;
+var db_port = process.env.DB_PORT;
+var db_name = process.env.DB_NAME;
+var db_user = process.env.DB_USER;
+var db_pass = process.env.DB_PASSWORD;
+var url = 'mongodb://' + db_user + ':' + db_pass + '@' + host + ':' + db_port + '/' + db_name;
 //app.set('port', (process.env.PORT || 3000)); //enable this when deploying to Heroku.
 
 // view engine setup
@@ -61,14 +67,15 @@ app.listen(app.get('port'), function() {
 
 var MongoClient = require('mongodb').MongoClient, assert = require('assert');
 
-// Connection URL
-var url = 'mongodb://localhost:27017/flow';
-
 // Use connect method to connect to the Server
 MongoClient.connect(url, function(err, db) {
-    assert.equal(null, err);
-    console.log("Connected correctly to server");
+    if (err) {
+        console.log('Unable to connect to the mongoDB server. Error:', err);
+    } else {
+        console.log("Connected correctly to: ", url);
+    }
 
+    //Close connection
     db.close();
 });
 
