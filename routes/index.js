@@ -12,9 +12,11 @@ var db_user = process.env.DB_USER;
 var db_pass = process.env.DB_PASSWORD;
 var url = 'mongodb://' + db_user + ':' + db_pass + '@' + host + ':' + db_port + '/' + db_name;
 var MongoClient = require('mongodb').MongoClient;
+var artistEndpoint = '/api/artists';
 
 router.get('/', function(request, response) {
-  response.send('Flow API is running.');
+  response.send('Flow API is running.' + '<br><br>' +
+          'Artist endpoint: ' + '<br><br>' + '<a href="' + artistEndpoint + '">GET ' + artistEndpoint);
 });
 
 router.get('/api/artists', function(req, res) {
