@@ -1,7 +1,6 @@
 {
   "artists": [
     {
-      "id":"703425d228b84a66c40e3a123c411df3",
       "mediaType": "bio",
       "artistName": "AAAA",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -13,7 +12,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"6802ba2dbc2d6a7d647203baf3129c69",
       "mediaType": "bio",
       "artistName": "BBBB",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -25,7 +23,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"689eb4acb693a850c5f5e1ec89ce3289",
       "mediaType": "bio",
       "artistName": "CCCC",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -37,7 +34,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"689eb4acb692a820c5f5e1ec82ce2286",
       "mediaType": "bio",
       "artistName": "DDDD",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -49,7 +45,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"689eb4acb693a850c5f5e1ec89ce3289",
       "mediaType": "bio",
       "artistName": "DDDD",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -61,7 +56,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"140d9924381bd0e46389e07a0gr43564",
       "mediaType": "bio",
       "artistName": "EEE",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",      "artistGenres": ["Genre A","Genre B"],
@@ -72,7 +66,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"940d9924381bd0e46389e07a0bd43014",
       "mediaType": "bio",
       "artistName": "FFFF",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -84,7 +77,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"703425d228b84a66c40e3a123c71415a",
       "mediaType": "bio",
       "artistName": "GGGG",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -97,7 +89,6 @@
     },
 
     {
-      "id":"6802ba2dbc2d6a7d647203baf35a76b8",
       "mediaType": "bio",
       "artistName": "HHHH",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -109,7 +100,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"689eb4acb693a850c5f5e1ec89f58eb7",
       "mediaType": "bio",
       "artistName": "IIII",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -121,7 +111,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"703425d228b84a66c40e3a123c83c015",
       "mediaType": "bio",
       "artistName": "JJJJ",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -133,7 +122,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"6802ba2dbc2d6a7d647203baf38cc3bd",
       "mediaType": "bio",
       "artistName": "KKKK",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -145,7 +133,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"c9bb6e16ecff2b0ae9f80784cb093c42",
       "mediaType": "bio",
       "artistName": "LLLL",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -157,7 +144,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"703425d228b84a66c40e3a123c924c2e",
       "mediaType": "bio",
       "artistName": "MMMM",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -169,7 +155,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"6802ba2dbc2d6a7d647203baf397b1de",
       "mediaType": "bio",
       "artistName": "NNNN",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -181,7 +166,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"c9bb6e16ecff2b0ae9f80784cb111890",
       "mediaType": "bio",
       "artistName": "OOOO",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -193,7 +177,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"703425d228b84a66c40e3a123c9adf94",
       "mediaType": "bio",
       "artistName": "PPPP",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -205,7 +188,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"123425d228b84a66c40e3a123c9h5o92",
       "mediaType": "bio",
       "artistName": "QQQQ",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -217,7 +199,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
      {
-      "id":"603425d223b84a66c40e3a123c9adf23",
       "mediaType": "bio",
       "artistName": "RRRR",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -229,7 +210,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"856418d228b84a66c40e3a123c9ghf54",
       "mediaType": "bio",
       "artistName": "SSSS",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -241,7 +221,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"950724d228b84a66c40e3a654c9adf77",
       "mediaType": "bio",
       "artistName": "TTTT",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -253,7 +232,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"098765d228b84a66c40e3a123c9adf55",
       "mediaType": "bio",
       "artistName": "UUUU",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -265,7 +243,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"938604d228b84a66c40e3a123c9adf14",
       "mediaType": "bio",
       "artistName": "VVVV",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -277,7 +254,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"192749d228b84a66c40e3a123c9adf57",
       "mediaType": "bio",
       "artistName": "WWWW",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -289,7 +265,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"009476d228b84a66c40e3a123c9adf54",
       "mediaType": "bio",
       "artistName": "XXXX",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -301,7 +276,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"391190d228b84a66c40e3a123c9adf24",
       "mediaType": "bio",
       "artistName": "YYYY",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -313,7 +287,6 @@
       "artistFBURL": "http://facebook.com/pages/artistpage"
     },
     {
-      "id":"000987d228b84a66c40e3a123c9adf44",
       "mediaType": "bio",
       "artistName": "ZZZZ",
       "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
