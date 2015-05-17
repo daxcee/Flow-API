@@ -33,7 +33,17 @@ and thus are only available on the local machine.
 
 ## Build and Run
 
-First startup mongo by running:
+### Environment variables
+
+Create a .env file in the root directory of your project. Add these environment-specific variables on new lines in the form of NAME=VALUE:
+
+    DB_HOST=<PROJECTID>.mongolab.com or localhost for local development
+    DB_NAME=database_name
+    DB_PORT=default_port
+    DB_USER=username
+    DB_PASSWORD=password
+
+Then, startup mongo by running:
 
 	   mongodb
 		
