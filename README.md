@@ -62,6 +62,7 @@ To be documented.
 
 #### Artists
 /api/artist
+[https://flow-api.herokuapp.com/api/artists](https://flow-api.herokuapp.com/api/artists)
 
 #### Tracks
 /api/tracks
