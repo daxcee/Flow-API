@@ -1,6 +1,9 @@
 # Flow API ![](https://circleci.com/gh/stevenrmds/FlowAPI/tree/master.svg?style=shield&circle-token=982140173ef2b98794c97ed9cfa17d90cddc17bf)
 Rest API
 
+[https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
+
+
 ## Prerequisites
 
 [NodeJS](https://nodejs.org)
@@ -43,35 +46,46 @@ Create a .env file in the root directory of your project. Add these environment-
     DB_USER=username
     DB_PASSWORD=password
 
-Then, startup mongo by running:
+### Import JSON sample data
 
-	   mongodb
-		
-then, from the `root` of the project run:
+Startup mongo by running:
+
+	   mongo
+	   
+Create database a database, named flow:	   
+
+	   use flow
+
+Import sample data, source file can be found [here](https://raw.githubusercontent.com/stevenrmds/FlowAPI/master/sampleData.json) and needs to be saved locally, then import dump by running:
+
+		mongoimport -d flow -c artists --file sampleData.json
+
+### Start server
+			
+Finally, from `root` of the project run:
  
-     bin/www
+     bin/www 
+     
+     or 
+     
+     foreman start
 
-## API
-
-Open up a browser and go to the follow to check if server is properly running:
+Open up a new browser tab and go to the follow to check if server is properly running:
 
 [http://localhost:3000](http://localhost:3000)
 
-### API Endpoints
-To be documented.
+## API
 
-#### Artists
-/api/artist
-[https://flow-api.herokuapp.com/api/artists](https://flow-api.herokuapp.com/api/artists)
+### Endpoints
 
-#### Tracks
-/api/tracks
+Path | Method | Parameters   
+------------ | ------------- | ------------
+[/api/artists](https://flow-api.herokuapp.com/api/artists) | GET  | none |
+/api/tracks* | GET  | undefined
+/api/videos* | GET  | undefined
+/api/events* | GET  | undefined 
 
-#### Videos
-/api/videos
-
-#### Events
-/api/events
+*Not yet implemented
 
 ## MochaJS tests
 
