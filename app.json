@@ -1,0 +1,7 @@
+{
+  "name": "Flow API",
+  "description": "Flow API",
+  "repository": "https://git.heroku.com/flow-api",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express","Flow", "API"]
+}
