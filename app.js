@@ -13,20 +13,17 @@ var db_name = process.env.DB_NAME;
 var db_user = process.env.DB_USER;
 var db_pass = process.env.DB_PASSWORD;
 var url = 'mongodb://' + db_user + ':' + db_pass + '@' + host + ':' + db_port + '/' + db_name;
+var MongoClient = require('mongodb').MongoClient;
 //app.set('port', (process.env.PORT || 3000)); //enable this when deploying to Heroku.
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', routes);
 
 // catch 404 and forward to error handler
@@ -36,10 +33,6 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
@@ -50,8 +43,6 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -64,10 +55,6 @@ app.listen(app.get('port'), function() {
     console.log("Node app is running at localhost:" + app.get('port'));
 });
 
-
-var MongoClient = require('mongodb').MongoClient, assert = require('assert');
-
-// Use connect method to connect to the Server
 MongoClient.connect(url, function(err, db) {
     if (err) {
         console.log('Unable to connect to the mongoDB server. Error:', err);
