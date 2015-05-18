@@ -86,7 +86,7 @@ router.get("/api/artists/:artistname", function(req,res){
 });
 
 //GET /api/<artistname>/tracks
-router.get('/api/:artistname/tracks', function(req, res) {
+router.get('/api/tracks/:artistname', function(req, res) {
     MongoClient.connect(mongoDBURL, function(err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -120,7 +120,7 @@ router.get('/api/:artistname/tracks', function(req, res) {
 });
 
 //GET /api/<artistname>/albums
-router.get('/api/:artistname/albums', function(req, res) {
+router.get('/api/albums/:artistname', function(req, res) {
     MongoClient.connect(mongoDBURL, function(err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);

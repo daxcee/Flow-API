@@ -25,22 +25,14 @@ describe('/', function () {
         });
     });
 
-    //Test retrieve all artists details
-    it('GET /artists', function (done) {
-        request(baseURL + '/api/artists', function (err,resp) {
-            assert(!err);
-            assert.equal(200, resp.statusCode);
-            done();
-        });
-    });
-
-    //Test retrieve details of a specific artist
-    it('GET /api/artists/:artistname', function (done) {
+    //Test retrieve albums of a specific artist
+    it('GET /api/albums/:artistname', function (done) {
         var params = 'AAAA';
-        request(baseURL + '/api/artists/' + params, function (err,resp) {
+        request(baseURL + '/api/albums/' + params, function (err,resp) {
             assert(!err);
             assert.equal(200, resp.statusCode);
             done();
         });
+
     });
 });

@@ -89,13 +89,13 @@ Path | Method | Parameters   | Description
 
 Path | Method | Parameters   | Description
 ------------ | ------------- | ------------ | -----------
-[/api/artistname/albums](https://flow-api.herokuapp.com/api/AAAA/albums) | GET  | String |
+[/api/artistname/albums](https://flow-api.herokuapp.com/api/AAAA/albums) | GET  | String | Retrieve albums of a specific artist
 
 #### Track
 
 Path | Method | Parameters   | Description
 ------------ | ------------- | ------------ | -----------
-[/api/artistname/tracks](https://flow-api.herokuapp.com/api/AAAA/tracks) | GET  | String |
+[/api/artistname/tracks](https://flow-api.herokuapp.com/api/AAAA/tracks) | GET  | String | Retrieve tracks of a specific artist
 
 
 *Not yet implemented
