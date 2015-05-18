@@ -78,12 +78,25 @@ Open up a new browser tab and go to the follow to check if server is properly ru
 
 ### Endpoints
 
-Path | Method | Parameters   
------------- | ------------- | ------------
-[/api/artists](https://flow-api.herokuapp.com/api/artists) | GET  | none |
-/api/tracks* | GET  | undefined
-/api/videos* | GET  | undefined
-/api/events* | GET  | undefined 
+#### Artist
+
+Path | Method | Parameters   | Description
+------------ | ------------- | ------------ | -----------
+[/api/artists](https://flow-api.herokuapp.com/api/artists) | GET  | none | Retrieve all artists details
+[/api/artists/artistname](https://flow-api.herokuapp.com/api/artists/AAAA) | GET  | String | Retrieve details of a specific artist
+
+#### Album
+
+Path | Method | Parameters   | Description
+------------ | ------------- | ------------ | -----------
+[/api/artistname/albums](https://flow-api.herokuapp.com/api/AAAA/albums) | GET  | String |
+
+#### Track
+
+Path | Method | Parameters   | Description
+------------ | ------------- | ------------ | -----------
+[/api/artistname/tracks](https://flow-api.herokuapp.com/api/AAAA/tracks) | GET  | String |
+
 
 *Not yet implemented
 

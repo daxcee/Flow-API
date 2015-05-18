@@ -2,29 +2,28 @@ require('dotenv').load();
 var express = require('express');
 var router = express.Router();
 var app = express();
+app.set('json spaces', 0);
 var port = process.argv[2] || 3000;
 var http = require('http');
-app.set('json spaces', 2);
-var host = process.env.DB_HOST;
-var db_port = process.env.DB_PORT;
-var db_name = process.env.DB_NAME;
-var db_user = process.env.DB_USER;
-var db_pass = process.env.DB_PASSWORD;
-var url = 'mongodb://' + db_user + ':' + db_pass + '@' + host + ':' + db_port + '/' + db_name;
 var MongoClient = require('mongodb').MongoClient;
-var artistEndpoint = '/api/artists';
+var mongoDBURL = 'mongodb://' + process.env.DB_USER + ':' +
+                         process.env.DB_PASSWORD + '@' +
+                         process.env.DB_HOST + ':' +
+                         process.env.DB_PORT + '/' +
+                         process.env.DB_NAME;
 
+//Overview page
 router.get('/', function(request, response) {
-  response.send('Flow API is running.' + '<br><br>' +
-          'Artist endpoint: ' + '<br><br>' + '<a href="' + artistEndpoint + '">GET ' + artistEndpoint);
+    response.sendFile(__dirname + '/index.html');
 });
 
+//GET /api/artists
 router.get('/api/artists', function(req, res) {
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(mongoDBURL, function(err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         } else {
-            console.log("Connected correctly to: ", url);
+            console.log("Connected correctly to: ", mongoDBURL);
 
             var collection = db.collection('artists');
 
@@ -32,28 +31,126 @@ router.get('/api/artists', function(req, res) {
             collection.find({mediaType: 'bio'}).toArray(function (err, result) {
                 if (err) {
                     console.log(err);
-                    res.setHeader("Content-Type", "application/json");
+                    res.status(404);
+                    res.setHeader("Content-Type", "text");
                     res.end(err);
                 } else if (result.length) {
                     console.log('Found:', result);
-                    res.setHeader("Content-Type", "application/json");
+                    res.setHeader("Content-Type", "text");
                     res.end(JSON.stringify(result));
                 } else {
-                    console.log('No document(s) found with defined "find" criteria!');
+                    console.log('No artists were found.');
+                    res.status(404);
                     res.setHeader("Content-Type", "application/json");
-                    res.end('No document(s) found with defined "find" criteria!');
+                    res.end('No artists were found.');
                 }
-                //Close connection
+
                 db.close();
             });
         }
     });
-
 });
 
-router.get('/api/tracks', function(req, res) {
-  res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify("Foo:bar"));
+//GET /api/artists/<artistname>
+router.get("/api/artists/:artistname", function(req,res){
+    MongoClient.connect(mongoDBURL, function(err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        } else {
+            console.log("Connected correctly to: ", mongoDBURL);
+
+            var collection = db.collection('artists');
+
+            // Query DB, artist collection
+            collection.find({artistName: req.params.artistname}).toArray(function (err, result) {
+                if (err) {
+                    console.log(err);
+                    res.status(404);
+                    res.setHeader("Content-Type", "text");
+                    res.end(err);
+                } else if (result.length) {
+                    console.log('Found:', result);
+                    res.setHeader("Content-Type", "text");
+                    res.end(JSON.stringify(result, null, 2));
+                } else {
+                    console.log('No artists found by name: ' + req.params.artistname);
+                    res.status(404);
+                    res.setHeader("Content-Type", "text");
+                    res.end('No artists found by name: ' + req.params.artistname );
+                }
+
+                db.close();
+            });
+        }
+    });
+});
+
+//GET /api/<artistname>/tracks
+router.get('/api/:artistname/tracks', function(req, res) {
+    MongoClient.connect(mongoDBURL, function(err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        } else {
+            console.log("Connected correctly to: ", mongoDBURL);
+
+            var collection = db.collection('tracks');
+
+            // Query DB, artist collection
+            collection.find({artists:{$elemMatch:{artistName:req.params.artistname}}}).toArray(function (err, result) {
+                if (err) {
+                    console.log(err);
+                    res.status(404);
+                    res.setHeader("Content-Type", "text");
+                    res.end(err);
+                } else if (result.length) {
+                    console.log('Found:', result);
+                    res.setHeader("Content-Type", "text");
+                    res.end(JSON.stringify(result, null, 2));
+                } else {
+                    console.log('No artists found by name: ' + req.params.artistname);
+                    res.status(404);
+                    res.setHeader("Content-Type", "text");
+                    res.end('No tracks found for: ' + req.params.artistname );
+                }
+
+                db.close();
+            });
+        }
+    });
+});
+
+//GET /api/<artistname>/albums
+router.get('/api/:artistname/albums', function(req, res) {
+    MongoClient.connect(mongoDBURL, function(err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        } else {
+            console.log("Connected correctly to: ", mongoDBURL);
+
+            var collection = db.collection('albums');
+
+            // Query DB, artist collection
+            collection.find({artists:{$elemMatch:{artistName:req.params.artistname}}}).toArray(function (err, result) {
+                if (err) {
+                    console.log(err);
+                    res.status(404);
+                    res.setHeader("Content-Type", "text");
+                    res.end(err);
+                } else if (result.length) {
+                    console.log('Found:', result);
+                    res.setHeader("Content-Type", "text");
+                    res.end(JSON.stringify(result, null, 2));
+                } else {
+                    console.log('No artists found by name: ' + req.params.artistname);
+                    res.status(404);
+                    res.setHeader("Content-Type", "text");
+                    res.end('No tracks found for: ' + req.params.artistname );
+                }
+
+                db.close();
+            });
+        }
+    });
 });
 
 module.exports = router;
