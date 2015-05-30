@@ -6,28 +6,27 @@ Rest API
 
 ## Prerequisites
 
-[NodeJS](https://nodejs.org)
+[Nodejs](https://nodejs.org)
 
 [NPM](https://www.npmjs.com)
 
 [MongoDB](https://www.mongodb.org)
 
-Or via brew (OSX):
 
-Install brew:
+Nodejs install via brew (OSX):
 
 [http://brew.sh](http://brew.sh)
 
-Install nodejs package:
+then, install nodejs package:
 
     brew install node
     
 ## Install dependencies
 
-We use NPM as the dependencies/package manager.
+NPM is used as dependencies/package manager.
 
-To install the needed modules for this NodeJS app, 
-run the following command from to the `root`of the project:
+To install the needed modules for this Nodejs app, 
+run the following command from the `root`of the project:
 
     sudo npm install
 
@@ -55,7 +54,7 @@ Startup mongo by running:
 
 	   mongo
 	   
-Create a database, named flow:	   
+Create a database, named `flow`:	   
 
 	   use flow
 
@@ -112,18 +111,37 @@ Path | Method | Parameters   | Description
 [/api/v1/genres](https://flow-api.herokuapp.com/api/v1/genres) | GET  | String | Retrieve all genres details
 
 
-## MochaJS tests
+## Mocha tests
 
-For every Endpoint there are tests, see test dir.
+For every API endpoint there are tests, see test dir.
 
 To run the Mocha tests, from `root` run:
 
       npm test
       
-## Deploy backend to Heroku
-Every change to the Master branch will trigger an automatic deployment
-of the backend to Heroku, after an success build by Circle CI.
+Note that by running tests, the local mongodb is dropped and it's collections is dropped!
 
-The backend is deployed to and accessed via:
+Every test will create a fresh collection and runs with that collection, afterwards
+the collection will again be dropped. You will have to (re)run the `data_import.sh` script, as described [here](https://github.com/srmds/FlowAPI#import-json-sample-data), to
+get sample data in to the database.
+      
+## Deploy backend
+Every change to the master branch will trigger an automatic deployment
+of the backend to Heroku, after a succeeded build by the CI buildserver.
+
+The backend is accessible via:
 
 [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
+
+## MIT License
+Copyright 2015 srmds
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
