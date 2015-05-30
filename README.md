@@ -59,7 +59,7 @@ Create database a database, named flow:
 
 	   use flow
 
-Import sample data files can be found [here](/tree/master/samples) and needs to be saved locally, then import dump by running:
+Import sample data files can be found [here](https://github.com/srmds/FlowAPI/tree/master/samples) and needs to be saved locally, then import dump by running:
 
 		mongoimport -d flow -c artists --file collection.json
 		
