@@ -55,7 +55,7 @@ Startup mongo by running:
 
 	   mongo
 	   
-Create database a database, named flow:	   
+Create a database, named flow:	   
 
 	   use flow
 
@@ -63,7 +63,7 @@ Import sample data files can be found [here](https://github.com/srmds/FlowAPI/tr
 
 		mongoimport -d flow -c artists --file collection.json
 		
-		where -d is databasename and -c the collection name
+where -d is database_name and -c is collection_name
 		
 
 ### Start server
