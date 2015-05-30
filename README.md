@@ -1,4 +1,4 @@
-# Flow API ![](https://circleci.com/gh/stevenrmds/FlowAPI/tree/master.svg?style=shield&circle-token=982140173ef2b98794c97ed9cfa17d90cddc17bf)
+# Flow API ![](https://circleci.com/gh/srmds/FlowAPI/tree/master.svg?style=shield&circle-token=982140173ef2b98794c97ed9cfa17d90cddc17bf)
 Rest API
 
 [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
@@ -59,7 +59,7 @@ Create database a database, named flow:
 
 	   use flow
 
-Import sample data files can be found [here](https://raw.githubusercontent.com/stevenrmds/FlowAPI/master/samples) and needs to be saved locally, then import dump by running:
+Import sample data files can be found [here](https://raw.githubusercontent.com/srmds/FlowAPI/master/samples) and needs to be saved locally, then import dump by running:
 
 		mongoimport -d flow -c artists --file collection.json
 		
