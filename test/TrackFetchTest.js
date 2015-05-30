@@ -25,13 +25,12 @@ describe('/', function () {
         });
     });
 
-    //Test retrieve all artists details
-    it('GET api/v1/artists', function (done) {
-        request(baseURL + '/api/v1/artists', function (err,resp) {
+    //Test retrieve tracks of a specific artist
+    it('GET /api/v1/tracks/', function(done){
+        request(baseURL + '/api/v1/tracks/', function (err,resp) {
             assert(!err);
             assert.equal(200, resp.statusCode);
             done();
         });
     });
-
 });

@@ -1,0 +1,16 @@
+{
+  "_id": {
+    "$oid": "555a4b2de4b07b6ac504e6c4"
+  },
+  "genres": [
+    {
+      "genreName": "Alternative"
+    }
+  ],
+  "title": "AlbumTitle",
+  "artists": [
+    {
+      "artistName": "AAAA"
+    }
+  ]
+}
