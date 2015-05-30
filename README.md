@@ -59,22 +59,25 @@ Create a database, named flow:
 
 	   use flow
 
-Import sample data files can be found [here](https://github.com/srmds/FlowAPI/tree/master/samples) and needs to be saved locally, then import dump by running:
+Sample data can be found in the [samples](https://github.com/srmds/FlowAPI/tree/master/samples) dir, import by running:
 
-		mongoimport -d flow -c artists --file collection.json
-		
-where -d is database_name and -c is collection_name
-		
+via the provided shell script, found in root:
 
+    ./data_import.sh
+
+or manually on each file:     
+
+		mongoimport -d db_name -c collection_name --file filename.json --jsonArray
+		
 ### Start server
 			
 Finally, from `root` of the project run:
  
      bin/www 
      
-     or 
+or with monitoring for any changes and automatically restarting the server (handy and prefered): 
      
-     foreman start
+     nodemon app.js
 
 Open up a new browser tab and go to the follow to check if server is properly running:
 
