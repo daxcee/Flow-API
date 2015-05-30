@@ -26,9 +26,8 @@ describe('/', function () {
     });
 
     //Test retrieve tracks of a specific artist
-    it('GET /api/tracks/:artistname', function(done){
-        var params = 'AAAA';
-        request(baseURL + '/api/tracks/' + params, function (err,resp) {
+    it('GET /api/v1/tracks/', function(done){
+        request(baseURL + '/api/v1/tracks/', function (err,resp) {
             assert(!err);
             assert.equal(200, resp.statusCode);
             done();
