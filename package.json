@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/stevenrmds/FlowAPI.git"
+    "url": "git://github.com/srmds/FlowAPI.git"
   },
   "dependencies": {
     "body-parser": "~1.8.1",
