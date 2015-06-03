@@ -58,6 +58,7 @@ Create a database, named `flow`:
 
 	   use flow
 
+
 Sample data can be found in the [samples](https://github.com/srmds/FlowAPI/tree/master/samples) dir, import by running:
 
 via the provided shell script, found in root:

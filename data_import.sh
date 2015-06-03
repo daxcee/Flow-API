@@ -1,5 +1,7 @@
 #!/bin/sh
 
+mongo flow --eval "db.dropDatabase()"
+
 FILES=samples/*.json
 REP=
 for f in $FILES
