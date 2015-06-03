@@ -91,25 +91,35 @@ Open up a new browser tab and go to the follow to check if server is properly ru
 
 Path | Method | Parameters   | Description
 ------------ | ------------- | ------------ | -----------
-[/api/v1/artists](https://flow-api.herokuapp.com/api/v1/artists) | GET  | none | Retrieve all artists details
+[/api/v1/artists](https://flow-api.herokuapp.com/api/v1/artists) | GET  | none | Retrieve all artists details.
+[/api/v1/artists/artistId](https://flow-api.herokuapp.com/api/v1/artists/AAAA) | GET  | String, artistName | Retrieve details for a specific artist.
 
 #### Album
 
 Path | Method | Parameters   | Description
 ------------ | ------------- | ------------ | -----------
-[/api/v1/albums](https://flow-api.herokuapp.com/api/v1/albums) | GET  | String | Retrieve albums details
+[/api/v1/albums](https://flow-api.herokuapp.com/api/v1/albums) | GET  | none | Retrieve albums details.
+[/api/v1/albums/artistId](https://flow-api.herokuapp.com/api/v1/albums/AAAA) | GET  | String, artistName | Retrieve albums details for a specific artist.
+
 
 #### Track
 
 Path | Method | Parameters   | Description
 ------------ | ------------- | ------------ | -----------
-[/api/v1/tracks](https://flow-api.herokuapp.com/api/v1/tracks) | GET  | String | Retrieve all tracks details
+[/api/v1/tracks](https://flow-api.herokuapp.com/api/v1/tracks) | GET  | none | Retrieve all tracks details.
+[/api/v1/tracks/artistId](https://flow-api.herokuapp.com/api/v1/tracks/AAAA) | GET  | String, artistName | Retrieve all tracks details for a specific artist.
+[*/api/v1/tracks/albumId/]() | GET  | String, albumName | Retrieve all tracks details for a specific album.
+
+*Not yet implemented
 
 #### Genre
 
 Path | Method | Parameters   | Description
 ------------ | ------------- | ------------ | -----------
-[/api/v1/genres](https://flow-api.herokuapp.com/api/v1/genres) | GET  | String | Retrieve all genres details
+[/api/v1/genres](https://flow-api.herokuapp.com/api/v1/genres) | GET  | String | Retrieve all genres details.
+[/api/v1/genres/genreId](https://flow-api.herokuapp.com/api/v1/genres/Alternative) | GET  | String, genreName | Retrieve details for a specific genre.
+
+
 
 
 ## Mocha tests
