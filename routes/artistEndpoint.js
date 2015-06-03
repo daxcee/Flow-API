@@ -27,11 +27,33 @@ router.get(path, function(req, res) {
             res.setHeader("Content-Type", "application/json");
             res.end(JSON.stringify(result, null, 2));
         } else {
-            console.log('No document(s) found with defined criteria.');
-            res.statusCode = 404;
-            res.setHeader("Content-Type", "text/html");
-            res.end('No document(s) found with defined criteria.');
+            console.log('No artist(s) found for: ' + req.params.id);
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "application/json");
+            res.end(JSON.stringify([], null, 2));
         }
+    });
+});
+
+router.get(path + '/:id', function(req, res) {
+        Artist.find({'artistName':  req.params.id}, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.statusCode = 500;
+                throw err;
+            }
+
+            if (result.length) {
+                console.log('Result:', result);
+                res.statusCode = 200;
+                res.setHeader("Content-Type", "application/json");
+                res.end(JSON.stringify(result, null, 2));
+            } else {
+                console.log('No artist found by name: ' + req.params.id);
+                res.statusCode = 200;
+                res.setHeader("Content-Type", "application/json");
+                res.end(JSON.stringify([], null, 2));
+            }
     });
 });
 
