@@ -58,7 +58,7 @@ module.exports = {
     },
 
     getTrackByArtistId: function (req, res) {
-        Artist.findOne({'artistName': req.params.id}, function (err, artist) {
+        Artist.findOne({'_id': req.params.id}, function (err, artist) {
             if (err) {
                 console.log(err);
                 res.statusCode = 500;
@@ -79,10 +79,10 @@ module.exports = {
                         res.setHeader("Content-Type", "application/json");
                         res.end(JSON.stringify(result, null, 2));
                     } else {
-                        console.log('[getTrackByArtistId]: No tracks(s) found for: ' + req.params.id);
+                        console.log('[getTrackByArtistId]: No track(s) found for: ' + req.params.id);
                         res.statusCode = 200;
                         res.setHeader("Content-Type", "application/json");
-                        res.end(JSON.stringify(result, null, 2));
+                        res.end(JSON.stringify([], null, 2));
                     }
                 });
             } else {
