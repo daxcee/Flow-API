@@ -1,4 +1,4 @@
-# Flow API ![](https://circleci.com/gh/srmds/FlowAPI/tree/master.svg?style=shield&circle-token=982140173ef2b98794c97ed9cfa17d90cddc17bf)
+# Flow API [![Circle CI](https://circleci.com/gh/srmds/Flow-API/tree/master.svg?style=shield&circle-token=46d1551fd9854de4f8ca53006186dc35aeeb6889)](https://circleci.com/gh/srmds/Flow-API/tree/master)
 Rest API
 
 [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
