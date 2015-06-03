@@ -5,7 +5,7 @@ var config = require('config');
 
 //max 4 connections in pool
 var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
-//Album model is scoped to above specific connection object
+//Artist model is scoped to above specific connection object
 var Artist = conn.model('Artist');
 
 module.exports = {
