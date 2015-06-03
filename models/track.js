@@ -3,11 +3,11 @@ var Schema = mongoose.Schema;
 
 var trackSchema = new Schema({
     mediaType: String,
-    artists: [{artistName: String}],
-    albums: [{id: String, title: String}],
+    artists: [],
+    albums: [],
     duration: Number,
     genres: [{genreName: String}],
     songTitle: String
 });
 
-module.exports = mongoose.model('track', trackSchema);
+module.exports = mongoose.model('Track', trackSchema);

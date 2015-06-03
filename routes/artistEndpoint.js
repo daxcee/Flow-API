@@ -8,7 +8,7 @@ var config = require('config');
 //max 4 connections in pool
 var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
 //Artist model is scoped to this specific connection object
-var Artist = conn.model('artist');
+var Artist = conn.model('Artist');
 
 var base = '/api/v1';
 var path = base + '/artists';

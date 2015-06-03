@@ -13,4 +13,4 @@ var artistSchema = new Schema({
     artistFBURL: String
 });
 
-module.exports = mongoose.model('artist', artistSchema);
+module.exports = mongoose.model('Artist', artistSchema);

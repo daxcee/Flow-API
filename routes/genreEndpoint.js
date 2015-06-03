@@ -8,7 +8,7 @@ var config = require('config');
 //max 4 connections in pool
 var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
 //Genre model is scoped to above specific connection object
-var Genre = conn.model('genre');
+var Genre = conn.model('Genre');
 
 var base = '/api/v1';
 var path = base + '/genres';
@@ -31,6 +31,28 @@ router.get(path, function(req, res) {
             res.statusCode = 404;
             res.setHeader("Content-Type", "text/html; charset=utf-8");
             res.end('No document(s) found with defined criteria!');
+        }
+    });
+});
+
+router.get(path + '/:id', function(req, res) {
+    Genre.find({'genreName': req.params.id}, function (err, result) {
+        if (err) {
+            console.log(err);
+            res.statusCode = 500;
+            throw err;
+        }
+
+        if (result.length) {
+            console.log('Result:', result);
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "application/json");
+            res.end(JSON.stringify(result, null, 2));
+        } else {
+            console.log('No genre(s) found for: ' + req.params.id);
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "application/json");
+            res.end(JSON.stringify([], null, 2));
         }
     });
 });
