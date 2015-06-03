@@ -6,7 +6,7 @@ var config = require('config');
 
 //max 4 connections in pool
 var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
-//Album model is scoped to above specific connection object
+//Album and Artist models are scoped to above specific connection object
 var Album = conn.model('Album');
 var Artist = conn.model('Artist');
 
@@ -29,52 +29,34 @@ module.exports = {
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
             }
-
         });
     },
 
     getAlbumById: function (req, res) {
-        Album.find({}, function (err, result) {
-            Artist.findOne({'artistName': req.params.id}, function (err, artist) {
-                if (err) {
-                    console.log(err);
-                    res.statusCode = 500;
-                    throw err;
-                }
+        Album.find({'_id': req.params.id}, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.statusCode = 500;
+                throw err;
+            }
 
-                if (artist) {
-                    Album.find({'artists.artistName':  artist.artistName}, function (err, result){
-                        if (err) {
-                            console.log(err);
-                            res.statusCode = 500;
-                            throw err;
-                        }
-
-                        if (result.length) {
-                            console.log('[getAlbumById]: ', result);
-                            res.statusCode = 200;
-                            res.setHeader("Content-Type", "application/json");
-                            res.end(JSON.stringify(result, null, 2));
-                        } else {
-                            console.log('[getAlbumById]: No album(s) found for: ' + req.params.id);
-                            res.statusCode = 200;
-                            res.setHeader("Content-Type", "application/json");
-                            res.end(JSON.stringify([], null, 2));
-                        }
-                    });
-                } else {
-                    console.log('[getAlbumById]: Artist: ' + req.params.id + ' not found.');
-                    res.statusCode = 200;
-                    res.setHeader("Content-Type", "application/json");
-                    res.end(JSON.stringify([], null, 2));
-                }
-            });
+            if (result.length) {
+                console.log('[getAlbumById]: ', result);
+                res.statusCode = 200;
+                res.setHeader("Content-Type", "application/json");
+                res.end(JSON.stringify(result, null, 2));
+            } else {
+                console.log('[getAlbumById]: No album(s) found for: ' + req.params.id);
+                res.statusCode = 200;
+                res.setHeader("Content-Type", "application/json");
+                res.end(JSON.stringify([], null, 2));
+            }
         });
     },
 
     getAlbumByArtistId: function (req, res) {
         Album.find({}, function (err, result) {
-            Artist.findOne({'artistName': req.params.id}, function (err, artist) {
+            Artist.findOne({'_id': req.params.id}, function (err, artist) {
                 if (err) {
                     console.log(err);
                     res.statusCode = 500;
