@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>Flow API Overview</title>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Flow API - Endpoints</h2>
+      <h3>Album</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Path</th>
+            <th>Method</th>
+            <th>Parameters</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-md-3"><a href="https://flow-api.herokuapp.com/api/v1/albums">api/v1/albums<br></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">None</td>
+            <td class="col-md-2">Retrieve all albums details.</td>
+          </tr>
+          <tr>
+            <td class="col-md-3"><a href="https://flow-api.herokuapp.com/api/v1/albums/albumId">api/v1/albums/albumId<br></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">String, albumId</td>
+            <td class="col-md-2">Retrieve album details for a specific album.</td>
+          </tr>
+           <tr>
+            <td class="col-md-3"><b>* </b><a href="https://flow-api.herokuapp.com/api/v1/albums/artist/artistId">api/v1/albums/artist/artistId<br></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">String, artistId</td>
+            <td class="col-md-2">Retrieve album details for a specific artist.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Artist</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Path</th>
+            <th>Method</th>
+            <th>Parameters</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-md-3"><a href="https://flow-api.herokuapp.com/api/v1/artists">api/v1/artists<br></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">None</td>
+            <td class="col-md-2">Retrieve all artists details.</td>
+          </tr>
+          <tr>
+            <td class="col-md-3"><a href="https://flow-api.herokuapp.com/api/v1/artists/artistId">api/v1/artists/artistId<br></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">String, artistId</td>
+            <td class="col-md-2">Retrieve artist details for a specific artist.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Genre</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Path</th>
+            <th>Method</th>
+            <th>Parameters</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-md-3"><a href="https://flow-api.herokuapp.com/api/v1/genres">api/v1/genres<br></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">None</td>
+            <td class="col-md-2">Retrieve all genres details.</td>
+          </tr>
+          <tr>
+            <td class="col-md-3"><a href="https://flow-api.herokuapp.com/api/v1/genres/genreId">api/v1/genres/genreId<br></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">String, genreId</td>
+            <td class="col-md-2">Retrieve genre details for a specific genre.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Track</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Path</th>
+            <th>Method</th>
+            <th>Parameters</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-md-3"><a href="https://flow-api.herokuapp.com/api/v1/tracks">api/v1/tracks<br></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">None</td>
+            <td class="col-md-2">Retrieve all tracks details.</td>
+          </tr>
+          <tr>
+            <td class="col-md-3"><a href="https://flow-api.herokuapp.com/api/v1/tracks/trackId">api/v1/tracks/trackId<br></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">String, trackId</td>
+            <td class="col-md-2">Retrieve track details for a specific track.</td>
+          </tr>
+           <tr>
+            <td class="col-md-3"><b>* </b><a href="https://flow-api.herokuapp.com/api/v1/albums/tracks/artist/artistId">api/v1/tracks/artist/artistId<br></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">String, artistId</td>
+            <td class="col-md-2">Retrieve track details for a specific artist.</td>
+          </tr>
+        </tbody>
+      </table>
+      <b>*</b>Not yet implemented
+    </div>
+  </body>
+</html>

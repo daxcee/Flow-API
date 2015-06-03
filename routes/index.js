@@ -1,19 +1,10 @@
 var express = require('express');
 
 var router = express.Router();
-var base = '/api/v1';
-var artistEndpoint = base + '/artists';
-var albumEndpoint =  base + '/albums';
-var genreEndpoint =  base + '/genres';
-var trackEndpoint =  base + '/tracks';
+var path = require("path");
 
-//Overview page
-router.get('/', function(request, response) {
-    response.send('Flow API Endpoints:' + '<br><br>' +
-        '<a href="' + albumEndpoint  + '">' + albumEndpoint   + '<br>' +
-        '<a href="' + artistEndpoint + '">' + artistEndpoint  + '<br>' +
-        '<a href="' + genreEndpoint  + '">' + genreEndpoint   + '<br>' +
-        '<a href="' + trackEndpoint  + '">' + trackEndpoint);
+router.get('/', function(req, res) {
+    res.sendFile('api-overview.html', { root: path.join(__dirname, '../public') });
 });
 
 module.exports = router;
