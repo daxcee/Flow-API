@@ -27,7 +27,6 @@ module.exports = {
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify(result, null, 2));
             } else {
-                console.log('[getAllTracks]: No tracks(s) found for: ' + req.params.id);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify([], null, 2));
@@ -44,12 +43,10 @@ module.exports = {
             }
 
             if (result.length) {
-                console.log('[getTrackById]: ', result);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify(result, null, 2));
             } else {
-                console.log('[getTrackById]: Track: ' + req.params.id + ' not found.');
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify([], null, 2));
@@ -74,19 +71,16 @@ module.exports = {
                     }
 
                     if (result.length) {
-                        console.log('[getTrackByArtistId]: ', result);
                         res.statusCode = 200;
                         res.setHeader("Content-Type", "application/json");
                         res.end(JSON.stringify(result, null, 2));
                     } else {
-                        console.log('[getTrackByArtistId]: No track(s) found for: ' + req.params.id);
                         res.statusCode = 200;
                         res.setHeader("Content-Type", "application/json");
                         res.end(JSON.stringify([], null, 2));
                     }
                 });
             } else {
-                console.log('[getTrackByArtistId]: Artist: ' + req.params.id + ' not found.');
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify([], null, 2));

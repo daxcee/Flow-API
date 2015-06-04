@@ -20,12 +20,10 @@ module.exports = {
             }
 
             if (result.length) {
-                console.log('[getAllAlbums]: ', result);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify(result, null, 2));
             } else {
-                console.log('[getAllAlbums]: No album(s) found for: ' + req.params.id);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
             }
@@ -41,12 +39,10 @@ module.exports = {
             }
 
             if (result.length) {
-                console.log('[getAlbumById]: ', result);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify(result, null, 2));
             } else {
-                console.log('[getAlbumById]: No album(s) found for: ' + req.params.id);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify([], null, 2));
@@ -72,19 +68,16 @@ module.exports = {
                         }
 
                         if (result.length) {
-                            console.log('[getAlbumByArtistId]: ', result);
                             res.statusCode = 200;
                             res.setHeader("Content-Type", "application/json");
                             res.end(JSON.stringify(result, null, 2));
                         } else {
-                            console.log('[getAlbumByArtistId]: No album(s) found for: ' + req.params.id);
                             res.statusCode = 200;
                             res.setHeader("Content-Type", "application/json");
                             res.end(JSON.stringify([], null, 2));
                         }
                     });
                 } else {
-                    console.log('[getAlbumByArtistId]: Artist: ' + req.params.id + ' not found.');
                     res.statusCode = 200;
                     res.setHeader("Content-Type", "application/json");
                     res.end(JSON.stringify([], null, 2));

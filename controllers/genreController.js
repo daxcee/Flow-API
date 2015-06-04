@@ -18,12 +18,10 @@ module.exports = {
             }
 
             if (result.length) {
-                console.log('[getAllGenres]: ', result);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify(result, null, 2));
             } else {
-                console.log('[getAllGenres]: No genre(s) found.');
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify([], null, 2));
@@ -42,10 +40,8 @@ module.exports = {
             if (result.length) {
                 console.log('[getGenreById]: ', result);
                 res.statusCode = 200;
-                res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify(result, null, 2));
             } else {
-                console.log('[getGenreById]: No genre(s) found for: ' + req.params.id);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify([], null, 2));

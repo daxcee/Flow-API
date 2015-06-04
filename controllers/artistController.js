@@ -18,12 +18,10 @@ module.exports = {
             }
 
             if (result.length) {
-                console.log('[getAllArtists]: ', result);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify(result, null, 2));
             } else {
-                console.log('[getAllArtists]: No artist(s) found for: ' + req.params.id);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify([], null, 2));
@@ -40,12 +38,10 @@ module.exports = {
             }
 
             if (result.length) {
-                console.log('[getArtistById]: ', result);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify(result, null, 2));
             } else {
-                console.log('[getArtistById]: No artist found by name: ' + req.params.id);
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
                 res.end(JSON.stringify([], null, 2));
