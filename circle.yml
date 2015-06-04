@@ -4,3 +4,9 @@ machine:
 
   services:
   - mongodb
+
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: flow-api
