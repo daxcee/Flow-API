@@ -73,12 +73,9 @@ or manually on each file:
 			
 Finally, from `root` of the project run:
  
-     bin/www 
+     nodemon app.js 
      
-or with monitoring for any changes and automatically restarting the server (handy and prefered): 
-     
-     nodemon app.js
-
+Nodemon will monitor for any changes and automatically restart the server if needed. 
 Open up a new browser tab and go to the follow to check if server is properly running:
 
 [http://localhost:3000](http://localhost:3000)
