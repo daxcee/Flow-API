@@ -32,7 +32,7 @@ module.exports = {
     },
 
     getArtistById:function (req, res) {
-        Artist.find({'artistName':  req.params.id}, function (err, result) {
+        Artist.find({'_id':  req.params.id}, function (err, result) {
             if (err) {
                 console.log(err);
                 res.statusCode = 500;
