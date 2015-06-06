@@ -1,5 +1,6 @@
 require('dotenv').load();
 
+var compression = require('compression');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -16,10 +17,10 @@ var app = express();
 for (var i in routes)
     app.use('/', routes[i]);
 
-app.use(express.compress());
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(compression());
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
