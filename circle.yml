@@ -10,3 +10,8 @@ deployment:
     branch: master
     heroku:
       appname: flow-api
+notify:
+  webhooks:
+    # gitter hook
+    - url: https://webhooks.gitter.im/e/2931d5c95d1047743d95      
+      
