@@ -31,7 +31,7 @@ module.exports = {
     },
 
     getEventById: function (req, res) {
-        Event.find({'_id': req.params.id}, function (err, result) {
+        Event.find({'pid': req.params.id}, function (err, result) {
             res.setHeader("Content-Type", "application/json");
 
             if (err) {
@@ -48,15 +48,53 @@ module.exports = {
     },
 
     getEventByDate: function (req, res) {
-        Event.find({}, function (err, result) {});
+        Event.find({'date': req.params.id}, function (err, result) {
+            res.setHeader("Content-Type", "application/json");
+
+            if (err) {
+                console.log(err);
+                res.statusCode = 500;
+                res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                return;
+            }
+            if (result.length) {
+                res.statusCode = 200;
+                res.end(pretty.print(result));
+            }
+        });
     },
 
     getEventByArtist: function (req, res) {
-        Event.find({}, function (err, result) {});
+        Event.find({}, function (err, result) {
+            res.setHeader("Content-Type", "application/json");
+
+            if (err) {
+                console.log(err);
+                res.statusCode = 500;
+                res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                return;
+            }
+            if (result.length) {
+                res.statusCode = 200;
+                res.end(pretty.print(result));
+            }
+        });
     },
 
     getEventByGenre: function (req, res) {
         Event.find({}, function (err, result) {
+            res.setHeader("Content-Type", "application/json");
+
+            if (err) {
+                console.log(err);
+                res.statusCode = 500;
+                res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                return;
+            }
+            if (result.length) {
+                res.statusCode = 200;
+                res.end(pretty.print(result));
+            }
         });
     }
 };

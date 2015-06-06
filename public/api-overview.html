@@ -76,22 +76,34 @@
         </thead>
         <tbody>
         <tr>
-            <td class="col-md-3"><a href="">-</a></td>
-            <td class="col-md-1">-</td>
-            <td class="col-md-2">-</td>
-            <td class="col-md-2">-</td>
+            <td class="col-md-3"><a href="/api/v1/events">/api/v1/events</a></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">None</td>
+            <td class="col-md-2">Retrieve all events details</td>
         </tr>
         <tr>
-            <td class="col-md-3"><a href="">-</a></td>
-            <td class="col-md-1">-</td>
-            <td class="col-md-2">-</td>
-            <td class="col-md-2">-</td>
+            <td class="col-md-3"><a href="/api/v1/events/000005">/api/v1/events/eventId</a></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">String, eventId</td>
+            <td class="col-md-2">Retrieve event details for a specific event</td>
         </tr>
         <tr>
-            <td class="col-md-3"><a href="">-</a></td>
-            <td class="col-md-1">-</td>
-            <td class="col-md-2">-</td>
-            <td class="col-md-2">-</td>
+            <td class="col-md-3"><a href="/api/v1/events/date/01-01-2015">/api/v1/events/date/eventDate</a></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">String, eventDate</td>
+            <td class="col-md-2">Retrieve event details for a specific event on a specific date</td>
+        </tr>
+        <tr>
+            <td class="col-md-3"><a href="/api/v1/events/genre/Alternative">/api/v1/events/genre/genreId</a></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">String, genreId</td>
+            <td class="col-md-2">Retrieve events details based on a specific genre</td>
+        </tr>
+        <tr>
+            <td class="col-md-3"><a href="/api/v1/events/artist/555a4cb7e4b07b6ac504e6e5">/api/v1/events/artist/artistId</a></td>
+            <td class="col-md-1">GET</td>
+            <td class="col-md-2">String, artistId</td>
+            <td class="col-md-2">Retrieve events details for a events where a specific artist is performing.</td>
         </tr>
         </tbody>
       </table>

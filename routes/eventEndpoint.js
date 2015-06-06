@@ -8,5 +8,6 @@ router.get(base, controllerLoader.eventController.getAllEvents);
 router.get(base + '/:id',controllerLoader.eventController.getEventById);
 router.get(base + '/date/:id',controllerLoader.eventController.getEventByDate);
 router.get(base + '/genre/:id',controllerLoader.eventController.getEventByGenre);
+router.get(base + '/artist/:id',controllerLoader.eventController.getEventByArtist);
 
 module.exports = router;
