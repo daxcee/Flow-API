@@ -2,15 +2,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var eventSchema = new Schema({
-    fid: String,
-    id: String,
+    FBId: String,
+    pid: String,
     date: String,
     title: String,
     venue: String,
     city: String,
+    country: String,
     artists: []
 });
 
-module.exports = mongoose.model('Event', albumSchema);
+module.exports = mongoose.model('Event', eventSchema);
 
 
