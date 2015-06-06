@@ -16,6 +16,7 @@ var app = express();
 for (var i in routes)
     app.use('/', routes[i]);
 
+app.use(express.compress());
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
