@@ -1,7 +1,7 @@
-# Flow API [![Circle CI](https://circleci.com/gh/srmds/Flow-API/tree/master.svg?style=shield&circle-token=46d1551fd9854de4f8ca53006186dc35aeeb6889)](https://circleci.com/gh/srmds/Flow-API/tree/master)
+# Flow API [![Circle CI](https://circleci.com/gh/srmds/Flow-API/tree/master.svg?style=shield&circle-token=46d1551fd9854de4f8ca53006186dc35aeeb6889)](https://circleci.com/gh/srmds/Flow-API/tree/master) [![Join the chat at https://gitter.im/srmds/Flow-API](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/srmds/Flow-API?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+                                                                                                                                                                                                         Rest API
 
-[![Join the chat at https://gitter.im/srmds/Flow-API](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/srmds/Flow-API?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-Rest API
+
 
 [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
 
