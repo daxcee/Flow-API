@@ -47,6 +47,7 @@ Create a .env file in the root directory of your project. Add these environment-
     NODE_ENV=development
     LOCAL_HOST=localhost
     LOCAL_DBPORT=default_port
+    APP_URL=appurl
 
 ### Import JSON sample data
 
