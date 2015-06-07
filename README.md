@@ -38,7 +38,7 @@ and thus are only available on the local machine.
 
 Create a .env file in the root directory of your project. Add these environment-specific variables on new lines in the form of NAME=VALUE:
 
-    DB_HOST=<PROJECTID>.mongolab.com
+    DB_HOST=hostname
     DB_NAME=database_name
     DB_PORT=default_port
     DB_USER=username
@@ -79,43 +79,62 @@ Open up a new browser tab and go to the follow to check if server is properly ru
 
 [http://localhost:3000](http://localhost:3000)
 
-## API
+## API 
+
+Also see:[https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
 
 ### Endpoints
-
-#### Artist
-
-Path | Method | Parameters   | Description
------------- | ------------- | ------------ | -----------
-[/api/v1/artists](https://flow-api.herokuapp.com/api/v1/artists) | GET  | none | Retrieve all artists details.
-[/api/v1/artists/artistId](https://flow-api.herokuapp.com/api/v1/artists/AAAA) | GET  | String, artistName | Retrieve details for a specific artist.
 
 #### Album
 
 Path | Method | Parameters   | Description
 ------------ | ------------- | ------------ | -----------
 [/api/v1/albums](https://flow-api.herokuapp.com/api/v1/albums) | GET  | none | Retrieve albums details.
-[/api/v1/albums/artistId](https://flow-api.herokuapp.com/api/v1/albums/AAAA) | GET  | String, artistName | Retrieve albums details for a specific artist.
+[/api/v1/albums/albumId](https://flow-api.herokuapp.com/api/v1/albums/albumId) | GET  | String, albumId | Retrieve albums details for a specific album.
+[/api/v1/albums/artist/artistId](https://flow-api.herokuapp.com/api/v1/albums/artist/artistId) | GET  | String, artistId | Retrieve albums details of a specific artist.
 
-
-#### Track
+#### Artist
 
 Path | Method | Parameters   | Description
 ------------ | ------------- | ------------ | -----------
-[/api/v1/tracks](https://flow-api.herokuapp.com/api/v1/tracks) | GET  | none | Retrieve all tracks details.
-[/api/v1/tracks/artistId](https://flow-api.herokuapp.com/api/v1/tracks/AAAA) | GET  | String, artistName | Retrieve all tracks details for a specific artist.
-[*/api/v1/tracks/albumId/]() | GET  | String, albumName | Retrieve all tracks details for a specific album.
+[/api/v1/artists](https://flow-api.herokuapp.com/api/v1/artists) | GET  | none | Retrieve all artists details.
+[/api/v1/artists/artistId](https://flow-api.herokuapp.com/api/v1/artists/AAAA) | GET  | String, artistId | Retrieve details for a specific artist.
 
-*Not yet implemented
+#### Event
+
+Path | Method | Parameters   | Description
+------------ | ------------- | ------------ | -----------
+[/api/v1/events](https://flow-api.herokuapp.com/api/v1/events) | GET  | none | Retrieve all events details.
+[/api/v1/events/eventId](https://flow-api.herokuapp.com/api/v1/events/eventId) | GET  | String, eventId | Retrieve event details for a specific event.
+[/v1/events/date/01-01-2015](https://flow-api.herokuapp.com/api/v1/events/date/01-01-2015) | GET  | String, dd-MM-YYYY | Retrieve event details for a specific event on a specific date.
+[/api/v1/events/genre/genreId](https://flow-api.herokuapp.com/api/v1/events/genre/genreId) | GET  | String, genreId | Retrieve events details based on a specific genre.
+[/api/v1/events/artist/artistId](https://flow-api.herokuapp.com/api/v1/events/artist/artistId) | GET  | String, artistId | Retrieve events details for a events where a specific artist is performing..
 
 #### Genre
 
 Path | Method | Parameters   | Description
 ------------ | ------------- | ------------ | -----------
 [/api/v1/genres](https://flow-api.herokuapp.com/api/v1/genres) | GET  | String | Retrieve all genres details.
-[/api/v1/genres/genreId](https://flow-api.herokuapp.com/api/v1/genres/Alternative) | GET  | String, genreName | Retrieve details for a specific genre.
+[/api/v1/genres/genreId](https://flow-api.herokuapp.com/api/v1/genres/Alternative) | GET  | String, genreId | Retrieve details for a specific genre.
 
+#### Track
 
+Path | Method | Parameters   | Description
+------------ | ------------- | ------------ | -----------
+[/api/v1/tracks](https://flow-api.herokuapp.com/api/v1/tracks) | GET  | none | Retrieve all tracks details.
+[/api/v1/tracks/trackId](https://flow-api.herokuapp.com/api/v1/tracks/trackId) | GET  | String, trackId | Retrieve track details for a specific track.
+[/api/v1/tracks/artistId]() | * GET  | String, artistId | Retrieve all tracks details for a specific artist.
+[/api/v1/tracks/albumId/]() | * GET  | String, albumId | Retrieve all tracks details for a specific album.
+
+#### *Video
+
+Path | Method | Parameters   | Description
+------------ | ------------- | ------------ | -----------
+- | - | - | -
+- | - | - | -
+- | - | - | -
+
+*Not yet implemented
 
 
 ## Mocha tests
