@@ -2,6 +2,7 @@
 
 Rest API: [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
 
+This API strives to aggregate data, for music events per month/week, per city. For artists and there music, may it be pre-recorded or live streamable audio, audio & video, or purchable tracks / EP's / albums, there upcomming shows/gigs per month/week, cities, genres and present it in a unified form. 
 
 ## Prerequisites
 
