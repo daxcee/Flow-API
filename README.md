@@ -2,7 +2,7 @@
 
 Rest API: [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
 
-This API strives to aggregate data, from the kazillion resources on the web related to artists and there music, may it in the form of streamable audio and video, be it on demand or live, there upcomming shows/gigs per month/week, cities, genres and present it in a unified form.
+This API strives to aggregate data, music events per month/week, cities. For artists and there music, may it be pre-recorded or live streamable audio, audio & video, or purchable tracks / EP's / albums, there upcomming shows/gigs per month/week, cities, genres and present it in a unified form. 
 
 ## Prerequisites
 
