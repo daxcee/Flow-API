@@ -128,13 +128,13 @@ Path | Method | Parameters   | Description
 [/api/v1/tracks/artistId]() | * GET  | String, artistId | Retrieve all tracks details for a specific artist.
 [/api/v1/tracks/albumId/]() | * GET  | String, albumId | Retrieve all tracks details for a specific album.
 
-#### *Video
+#### Video
 
 Path | Method | Parameters   | Description
 ------------ | ------------- | ------------ | -----------
-- | - | - | -
-- | - | - | -
-- | - | - | -
+[/api/v1/videos](https://flow-api.herokuapp.com/api/v1/videos) | GET  | none | Retrieve all videos details.
+[/api/v1/videos/videoId](https://flow-api.herokuapp.com/api/v1/videos/videoId) | GET  | String, videoId | Retrieve video details for a specific video.
+[/api/v1/videos/artist/artistId](https://flow-api.herokuapp.com/api/v1/videos/artist/artistId) | * GET  | String, artistId | Retrieve all videos details for a specific artist.
 
 *Not yet implemented
 
