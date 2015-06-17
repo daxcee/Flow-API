@@ -64,6 +64,23 @@ module.exports = {
         });
     },
 
+    getEventByCity: function (req, res) {
+        Event.find({'city': req.params.id}, function (err, result) {
+            res.setHeader("Content-Type", "application/json");
+
+            if (err) {
+                console.log(err);
+                res.statusCode = 500;
+                res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                return;
+            }
+            if (result.length) {
+                res.statusCode = 200;
+                res.end(pretty.print(result));
+            }
+        });
+    },
+
     getEventByArtist: function (req, res) {
         Event.find({}, function (err, result) {
             res.setHeader("Content-Type", "application/json");
