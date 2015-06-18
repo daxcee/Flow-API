@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+        <title>Flow API - Token Request</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-63833528-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <div class="key-request container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4">
+                    <div class="row">
+                        <h1 class="text-center">Where can we send your token to?</h1>
+                    </div>
+                    <div class="wall">
+                        <img class="hidden-xs wall-img img-responsive" src="images/key_icon.png"
+                             alt="key-icon">
+                        <form class="form-signin" method="post" action="/sendtoken">
+                            <div class="row">
+                                <input name="user" type="text" class="form-control" placeholder="Your email" required autofocus>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Request API Token</button>
+                            </div>
+                            <div class="row">
+                                <a href="#" class="pull-right need-help" >why?</a><span class="clearfix"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-fixed-bottom" role="navigation">
+
+        <div class="container">
+            <div class="footer-text text-center text-muted">Flow API - 2015</div>
+        </div>
+        </div>
+    </body>
+
+</html>

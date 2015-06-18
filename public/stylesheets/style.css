@@ -6,3 +6,38 @@ body {
 a {
   color: #00B7FF;
 }
+
+.form-signin .row:first-child {
+    margin-bottom: 30px;
+}
+
+.form-signin .row:nth-child(3) {
+    margin-top: 10px;
+}
+
+.wall-img {
+    margin: 0 auto;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.key-request {
+    margin-top: 75px;
+}
+
+.key-request h1 {
+    margin-bottom: 20px;
+}
+
+.navbar-fixed-bottom {
+    position: absolute;
+    background-color: #f5f5f5;
+    padding-left: 0;
+}
+
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
