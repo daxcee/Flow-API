@@ -14,8 +14,7 @@ var fs = require('fs');
 var requireDir = require('require-dir');
 var routes = requireDir('./routes',{camelcase: true});
 var config = require('config');
-
-passwordless.init(new MongoStore(config.get('db_uri')), {skipForceSessionSave:true});
+var expressSession = require('express-session');
 
 var app = express();
 require('heroku-self-ping')(config.get('app_url'));
@@ -27,23 +26,26 @@ var smtpServer  = email.server.connect({
     ssl:true
 });
 
-// Set up a delivery service
-passwordless.addDelivery(function(tokenToSend, uidToSend, recipient, callback) {
-    var host = 'http://localhost:3000/';
-    smtpServer.send({
-        text:    'Hello!\nAccess your account here: http://'
-        + host + '?token=' + tokenToSend + '&uid='
-        + encodeURIComponent(uidToSend),
-        from:    yourEmail,
-        to:      recipient,
-        subject: 'Token for Flow API'
-    }, function(err, message) {
-        if(err) {
-            console.log(err);
-        }
-        callback(err);
+passwordless.init(new MongoStore(config.get('db_uri')));
+
+passwordless.addDelivery(
+    function(tokenToSend, uidToSend, recipient, callback) {
+        // Send out token
+        smtpServer.send({
+            text:
+            'Hi,\n\nYou can now access your account here: ' +
+            config.get('app_url') + '?token=' + tokenToSend + '&uid=' +
+            encodeURIComponent(uidToSend) + '\n\n\nBest regards,\n---\nFlow API',
+            from:    'Flow API ' + config.get('ms_user'),
+            to:      recipient,
+            subject: 'Flow API Token'
+        }, function(err, message) {
+            if(err) {
+                console.log(err);
+            }
+            callback(err);
+        });
     });
-});
 
 for (var i in routes)
     app.use('/', routes[i]);
@@ -56,7 +58,8 @@ app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(cookieParser());app.use(expressSession({secret: '-!49m$.;!``.x', saveUninitialized: false, resave: false}));
+app.use(expressSession({secret: '42', saveUninitialized: false, resave: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passwordless.sessionSupport());
 app.use(passwordless.acceptToken({ successRedirect: '/'}));
@@ -89,7 +92,5 @@ app.listen(app.get('port'), function() {
             '\ndb_uri: ' + config.get('db_uri'));
     }
 });
-
-
 
 module.exports = app;

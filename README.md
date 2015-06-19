@@ -48,7 +48,10 @@ Create a .env file in the root directory of your project. Add these environment-
     LOCAL_HOST=localhost
     LOCAL_DBPORT=default_port
     APP_URL=appurl
-
+    MS_USER=mailserver_email
+    MS_PASSWORD=mailserver_pass
+    MS_HOST=mailserver_smtp
+    
 ### Import JSON sample data
 
 Startup mongo by running:
