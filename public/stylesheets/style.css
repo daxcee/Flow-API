@@ -1,8 +1,47 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 17px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color:deepskyblue;
+}
+
+.form-signin .row:first-child {
+    margin-bottom: 30px;
+}
+
+.form-signin .row:nth-child(3) {
+    margin-top: 10px;
+}
+
+.wall-img {
+    margin: 0 auto;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.key-request {
+    margin-top: 75px;
+}
+
+.key-request h1 {
+    margin-bottom: 20px;
+}
+
+.navbar-fixed-bottom {
+    background-color: rgba(250,250,250,0.9);
+}
+
+.send-container {
+    margin-top: 200px;
 }

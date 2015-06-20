@@ -4,21 +4,23 @@
       <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
       <title>Flow API Overview</title>
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="stylesheets/style.css">
       <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
           ga('create', 'UA-63833528-1', 'auto');
           ga('send', 'pageview');
-
       </script>
   </head>
   <body>
     <div class="container">
-      <h2>Flow API - Endpoints</h2>
-      <h3>Album</h3>
+      <div class="text-center"><h2>Flow API - Endpoints</h2></div>
+        <div class="row">
+            <a href="/token-request" class="text-center" >Request an API Token</a><span class="clearfix"></span>
+        </div>
+        <h3>Album</h3>
       <table class="table">
         <thead>
           <tr>
@@ -26,27 +28,31 @@
             <th>Method</th>
             <th>Parameters</th>
             <th>Description</th>
+            <th>Auth. required</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="col-md-3"><a href="/api/v1/albums">api/v1/albums</a></td>
+            <td class="col-md-4"><a href="/api/v1/albums">api/v1/albums</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">None</td>
-            <td class="col-md-2">Retrieve all albums details.</td>
+            <td class="col-md-4">Retrieve all albums details.</td>
+            <td class="col-md-1">Yes</td>
           </tr>
           <tr>
-            <td class="col-md-3"><a href="/api/v1/albums/555a4b2de4b07b6ac504e6c4">api/v1/albums/albumId</a></td>
+            <td class="col-md-4"><a href="/api/v1/albums/555a4b2de4b07b6ac504e6c4">api/v1/albums/:albumId</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, albumId</td>
-            <td class="col-md-2">Retrieve album details for a specific album.</td>
+            <td class="col-md-4">Retrieve album details for a specific album.</td>
+            <td class="col-md-1">Yes</td>
           </tr>
            <tr>
-            <td class="col-md-3"><a href="/api/v1/albums/artist/555a4ca9e4b07b6ac504e6e1">api/v1/albums/artist/artistId</a></td>
+            <td class="col-md-4"><a href="/api/v1/albums/555a4ca9e4b07b6ac504e6e1/artist">api/v1/albums/:artistId/artist</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, artistId</td>
-            <td class="col-md-2">Retrieve album details for a specific artist.</td>
-          </tr>
+            <td class="col-md-4">Retrieve album details for a specific artist.</td>
+            <td class="col-md-1">Yes</td>
+           </tr>
         </tbody>
       </table>
       <h3>Artist</h3>
@@ -57,20 +63,23 @@
             <th>Method</th>
             <th>Parameters</th>
             <th>Description</th>
+            <th>Auth. required</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="col-md-3"><a href="/api/v1/artists">api/v1/artists</a></td>
+            <td class="col-md-4"><a href="/api/v1/artists">api/v1/artists</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">None</td>
-            <td class="col-md-2">Retrieve all artists details.</td>
+            <td class="col-md-4">Retrieve all artists details.</td>
+            <td class="col-md-1">Yes</td>
           </tr>
           <tr>
-            <td class="col-md-3"><a href="/api/v1/artists/555a4cb7e4b07b6ac504e6e5">api/v1/artists/artistId</a></td>
+            <td class="col-md-4"><a href="/api/v1/artists/555a4cb7e4b07b6ac504e6e5">api/v1/artists/:artistId</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, artistId</td>
-            <td class="col-md-2">Retrieve artist details for a specific artist.</td>
+            <td class="col-md-4">Retrieve artist details for a specific artist.</td>
+            <td class="col-md-1">Yes</td>
           </tr>
         </tbody>
       </table>
@@ -82,44 +91,51 @@
             <th>Method</th>
             <th>Parameters</th>
             <th>Description</th>
+            <th>Auth. required</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td class="col-md-3"><a href="/api/v1/events">/api/v1/events</a></td>
+            <td class="col-md-4"><a href="/api/v1/events">/api/v1/events</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">None</td>
-            <td class="col-md-2">Retrieve all events details</td>
+            <td class="col-md-4">Retrieve all events details</td>
+            <td class="col-md-1">Yes</td>
         </tr>
         <tr>
-            <td class="col-md-3"><a href="/api/v1/events/000005">/api/v1/events/eventId</a></td>
+            <td class="col-md-4"><a href="/api/v1/events/000005">/api/v1/events/:eventId</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, eventId</td>
-            <td class="col-md-2">Retrieve event details for a specific event</td>
+            <td class="col-md-4">Retrieve event details for a specific event</td>
+            <td class="col-md-1">Yes</td>
         </tr>
         <tr>
-            <td class="col-md-3"><a href="/api/v1/events/city/Amsterdam">/api/v1/events/city/cityId</a></td>
+            <td class="col-md-4"><a href="/api/v1/events/Amsterdam/city">/api/v1/events/:cityId/city</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, cityId</td>
-            <td class="col-md-2">Retrieve all events details for a specific city.</td>
+            <td class="col-md-4">Retrieve all events details for a specific city.</td>
+            <td class="col-md-1">Yes</td>
         </tr>
         <tr>
-            <td class="col-md-3"><a href="/api/v1/events/date/01-01-2015">/api/v1/events/date/eventDate</a></td>
+            <td class="col-md-4"><a href="/api/v1/events/01-01-2015/date">/api/v1/events/:eventDate/date</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, eventDate</td>
-            <td class="col-md-2">Retrieve event details for a specific event on a specific date</td>
+            <td class="col-md-4">Retrieve event details for a specific event on a specific date</td>
+            <td class="col-md-1">Yes</td>
         </tr>
         <tr>
-            <td class="col-md-3"><a href="/api/v1/events/genre/Alternative">/api/v1/events/genre/genreId</a></td>
+            <td class="col-md-4"><a href="/api/v1/events/Alternative/genre">/api/v1/events/:genreId/genre</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, genreId</td>
-            <td class="col-md-2">Retrieve events details based on a specific genre</td>
+            <td class="col-md-4">Retrieve events details based on a specific genre</td>
+            <td class="col-md-1">Yes</td>
         </tr>
         <tr>
-            <td class="col-md-3"><a href="/api/v1/events/artist/555a4cb7e4b07b6ac504e6e5">/api/v1/events/artist/artistId</a></td>
+            <td class="col-md-4"><a href="/api/v1/events/555a4cb7e4b07b6ac504e6e5/artist">/api/v1/events/:artistId/artistId</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, artistId</td>
-            <td class="col-md-2">Retrieve events details for a events where a specific artist is performing.</td>
+            <td class="col-md-4">Retrieve events details for a events where a specific artist is performing.</td>
+            <td class="col-md-1">Yes</td>
         </tr>
         </tbody>
       </table>
@@ -131,20 +147,23 @@
             <th>Method</th>
             <th>Parameters</th>
             <th>Description</th>
+            <th>Auth. required</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="col-md-3"><a href="/api/v1/genres">api/v1/genres</a></td>
+            <td class="col-md-4"><a href="/api/v1/genres">api/v1/genres</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">None</td>
-            <td class="col-md-2">Retrieve all genres details.</td>
+            <td class="col-md-4">Retrieve all genres details.</td>
+            <td class="col-md-1">Yes</td>
           </tr>
           <tr>
-            <td class="col-md-3"><a href="/api/v1/genres/Alternative">api/v1/genres/genreId</a></td>
+            <td class="col-md-4"><a href="/api/v1/genres/Alternative">api/v1/genres/:genreId</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, genreId</td>
-            <td class="col-md-2">Retrieve genre details for a specific genre.</td>
+            <td class="col-md-4">Retrieve genre details for a specific genre.</td>
+            <td class="col-md-1">Yes</td>
           </tr>
         </tbody>
       </table>
@@ -156,26 +175,30 @@
             <th>Method</th>
             <th>Parameters</th>
             <th>Description</th>
+            <th>Auth. required</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="col-md-3"><a href="/api/v1/tracks">api/v1/tracks</a></td>
+            <td class="col-md-4"><a href="/api/v1/tracks">api/v1/tracks</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">None</td>
-            <td class="col-md-2">Retrieve all tracks details.</td>
+            <td class="col-md-4">Retrieve all tracks details.</td>
+            <td class="col-md-1">Yes</td>
           </tr>
           <tr>
-            <td class="col-md-3"><a href="/api/v1/tracks/555a4c92e4b07b6ac504e6df">api/v1/tracks/trackId</a></td>
+            <td class="col-md-4"><a href="/api/v1/tracks/555a4c92e4b07b6ac504e6df">api/v1/tracks/:trackId</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, trackId</td>
-            <td class="col-md-2">Retrieve track details for a specific track.</td>
+            <td class="col-md-4">Retrieve track details for a specific track.</td>
+            <td class="col-md-1">Yes</td>
           </tr>
            <tr>
-            <td class="col-md-3"><a href="/api/v1/tracks/artist/555a4ca9e4b07b6ac504e6e1">api/v1/tracks/artist/artistId</a></td>
+            <td class="col-md-4"><a href="/api/v1/tracks/555a4ca9e4b07b6ac504e6e1/artist">api/v1/tracks/:artistId/artist</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, artistId</td>
-            <td class="col-md-2">Retrieve track details for a specific artist.</td>
+            <td class="col-md-4">Retrieve track details for a specific artist.</td>
+            <td class="col-md-1">Yes</td>
           </tr>
         </tbody>
       </table>
@@ -187,29 +210,44 @@
           <th>Method</th>
           <th>Parameters</th>
           <th>Description</th>
+          <th>Auth. required</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td class="col-md-3"><a href="/api/v1/videos">api/v1/videos</a></td>
+            <td class="col-md-4"><a href="/api/v1/videos">api/v1/videos</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">None</td>
-            <td class="col-md-2">Retrieve all videos details.</td>
+            <td class="col-md-4">Retrieve all videos details.</td>
+            <td class="col-md-1">Yes</td>
         </tr>
         <tr>
-            <td class="col-md-3"><a href="/api/v1/videos/55771289a65a04acd1b2ecca">api/v1/videos/videoId</a></td>
+            <td class="col-md-4"><a href="/api/v1/videos/55771289a65a04acd1b2ecca">api/v1/videos/:videoId</a></td>
             <td class="col-md-1">GET</td>
-            <td class="col-md-2">String, trackId</td>
-            <td class="col-md-2">Retrieve video details for a specific video.</td>
+            <td class="col-md-2">String, videoId</td>
+            <td class="col-md-4">Retrieve video details for a specific video.</td>
+            <td class="col-md-1">Yes</td>
         </tr>
         <tr>
-            <td class="col-md-3"><a href="/api/v1/videos/artist/555a4ca9e4b07b6ac504e6e1">api/v1/videos/artist/artistId</a></td>
+            <td class="col-md-4"><a href="/api/v1/videos/555a4ca9e4b07b6ac504e6e1/artist">api/v1/videos/:artistId/artist</a></td>
             <td class="col-md-1">GET</td>
             <td class="col-md-2">String, artistId</td>
-            <td class="col-md-2">Retrieve videos details for a specific artist.</td>
+            <td class="col-md-4">Retrieve videos details for a specific artist.</td>
+            <td class="col-md-1">Yes</td>
         </tr>
         </tbody>
       </table>
+    </div>
+    <div class="navbar navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <div class="footer-text text-center text-muted">
+                <div class="row">Flow API 2015</div>
+                <div class="row">
+                    <a href="/token-request" class="text-center text-muted">Request an API Token</a><span class="clearfix"></span>
+                </div>
+            </div>
+
+        </div>
     </div>
   </body>
 </html>
