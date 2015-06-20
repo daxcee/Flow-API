@@ -15,6 +15,8 @@ var requireDir = require('require-dir');
 var routes = requireDir('./routes',{camelcase: true});
 var config = require('config');
 var expressSession = require('express-session');
+var mongoose = require('mongoose');
+var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
 
 var app = express();
 require('heroku-self-ping')(config.get('app_url'));
@@ -30,12 +32,24 @@ passwordless.init(new MongoStore(config.get('db_uri')));
 
 passwordless.addDelivery(
     function(tokenToSend, uidToSend, recipient, callback) {
+
+        require('./models/token')();
+
+        var Token = conn.model('Token');
+
+        var d = new Date();
+        var newToken = new Token({value:tokenToSend, createdAt:d});
+
+        newToken.save();
+
+        var message = 'Hi,\n\nYour API KEY (expires in 60 minutes) is:\n\n' +  tokenToSend +
+            '\n\nUsage:\n\n' + 'To get all albums for example, your request on:\n' +
+            config.get('app_url') + '/api/v1/albums' + '\n\n' + 'will become:\n'  + config.get('app_url') + '/api/v1/albums?apikey=' + tokenToSend + '\n' +
+            'Full Endpoints overview:\n' + config.get('app_url') + '\n\nBest regards,\n---\nFlow API\n';
+
         // Send out token
         smtpServer.send({
-            text:
-            'Hi,\n\nYou can now access your account here: ' +
-            config.get('app_url') + '?token=' + tokenToSend + '&uid=' +
-            encodeURIComponent(uidToSend) + '\n\n\nBest regards,\n---\nFlow API',
+            text: message,
             from:    'Flow API ' + config.get('ms_user'),
             to:      recipient,
             subject: 'Flow API Token'

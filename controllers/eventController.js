@@ -1,5 +1,6 @@
 require('../models/event')();
 require('../models/artist')();
+require('../models/token')();
 
 var mongoose = require('mongoose');
 var config = require('config');
@@ -11,106 +12,184 @@ var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 
 //Album and Artist models are scoped to above specific connection object
 var Event = conn.model('Event');
 var Artist = conn.model('Artist');
+var Token = conn.model('Token');
 
 module.exports = {
     getAllEvents: function (req, res) {
-        Event.find({}, function (err, result) {
-            res.setHeader("Content-Type", "application/json");
-
+        var apikey = req.param('apikey');
+        Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                console.log(err);
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
-                return;
-            }
-            if (result.length) {
-                res.statusCode = 200;
-                res.end(pretty.print(result));
+                return;            }
+            if (token) {
+                Event.find({}, function (err, result) {
+                    res.setHeader("Content-Type", "application/json");
+
+                    if (err) {
+                        console.log(err);
+                        res.statusCode = 500;
+                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                        return;
+                    }
+                    if (result.length) {
+                        res.statusCode = 200;
+                        res.end(pretty.print(result));
+                    }
+                });
+            } else {
+                res.statusCode = 401;
+                res.send('401 Unauthorized');
             }
         });
     },
 
     getEventById: function (req, res) {
-        Event.find({'pid': req.params.id}, function (err, result) {
-            res.setHeader("Content-Type", "application/json");
-
+        var apikey = req.param('apikey');
+        Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                console.log(err);
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
                 return;
             }
-            if (result.length) {
-                res.statusCode = 200;
-                res.end(pretty.print(result));
+            if (token) {
+                Event.find({'pid': req.params.id}, function (err, result) {
+                    res.setHeader("Content-Type", "application/json");
+
+                    if (err) {
+                        console.log(err);
+                        res.statusCode = 500;
+                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                        return;
+                    }
+                    if (result.length) {
+                        res.statusCode = 200;
+                        res.end(pretty.print(result));
+                    }
+                });
+            } else {
+                res.statusCode = 401;
+                res.send('401 Unauthorized');
             }
         });
     },
 
     getEventByDate: function (req, res) {
-        Event.find({'date': req.params.id}, function (err, result) {
-            res.setHeader("Content-Type", "application/json");
-
+        var apikey = req.param('apikey');
+        Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                console.log(err);
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
                 return;
             }
-            if (result.length) {
-                res.statusCode = 200;
-                res.end(pretty.print(result));
+            if (token) {
+                Event.find({'date': req.params.id}, function (err, result) {
+                    res.setHeader("Content-Type", "application/json");
+
+                    if (err) {
+                        console.log(err);
+                        res.statusCode = 500;
+                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                        return;
+                    }
+                    if (result.length) {
+                        res.statusCode = 200;
+                        res.end(pretty.print(result));
+                    }
+                });
+            } else {
+                res.statusCode = 401;
+                res.send('401 Unauthorized');
             }
         });
     },
 
     getEventByCity: function (req, res) {
-        Event.find({'city': req.params.id}, function (err, result) {
-            res.setHeader("Content-Type", "application/json");
-
+        var apikey = req.param('apikey');
+        Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                console.log(err);
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
                 return;
             }
-            if (result.length) {
-                res.statusCode = 200;
-                res.end(pretty.print(result));
+            if (token) {
+                Event.find({'city': req.params.id}, function (err, result) {
+                    res.setHeader("Content-Type", "application/json");
+
+                    if (err) {
+                        console.log(err);
+                        res.statusCode = 500;
+                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                        return;
+                    }
+                    if (result.length) {
+                        res.statusCode = 200;
+                        res.end(pretty.print(result));
+                    }
+                });
+            } else {
+                res.statusCode = 401;
+                res.send('401 Unauthorized');
             }
         });
     },
 
     getEventByArtist: function (req, res) {
-        Event.find({}, function (err, result) {
-            res.setHeader("Content-Type", "application/json");
-
+        var apikey = req.param('apikey');
+        Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                console.log(err);
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
                 return;
             }
-            if (result.length) {
-                res.statusCode = 200;
-                res.end(pretty.print(result));
+            if (token) {
+                Event.find({}, function (err, result) {
+                    res.setHeader("Content-Type", "application/json");
+
+                    if (err) {
+                        console.log(err);
+                        res.statusCode = 500;
+                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                        return;
+                    }
+                    if (result.length) {
+                        res.statusCode = 200;
+                        res.end(pretty.print(result));
+                    }
+                });
+            } else {
+                res.statusCode = 401;
+                res.send('401 Unauthorized');
             }
         });
     },
 
     getEventByGenre: function (req, res) {
-        Event.find({}, function (err, result) {
-            res.setHeader("Content-Type", "application/json");
-
+        var apikey = req.param('apikey');
+        Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                console.log(err);
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
                 return;
             }
-            if (result.length) {
-                res.statusCode = 200;
-                res.end(pretty.print(result));
+            if (token) {
+                Event.find({}, function (err, result) {
+                    res.setHeader("Content-Type", "application/json");
+
+                    if (err) {
+                        console.log(err);
+                        res.statusCode = 500;
+                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                        return;
+                    }
+                    if (result.length) {
+                        res.statusCode = 200;
+                        res.end(pretty.print(result));
+                    }
+                });
+            } else {
+                res.statusCode = 401;
+                res.send('401 Unauthorized');
             }
         });
     }

@@ -2,6 +2,8 @@ var assert = require("assert");
 var server = require('../bin/www');
 var request = require('request');
 var basePath = 'http://localhost';
+var config = require('config');
+
 var port = 3000;
 var baseURL = basePath + ':' + port;
 
@@ -27,7 +29,7 @@ describe('/', function () {
 
     //Test retrieve tracks of a specific artist
     it('GET /api/v1/tracks/', function(done){
-        request(baseURL + '/api/v1/tracks/', function (err,resp) {
+        request(baseURL + '/api/v1/tracks?apikey=' + config.get('apikey'), function (err,resp) {
             assert(!err);
             assert.equal(200, resp.statusCode);
             done();
