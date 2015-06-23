@@ -1,9 +1,10 @@
 var pretty = require('./pretty');
+var excep = require('../utils/exception');
 
 
 module.exports = {
 
-    error:function serverError(err) {
+    error:function serverError(res, err) {
         res.statusCode = 500;
         res.end(pretty.print(excep.msg(500, 'Server Error', err)));
     },

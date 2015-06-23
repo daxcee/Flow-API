@@ -14,7 +14,7 @@ module.exports = {
     getAllEvents: function (req, res) {
         Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
-                serverResponse.error(res);
+                serverResponse.error(res, err);
                 return;
             }
             if (token) {
@@ -33,7 +33,7 @@ module.exports = {
     getEventById: function (req, res) {
         Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
-                serverResponse.error(res);
+                serverResponse.error(res, err);
                 return;
             }
             if (token) {
@@ -56,7 +56,7 @@ module.exports = {
     getEventByDate: function (req, res) {
         Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
-                serverResponse.error(res);
+                serverResponse.error(res, err);
                 return;
             }
             if (token) {
@@ -79,7 +79,7 @@ module.exports = {
     getEventByCity: function (req, res) {
         Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
-                serverResponse.error(res);
+                serverResponse.error(res, err);
                 return;
             }
             if (token) {
@@ -103,7 +103,7 @@ module.exports = {
         var apikey = req.param('apikey');
         Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                serverResponse.error(res);
+                serverResponse.error(res, err);
                 return;
             }
             if (token) {
@@ -126,7 +126,7 @@ module.exports = {
     getEventByGenre: function (req, res) {
         Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
-                serverResponse.error(res);
+                serverResponse.error(res, err);
                 return;
             }
             if (token) {
