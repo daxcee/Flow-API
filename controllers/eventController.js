@@ -1,26 +1,20 @@
-require('../models/event')();
-require('../models/artist')();
-require('../models/token')();
 require ('mongoose-pagination');
 
 var mongoose = require('mongoose');
 var config = require('config');
-var excep = require('../utils/exception');
-var pretty = require('../utils/pretty');
+var serverResponse = require('../utils/serverResponse.js');
+var query = require('../queriers/eventsQuerier.js');
 
 //max 4 connections in pool
 var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
 //Album and Artist models are scoped to above specific connection object
-var Event = conn.model('Event');
-var Artist = conn.model('Artist');
 var Token = conn.model('Token');
 
 module.exports = {
     getAllEvents: function (req, res) {
         Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
-                res.statusCode = 500;
-                res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                serverResponse.error(res);
                 return;
             }
             if (token) {
@@ -29,10 +23,9 @@ module.exports = {
                     offset:req.param('offset')
                 };
 
-                queryEvents(res, params);
+                query.events(res, params);
             } else {
-                res.statusCode = 401;
-                res.send('401 Unauthorized');
+                serverResponse.unauthorized(res);
             }
         });
     },
@@ -40,8 +33,7 @@ module.exports = {
     getEventById: function (req, res) {
         Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
-                res.statusCode = 500;
-                res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                serverResponse.error(res);
                 return;
             }
             if (token) {
@@ -56,8 +48,7 @@ module.exports = {
 
                 queryEvents(res, params);
             } else {
-                res.statusCode = 401;
-                res.send('401 Unauthorized');
+                serverResponse.unauthorized(res);
             }
         });
     },
@@ -65,8 +56,7 @@ module.exports = {
     getEventByDate: function (req, res) {
         Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
-                res.statusCode = 500;
-                res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                serverResponse.error(res);
                 return;
             }
             if (token) {
@@ -81,8 +71,7 @@ module.exports = {
 
                 queryEvents(res, params);
             } else {
-                res.statusCode = 401;
-                res.send('401 Unauthorized');
+                serverResponse.unauthorized(res);
             }
         });
     },
@@ -90,8 +79,7 @@ module.exports = {
     getEventByCity: function (req, res) {
         Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
-                res.statusCode = 500;
-                res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                serverResponse.error(res);
                 return;
             }
             if (token) {
@@ -106,8 +94,7 @@ module.exports = {
 
                 queryEvents(res, params);
             } else {
-                res.statusCode = 401;
-                res.send('401 Unauthorized');
+                serverResponse.unauthorized(res);
             }
         });
     },
@@ -116,8 +103,7 @@ module.exports = {
         var apikey = req.param('apikey');
         Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                res.statusCode = 500;
-                res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                serverResponse.error(res);
                 return;
             }
             if (token) {
@@ -132,8 +118,7 @@ module.exports = {
 
                 queryEvents(res, params);
             } else {
-                res.statusCode = 401;
-                res.send('401 Unauthorized');
+                serverResponse.unauthorized(res);
             }
         });
     },
@@ -141,8 +126,7 @@ module.exports = {
     getEventByGenre: function (req, res) {
         Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
-                res.statusCode = 500;
-                res.end(pretty.print(excep.msg(500, 'Server Error', err)));
+                serverResponse.error(res);
                 return;
             }
             if (token) {
@@ -157,72 +141,8 @@ module.exports = {
 
                 queryEvents(res, params);
             } else {
-                res.statusCode = 401;
-                res.send('401 Unauthorized');
+                serverResponse.unauthorized(res);
             }
         });
     }
 };
-
-function queryEvents(res, params) {
-
-    var limit = 100;                    //default
-    var offset = 1;                     //default
-    var searchTerm = params.searchTerm;
-
-    if(params.offset != null) {
-        offset = params.offset;         //override default
-    }
-
-    if(params.limit != null) {
-        limit = params.limit;           //override default
-    }
-
-    if(searchTerm) {
-        console.log("searchQuery: %s", pretty.print(searchTerm));
-    }
-
-    Event.find(searchTerm).paginate(offset, limit, function(err, docs, total) {
-        var first, last, prev, next,result;
-        var pageCount = parseInt(limit);
-        var totalPages = Math.ceil(parseInt(total / pageCount));
-
-        if(offset < 1 ) {
-            result = {
-                error: "offset of " + offset + " is out of range, must start with 1"
-            };
-
-            res.statusCode = 200;
-            res.end(pretty.print(result));
-
-            return;
-        }
-
-        if(pageCount > 1){
-            if(offset > 1) {
-                var prevPageIndex = parseInt(offset) - 1;
-                prev = config.get("app_url") + "/api/v1/events?offset=" + prevPageIndex + "&limit=" + limit;
-            }
-
-            if(offset < totalPages) {
-                var nextPageIndex = parseInt(offset) + 1;
-                next =  config.get("app_url") + "/api/v1/events?offset=" + nextPageIndex + "&limit=" + limit;
-            }
-
-            result = {
-                totalEvents: total,
-                totalPages: totalPages,
-                currentPage: offset,
-                pagination: {
-                    first: first,
-                    last: last,
-                    prev: prev,
-                    next: next
-                },
-                result:docs
-            };
-            res.statusCode = 200;
-            res.end(pretty.print(result));
-        }
-    });
-}
