@@ -1,6 +1,7 @@
 require('../models/event')();
 require('../models/artist')();
 require('../models/token')();
+require ('mongoose-pagination');
 
 var mongoose = require('mongoose');
 var config = require('config');
@@ -16,27 +17,19 @@ var Token = conn.model('Token');
 
 module.exports = {
     getAllEvents: function (req, res) {
-        var apikey = req.param('apikey');
-        Token.findOne({'value': apikey}, function (err, token) {
+        Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
-                return;            }
+                return;
+            }
             if (token) {
-                Event.find({}, function (err, result) {
-                    res.setHeader("Content-Type", "application/json");
+                var params = {
+                    limit:req.param('limit'),
+                    offset:req.param('offset')
+                };
 
-                    if (err) {
-                        console.log(err);
-                        res.statusCode = 500;
-                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
-                        return;
-                    }
-                    if (result.length) {
-                        res.statusCode = 200;
-                        res.end(pretty.print(result));
-                    }
-                });
+                queryEvents(res, params);
             } else {
                 res.statusCode = 401;
                 res.send('401 Unauthorized');
@@ -45,28 +38,23 @@ module.exports = {
     },
 
     getEventById: function (req, res) {
-        var apikey = req.param('apikey');
-        Token.findOne({'value': apikey}, function (err, token) {
+        Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
                 return;
             }
             if (token) {
-                Event.find({'pid': req.params.id}, function (err, result) {
-                    res.setHeader("Content-Type", "application/json");
+                var searchObject = {};
+                searchObject.pid = req.params.id;
 
-                    if (err) {
-                        console.log(err);
-                        res.statusCode = 500;
-                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
-                        return;
-                    }
-                    if (result.length) {
-                        res.statusCode = 200;
-                        res.end(pretty.print(result));
-                    }
-                });
+                var params = {
+                    limit:req.param('limit'),
+                    offset:req.param('offset'),
+                    searchTerm:searchObject
+                };
+
+                queryEvents(res, params);
             } else {
                 res.statusCode = 401;
                 res.send('401 Unauthorized');
@@ -75,28 +63,23 @@ module.exports = {
     },
 
     getEventByDate: function (req, res) {
-        var apikey = req.param('apikey');
-        Token.findOne({'value': apikey}, function (err, token) {
+        Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
                 return;
             }
             if (token) {
-                Event.find({'date': req.params.id}, function (err, result) {
-                    res.setHeader("Content-Type", "application/json");
+                var searchObject = {};
+                searchObject.date = req.params.id;
 
-                    if (err) {
-                        console.log(err);
-                        res.statusCode = 500;
-                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
-                        return;
-                    }
-                    if (result.length) {
-                        res.statusCode = 200;
-                        res.end(pretty.print(result));
-                    }
-                });
+                var params = {
+                    limit:req.param('limit'),
+                    offset:req.param('offset'),
+                    searchTerm:searchObject
+                };
+
+                queryEvents(res, params);
             } else {
                 res.statusCode = 401;
                 res.send('401 Unauthorized');
@@ -105,28 +88,23 @@ module.exports = {
     },
 
     getEventByCity: function (req, res) {
-        var apikey = req.param('apikey');
-        Token.findOne({'value': apikey}, function (err, token) {
+        Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
                 return;
             }
             if (token) {
-                Event.find({'city': req.params.id}, function (err, result) {
-                    res.setHeader("Content-Type", "application/json");
+                var searchObject = {};
+                searchObject.city = req.params.id;
 
-                    if (err) {
-                        console.log(err);
-                        res.statusCode = 500;
-                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
-                        return;
-                    }
-                    if (result.length) {
-                        res.statusCode = 200;
-                        res.end(pretty.print(result));
-                    }
-                });
+                var params = {
+                    limit:req.param('limit'),
+                    offset:req.param('offset'),
+                    searchTerm:searchObject
+                };
+
+                queryEvents(res, params);
             } else {
                 res.statusCode = 401;
                 res.send('401 Unauthorized');
@@ -143,20 +121,16 @@ module.exports = {
                 return;
             }
             if (token) {
-                Event.find({}, function (err, result) {
-                    res.setHeader("Content-Type", "application/json");
+                var searchObject = {};
+                searchObject.artist = req.params.id;
 
-                    if (err) {
-                        console.log(err);
-                        res.statusCode = 500;
-                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
-                        return;
-                    }
-                    if (result.length) {
-                        res.statusCode = 200;
-                        res.end(pretty.print(result));
-                    }
-                });
+                var params = {
+                    limit:req.param('limit'),
+                    offset:req.param('offset'),
+                    searchTerm:searchObject
+                };
+
+                queryEvents(res, params);
             } else {
                 res.statusCode = 401;
                 res.send('401 Unauthorized');
@@ -165,28 +139,23 @@ module.exports = {
     },
 
     getEventByGenre: function (req, res) {
-        var apikey = req.param('apikey');
-        Token.findOne({'value': apikey}, function (err, token) {
+        Token.findOne({'value': req.param('apikey')}, function (err, token) {
             if (err) {
                 res.statusCode = 500;
                 res.end(pretty.print(excep.msg(500, 'Server Error', err)));
                 return;
             }
             if (token) {
-                Event.find({}, function (err, result) {
-                    res.setHeader("Content-Type", "application/json");
+                var searchObject = {};
+                searchObject.genre = req.params.id;
 
-                    if (err) {
-                        console.log(err);
-                        res.statusCode = 500;
-                        res.end(pretty.print(excep.msg(500, 'Server Error', err)));
-                        return;
-                    }
-                    if (result.length) {
-                        res.statusCode = 200;
-                        res.end(pretty.print(result));
-                    }
-                });
+                var params = {
+                    limit:req.param('limit'),
+                    offset:req.param('offset'),
+                    searchTerm:searchObject
+                };
+
+                queryEvents(res, params);
             } else {
                 res.statusCode = 401;
                 res.send('401 Unauthorized');
@@ -194,3 +163,57 @@ module.exports = {
         });
     }
 };
+
+function queryEvents(res, params) {
+
+    var limit = params.limit;
+    var offset = params.offset;
+    var searchTerm = params.searchTerm;
+
+    if(searchTerm) {
+        console.log("searchQuery: %s", pretty.print(searchTerm));
+    }
+
+    Event.find(searchTerm).paginate(offset, limit, function(err, docs, total) {
+        var first, last, prev, next,result;
+        var pageCount = parseInt(limit);
+        var totalPages = Math.ceil(parseInt(total / pageCount));
+
+        if(offset < 1 ) {
+            result = {
+                error: "offset of " + offset + " is out of range, must start with 1"
+            };
+
+            res.statusCode = 200;
+            res.end(pretty.print(result));
+
+            return;
+        }
+
+        if(pageCount > 1){
+            if(offset > 1) {
+                var prevPageIndex = parseInt(offset) - 1;
+                prev = config.get("app_url") + "/api/v1/events?offset=" + prevPageIndex + "&limit=" + limit;
+            }
+
+            if(offset < totalPages) {
+                var nextPageIndex = parseInt(offset) + 1;
+                next =  config.get("app_url") + "/api/v1/events?offset=" + nextPageIndex + "&limit=" + limit;
+            }
+
+            result = {
+                totalEvents: total,
+                currentPage: offset,
+                pagination: {
+                    first: first,
+                    last: last,
+                    prev: prev,
+                    next: next
+                },
+                events:docs
+            };
+            res.statusCode = 200;
+            res.end(pretty.print(result));
+        }
+    });
+}
