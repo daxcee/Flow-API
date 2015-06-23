@@ -3,7 +3,7 @@ var pretty = require('./pretty');
 
 module.exports = {
 
-    error:function serverError(res) {
+    error:function serverError(err) {
         res.statusCode = 500;
         res.end(pretty.print(excep.msg(500, 'Server Error', err)));
     },
