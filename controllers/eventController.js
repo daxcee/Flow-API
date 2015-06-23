@@ -166,9 +166,17 @@ module.exports = {
 
 function queryEvents(res, params) {
 
-    var limit = params.limit;
-    var offset = params.offset;
+    var limit = 100;                    //default
+    var offset = 1;                     //default
     var searchTerm = params.searchTerm;
+
+    if(params.offset != null) {
+        offset = params.offset;         //override default
+    }
+
+    if(params.limit != null) {
+        limit = params.limit;           //override default
+    }
 
     if(searchTerm) {
         console.log("searchQuery: %s", pretty.print(searchTerm));
@@ -203,6 +211,7 @@ function queryEvents(res, params) {
 
             result = {
                 totalEvents: total,
+                totalPages: totalPages,
                 currentPage: offset,
                 pagination: {
                     first: first,
@@ -210,7 +219,7 @@ function queryEvents(res, params) {
                     prev: prev,
                     next: next
                 },
-                events:docs
+                result:docs
             };
             res.statusCode = 200;
             res.end(pretty.print(result));
