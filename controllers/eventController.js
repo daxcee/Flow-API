@@ -2,7 +2,7 @@ require ('mongoose-pagination');
 
 var mongoose = require('mongoose');
 var config = require('config');
-var serverResponse = require('../utils/serverResponse.js');
+var serverResponse = require('../utils/resultResponse.js');
 var query = require('../queriers/eventsQuerier.js');
 
 //max 4 connections in pool

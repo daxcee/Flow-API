@@ -12,7 +12,7 @@ var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 
 var Video = conn.model('Video');
 var Artist = conn.model('Artist');
 var Token = conn.model('Token');
-var serverResponse = require('../utils/serverResponse.js');
+var resultResponse = require('../utils/resultResponse.js');
 var query = require('../queriers/videosQuerier.js');
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
         var apikey = req.param('apikey');
         Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                serverResponse.error(res,err);
+                resultResponse.error(res,err);
                 return;
             }
             if (token) {
@@ -31,7 +31,7 @@ module.exports = {
 
                 query.videos(res, params);
             } else {
-                serverResponse.unauthorized(res);
+                resultResponse.unauthorized(res);
             }
         });
     },
@@ -40,7 +40,7 @@ module.exports = {
         var apikey = req.param('apikey');
         Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                serverResponse.error(res,err);
+                resultResponse.error(res,err);
                 return;
             }
             if (token) {
@@ -54,7 +54,7 @@ module.exports = {
                 };
                 query.videos(res, params);
             } else {
-                serverResponse.unauthorized(res);
+                resultResponse.unauthorized(res);
             }
         });
     },
@@ -63,7 +63,7 @@ module.exports = {
         var apikey = req.param('apikey');
         Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                serverResponse.error(res,err);
+                resultResponse.error(res,err);
                 return;
             }
             if (token) {
@@ -78,7 +78,7 @@ module.exports = {
 
                 query.videosOfArtists(res, params);
             } else {
-                serverResponse.unauthorized(res);
+                resultResponse.unauthorized(res);
             }
         });
     }

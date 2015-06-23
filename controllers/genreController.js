@@ -3,9 +3,8 @@ require('../models/token')();
 
 var mongoose = require('mongoose');
 var config = require('config');
-var excep = require('../utils/exception');
 var pretty = require('../utils/pretty');
-var serverResponse = require('../utils/serverResponse.js');
+var resultResponse = require('../utils/resultResponse.js');
 var query = require('../queriers/genresQuerier.js');
 
 //max 4 connections in pool
@@ -19,7 +18,7 @@ module.exports = {
         var apikey = req.param('apikey');
         Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-                serverResponse.error(err);
+                resultResponse.error(err);
                 return;
             }
             if (token) {
@@ -30,7 +29,7 @@ module.exports = {
 
                 query.genres(res, params);
             } else {
-                serverResponse.unauthorized(res);
+                resultResponse.unauthorized(res);
             }
         });
     },
@@ -39,7 +38,7 @@ module.exports = {
         var apikey = req.param('apikey');
         Token.findOne({'value': apikey}, function (err, token) {
             if (err) {
-               serverResponse.error(err);
+               resultResponse.error(err);
                 return;
             }
             if (token) {
@@ -54,7 +53,7 @@ module.exports = {
                 query.genres(res, params);
 
             } else {
-                serverResponse.unauthorized(res);
+                resultResponse.unauthorized(res);
             }
         });
     }

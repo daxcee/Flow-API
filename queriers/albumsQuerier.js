@@ -4,7 +4,7 @@ require('../models/artist')();
 var mongoose = require('mongoose');
 var pretty = require('../utils/pretty');
 var config = require('config');
-var serverResponse = require('../utils/serverResponse.js');
+var serverResponse = require('../utils/resultResponse.js');
 var pagination = require('../utils/pagination.js');
 
 //max 4 connections in pool
