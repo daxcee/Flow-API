@@ -46,7 +46,7 @@ module.exports = {
                     searchTerm:searchObject
                 };
 
-                queryEvents(res, params);
+                query.events(res, params);
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -69,7 +69,7 @@ module.exports = {
                     searchTerm:searchObject
                 };
 
-                queryEvents(res, params);
+                query.events(res, params);
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -92,7 +92,7 @@ module.exports = {
                     searchTerm:searchObject
                 };
 
-                queryEvents(res, params);
+                query.events(res, params);
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -116,7 +116,7 @@ module.exports = {
                     searchTerm:searchObject
                 };
 
-                queryEvents(res, params);
+                query.events(res, params);
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -139,7 +139,7 @@ module.exports = {
                     searchTerm:searchObject
                 };
 
-                queryEvents(res, params);
+                query.events(res, params);
             } else {
                 serverResponse.unauthorized(res);
             }
