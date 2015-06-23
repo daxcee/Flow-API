@@ -17,8 +17,8 @@
   <body>
     <div class="container">
       <div class="text-center"><h2>Flow API - Endpoints</h2></div>
-        <div class="row">
-            <a href="/token-request" class="text-center" >Request an API Token</a><span class="clearfix"></span>
+        <div class="text-center">
+            <a href="/token-request" class="text-center" >Request an API Token</a>
         </div>
         <h3>Album</h3>
       <table class="table">
@@ -238,6 +238,21 @@
         </tbody>
       </table>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>General info</h3>
+                <h4> API Access</h4>
+                In order to use this API, a valid access token is needed, request one <a href="/token-request" class="text-center" ><b>here</b></a>,
+                <br>it will be send to your mail within a few minutes.<br>
+                <h4>Pagination</h4>
+                The API returns paginated results, with a default limit set to 100 results. To be able to paginate to next or previous
+                pages, use the previous and next links provided in the JSON Response. Below is an example JSON response, containing pagination details.
+                <img class="hidden-xs pagination-img img-responsive" src="images/pagination_sample.png"
+                     alt="pagination-sample">
+            </div>
+        </div>
+    </div>
     <div class="navbar navbar-fixed-bottom" role="navigation">
         <div class="container">
             <div class="footer-text text-center text-muted">
@@ -246,7 +261,6 @@
                     <a href="/token-request" class="text-center text-muted">Request an API Token</a><span class="clearfix"></span>
                 </div>
             </div>
-
         </div>
     </div>
   </body>
