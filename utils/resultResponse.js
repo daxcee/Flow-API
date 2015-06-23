@@ -18,7 +18,7 @@ module.exports = {
         var result =  {
             errorCode: 401,
             error: "Unauthorized, need to provide a valid access token. To get a token, follow requestTokenURL",
-            requestTokenURL:config.get("app_url")
+            requestTokenURL:config.get("app_url") + "/token-request"
         };
         res.end(pretty.print(result));
     },
