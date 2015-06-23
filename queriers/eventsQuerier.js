@@ -21,7 +21,10 @@ module.exports = {
         Event.find(searchTerm).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
-
+            if (err) {
+                serverResponse.error(res,err);
+                return;
+            }
             var result = {
                 totalEvents: total,
                 totalPages: paging.totalPages,

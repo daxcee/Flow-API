@@ -20,7 +20,10 @@ module.exports = {
         Video.find(searchTerm).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
-
+            if (err) {
+                serverResponse.error(res,err);
+                return;
+            }
             if(paging.offset < 1 ) {
                 serverResponse.invalid_range(res);
                 return;
@@ -58,7 +61,10 @@ module.exports = {
                 Video.find({'artists.artistName':  artist.artistName}).paginate(range.offset, range.limit, function(err, docs, total) {
                     params.total = total;
                     var paging = pagination.paging(res,params);
-
+                    if (err) {
+                        serverResponse.error(res,err);
+                        return;
+                    }
                     if(paging.offset < 1 ) {
                         serverResponse.invalid_range(res);
                         return;
