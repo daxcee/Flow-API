@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var config = require('config');
 var serverResponse = require('../utils/resultResponse.js');
 var query = require('../queriers/eventsQuerier.js');
+var paramCollector = require('../utils/paramHarvester.js');
 
 //max 4 connections in pool
 var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
@@ -20,10 +21,13 @@ module.exports = {
             if (token) {
                 var params = {
                     limit:req.param('limit'),
-                    offset:req.param('offset')
+                    offset:req.param('offset'),
+                    sortKey:req.param('sort'),
+                    sortOrder:req.param('order'),
+                    searchTerm:req.param('id')
                 };
 
-                query.events(res, params);
+                query.events(res, paramCollector.process(params));
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -37,16 +41,16 @@ module.exports = {
                 return;
             }
             if (token) {
-                var searchObject = {};
-                searchObject.pid = req.params.id;
-
                 var params = {
                     limit:req.param('limit'),
                     offset:req.param('offset'),
-                    searchTerm:searchObject
+                    sortKey:req.param('sort'),
+                    sortOrder:req.param('order'),
+                    searchKey:"_id",
+                    searchTerm:req.param('id')
                 };
 
-                query.events(res, params);
+                query.events(res, paramCollector.process(params));
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -60,16 +64,16 @@ module.exports = {
                 return;
             }
             if (token) {
-                var searchObject = {};
-                searchObject.date = req.params.id;
-
                 var params = {
                     limit:req.param('limit'),
                     offset:req.param('offset'),
-                    searchTerm:searchObject
+                    sortKey:req.param('sort'),
+                    sortOrder:req.param('order'),
+                    searchKey:"date",
+                    searchTerm:req.param('id')
                 };
 
-                query.events(res, params);
+                query.events(res, paramCollector.process(params));
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -83,16 +87,17 @@ module.exports = {
                 return;
             }
             if (token) {
-                var searchObject = {};
-                searchObject.city = req.params.id;
-
                 var params = {
                     limit:req.param('limit'),
                     offset:req.param('offset'),
-                    searchTerm:searchObject
+                    sortKey:req.param('sort'),
+                    sortOrder:req.param('order'),
+                    searchKey:"city",
+                    searchTerm:req.param('id')
                 };
+                console.log("pre: %s", JSON.stringify(params));
 
-                query.events(res, params);
+                query.events(res, paramCollector.process(params));
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -107,16 +112,16 @@ module.exports = {
                 return;
             }
             if (token) {
-                var searchObject = {};
-                searchObject.artist = req.params.id;
-
                 var params = {
                     limit:req.param('limit'),
                     offset:req.param('offset'),
-                    searchTerm:searchObject
+                    sortKey:req.param('sort'),
+                    sortOrder:req.param('order'),
+                    searchKey:"artist",
+                    searchTerm:req.param('id')
                 };
 
-                query.events(res, params);
+                query.events(res, paramCollector.process(params));
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -130,16 +135,16 @@ module.exports = {
                 return;
             }
             if (token) {
-                var searchObject = {};
-                searchObject.genre = req.params.id;
-
                 var params = {
                     limit:req.param('limit'),
                     offset:req.param('offset'),
-                    searchTerm:searchObject
+                    sortKey:req.param('sort'),
+                    sortOrder:req.param('order'),
+                    searchKey:"genre",
+                    searchTerm:req.param('id')
                 };
 
-                query.events(res, params);
+                query.events(res, paramCollector.process(params));
             } else {
                 serverResponse.unauthorized(res);
             }

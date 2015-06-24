@@ -15,10 +15,10 @@ module.exports = {
 
     events:function queryEvents(res, params) {
         var range = pagination.range(params);
-        var searchTerm = params.searchTerm;
-        console.log("searchQuery: %s", pretty.print(searchTerm));
+        var searchRule = params.searchRule;
+        var sortRule = params.sortRule;
 
-        Event.find(searchTerm).paginate(range.offset, range.limit, function(err, docs, total) {
+        Event.find(searchRule).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
             if (err) {
@@ -38,5 +38,6 @@ module.exports = {
 
             serverResponse.result(res,result)
         });
+
     }
 };
