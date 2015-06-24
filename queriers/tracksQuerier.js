@@ -16,10 +16,11 @@ module.exports = {
 
     tracks: function queryTracks(res,params){
         var range = pagination.range(params);
-        var searchTerm = params.searchTerm;
-        console.log("searchQuery: %s", pretty.print(searchTerm));
+        var sortRule = params.sortRule;
+        var searchRule = params.searchRule;
+        console.log("searchQuery: %s", pretty.print(searchRule));
 
-        Track.find(searchTerm).paginate(range.offset, range.limit, function(err, docs, total) {
+        Track.find(searchRule).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
             if (err) {
@@ -49,18 +50,19 @@ module.exports = {
 
     tracksByArtist:function(res,params){
         var range = pagination.range(params);
-        var searchTerm = params.searchTerm;
+        var sortRule = params.sortRule;
+        var searchRule = params.searchRule;
         var result = {};
 
-        console.log("searchQuery: %s", pretty.print(searchTerm));
+        console.log("searchQuery: %s", pretty.print(searchRule));
 
-        Artist.findOne(searchTerm, function (err, artist) {
+        Artist.findOne(searchRule, function (err, artist) {
             if (err) {
                 serverResponse.error(res, err);
                 return
             }
             if (artist) {
-                Track.find({'artists.artistName':  artist.artistName}).paginate(range.offset, range.limit, function(err, docs, total) {
+                Track.find({'artists.artistName':  artist.artistName}).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
                     params.total = total;
                     var paging = pagination.paging(res,params);
                     if (err) {
