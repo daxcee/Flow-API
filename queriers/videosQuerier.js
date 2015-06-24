@@ -14,10 +14,11 @@ module.exports = {
 
     videos: function queryVideos(res,params){
         var range = pagination.range(params);
-        var searchTerm = params.searchTerm;
-        console.log("searchQuery: %s", pretty.print(searchTerm));
+        var sortRule = params.sortRule;
+        var searchRule = params.searchRule;
+        console.log("searchQuery: %s", pretty.print(searchRule));
 
-        Video.find(searchTerm).paginate(range.offset, range.limit, function(err, docs, total) {
+        Video.find(searchRule).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
             if (err) {
@@ -47,18 +48,19 @@ module.exports = {
 
     videosOfArtists:function(res,params){
         var range = pagination.range(params);
-        var searchTerm = params.searchTerm;
+        var sortRule = params.sortRule;
+        var searchRule = params.searchRule;
         var result = {};
 
-        console.log("searchQuery: %s", pretty.print(searchTerm));
+        console.log("searchQuery: %s", pretty.print(searchRule));
 
-        Artist.findOne(searchTerm, function (err, artist) {
+        Artist.findOne(searchRule, function (err, artist) {
             if (err) {
                 serverResponse.error(res, err);
                 return
             }
             if (artist) {
-                Video.find({'artists.artistName':  artist.artistName}).paginate(range.offset, range.limit, function(err, docs, total) {
+                Video.find({'artists.artistName':  artist.artistName}).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
                     params.total = total;
                     var paging = pagination.paging(res,params);
                     if (err) {
