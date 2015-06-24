@@ -15,10 +15,11 @@ module.exports = {
 
     genres:function queryGenres(res, params) {
         var range = pagination.range(params);
-        var searchTerm = params.searchTerm;
-        console.log("searchQuery: %s", pretty.print(searchTerm));
+        var sortRule = params.sortRule;
+        var searchRule = params.searchRule;
+        console.log("searchQuery: %s", pretty.print(searchRule));
 
-        Genre.find(searchTerm).paginate(range.offset, range.limit, function(err, docs, total) {
+        Genre.find(searchRule).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
             if (err) {
