@@ -17,10 +17,11 @@ module.exports = {
 
     albums:function queryAlbums(res, params) {
         var range = pagination.range(params);
-        var searchTerm = params.searchTerm;
-        console.log("searchQuery: %s", pretty.print(searchTerm));
+        var sortRule = params.sortRule;
+        var searchRule = params.searchRule;
+        console.log("searchQuery: %s", pretty.print(searchRule));
 
-        Album.find(searchTerm).paginate(range.offset, range.limit, function(err, docs, total) {
+        Album.find(searchRule).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
             if(err){
@@ -49,10 +50,11 @@ module.exports = {
 
     albumsByArtist: function(res, params){
         var range = pagination.range(params);
-        var searchTerm = params.searchTerm;
-        console.log("searchQuery: %s", pretty.print(searchTerm));
+        var sortRule = params.sortRule;
+        var searchRule = params.searchRule;
+        console.log("searchQuery: %s", pretty.print(searchRule));
 
-        Artist.findOne(searchTerm, function (err, artist) {
+        Artist.findOne(searchRule, function (err, artist) {
             var result = {};
             if (err) {
                 serverResponse.error(res,err);
