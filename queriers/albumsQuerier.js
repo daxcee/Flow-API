@@ -61,7 +61,7 @@ module.exports = {
                 return;
             }
             if (artist) {
-                Album.find({'artists.artistName':  artist.artistName}).paginate(range.offset, range.limit, function(err, docs, total) {
+                Album.find({'artists.artistName':  artist.artistName}).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
                     params.total = total;
                     var paging = pagination.paging(res,params);
                     if (err) {
