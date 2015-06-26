@@ -44,7 +44,7 @@ passwordless.addDelivery(
 
         var message = 'Hi,\n\nYour API KEY (expires in 60 minutes) is:\n\n' +  tokenToSend +
             '\n\nUsage:\n\n' + 'To get all albums for example, your request on:\n' +
-            config.get('app_url') + '/api/v1/albums' + '\n\n' + 'will become:\n'  + config.get('app_url') + '/api/v1/albums?apikey=' + tokenToSend + '\n' +
+            config.get('app_url') + '/api/v1/albums' + '\n\n' + 'will become:\n'  + config.get('app_url') + '/api/v1/albums?apikey=' + tokenToSend + '\n\n' +
             'Full Endpoints overview:\n' + config.get('app_url') + '\n\nBest regards,\n---\nFlow API\n';
 
         // Send out token
@@ -79,9 +79,10 @@ app.use(passwordless.sessionSupport());
 app.use(passwordless.acceptToken({ successRedirect: '/'}));
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function(req, res) {
     res.statusCode = 404;
-    res.sendFile(path.join(__dirname, 'public', '404.html'));});
+    res.sendFile(path.join(__dirname, 'public', '404.html'));
+});
 
 app.listen(app.get('port'), function() {
     if(process.env.NODE_ENV == 'development'){
