@@ -1,4 +1,5 @@
 require('../models/event')();
+require ('mongoose-pagination');
 
 var mongoose = require('mongoose');
 var pretty = require('../utils/pretty');
