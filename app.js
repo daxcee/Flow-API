@@ -10,13 +10,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var fs = require('fs');
 var requireDir = require('require-dir');
 var routes = requireDir('./routes',{camelcase: true});
 var config = require('config');
-var expressSession = require('express-session');
 var mongoose = require('mongoose');
 var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
+var Token = conn.model('Token');
+
+var expressSession = require('express-session');
+var serverResponse = require('./utils/resultResponse.js');
+var tokenValidator = require('./utils/tokenValidator.js');
 
 var app = express();
 require('heroku-self-ping')(config.get('app_url'));
@@ -44,7 +47,7 @@ passwordless.addDelivery(
 
         var message = 'Hi,\n\nYour API KEY (expires in 60 minutes) is:\n\n' +  tokenToSend +
             '\n\nUsage:\n\n' + 'To get all albums for example, your request on:\n' +
-            config.get('app_url') + '/api/v1/albums' + '\n\n' + 'will become:\n'  + config.get('app_url') + '/api/v1/albums?apikey=' + tokenToSend + '\n\n' +
+            config.get('app_url') + '/api/v1/albums' + '\n\n' + 'will become:\n'  + config.get('app_url') + '/api/v1/albums?token=' + tokenToSend + '\n\n' +
             'Full Endpoints overview:\n' + config.get('app_url') + '\n\nBest regards,\n---\nFlow API\n';
 
         // Send out token
@@ -72,16 +75,17 @@ app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());app.use(expressSession({secret: '-!49m$.;!``.x', saveUninitialized: false, resave: false}));
-app.use(expressSession({secret: '42', saveUninitialized: false, resave: false}));
+app.use(cookieParser());
+//app.use(expressSession({secret: '-!49m$.;!``.x', saveUninitialized: false, resave: false}));
+//app.use(expressSession({secret: '42', saveUninitialized: false, resave: false}));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(passwordless.sessionSupport());
+//app.use(passwordless.sessionSupport());
 app.use(passwordless.acceptToken({ successRedirect: '/'}));
 
-// catch 404 and forward to error handler
+// catch 404
 app.use(function(req, res) {
-    res.statusCode = 404;
-    res.sendFile(path.join(__dirname, 'public', '404.html'));
+    res.sendFile('404.html', { root: path.join(__dirname, './public') });
+
 });
 
 app.listen(app.get('port'), function() {

@@ -1,3 +1,6 @@
+require('../models/video')();
+require('../models/artist')();
+
 var mongoose = require('mongoose');
 var pretty = require('../utils/pretty');
 var config = require('config');
