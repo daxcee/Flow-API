@@ -71,21 +71,17 @@ app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());app.use(expressSession({secret: '-!49m$.;!``.x', saveUninitialized: false, resave: false}));
-app.use(expressSession({secret: '42', saveUninitialized: false, resave: false}));
+app.use(cookieParser());
+//app.use(expressSession({secret: '-!49m$.;!``.x', saveUninitialized: false, resave: false}));
+//app.use(expressSession({secret: '42', saveUninitialized: false, resave: false}));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(passwordless.sessionSupport());
+//app.use(passwordless.sessionSupport());
 app.use(passwordless.acceptToken({ successRedirect: '/'}));
-
-//Set up express global workers on every request
 
 // catch 404
 app.use(function(req, res) {
-    serverResponse.page_not_found(req,res);
-});
+    res.sendFile('404.html', { root: path.join(__dirname, './public') });
 
-app.use(function(req, res) {
-   tokenValidator.validate(req,res);
 });
 
 app.listen(app.get('port'), function() {
