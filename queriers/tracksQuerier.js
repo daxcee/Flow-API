@@ -1,4 +1,5 @@
 require('../models/artist')();
+require('../models/track')();
 
 var mongoose = require('mongoose');
 var pretty = require('../utils/pretty');
