@@ -26,14 +26,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order')
-                };
-
-                query.albums(res, paramCollector.process(params));
+                query.albums(res, paramCollector.process(req));
             } else {
                 resultResponse.unauthorized(res);
             }
@@ -48,16 +41,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchKey:"_id",
-                    searchTerm:req.param('id')
-                };
-
-                query.albums(res, paramCollector.process(params));
+                query.albums(res, paramCollector.process(req, "_id"));
             } else {
                 resultResponse.unauthorized(res);
             }
@@ -72,16 +56,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchKey:"_id",
-                    searchTerm:req.param('id')
-                };
-
-                query.albumsByArtist(res, paramCollector.process(params));
+                query.albumsByArtist(res, paramCollector.process(req, "_id"));
             } else {
               resultResponse.unauthorized(res)
             }

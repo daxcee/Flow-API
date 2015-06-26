@@ -19,9 +19,11 @@ module.exports = {
         var range = pagination.range(params);
         var sortRule = params.sortRule;
         var searchRule = params.searchRule;
+        var fields = params.fields;
+
         console.log("searchQuery: %s", pretty.print(searchRule));
 
-        Album.find(searchRule).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
+        Album.find(searchRule, fields).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
             if(err){
@@ -52,6 +54,8 @@ module.exports = {
         var range = pagination.range(params);
         var sortRule = params.sortRule;
         var searchRule = params.searchRule;
+        var fields = params.fields;
+
         console.log("searchQuery: %s", pretty.print(searchRule));
 
         Artist.findOne(searchRule, function (err, artist) {
@@ -61,7 +65,7 @@ module.exports = {
                 return;
             }
             if (artist) {
-                Album.find({'artists.artistName':  artist.artistName}).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
+                Album.find({'artists.artistName':  artist.artistName},fields).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
                     params.total = total;
                     var paging = pagination.paging(res,params);
                     if (err) {
