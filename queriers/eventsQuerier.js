@@ -25,6 +25,10 @@ module.exports = {
                 serverResponse.error(res,err);
                 return;
             }
+            if(paging.offset < 1 ) {
+                serverResponse.invalid_range(res,paging.offset);
+                return;
+            }
             var result = {
                 totalEvents: total,
                 totalPages: paging.totalPages,
