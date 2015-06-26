@@ -29,7 +29,7 @@ describe('/', function () {
 
     //Test retrieve albums of a specific artist
     it('GET /api/v1/albums', function (done) {
-        request(baseURL + '/api/v1/albums?apikey='+ config.get('apikey'), function (err,resp) {
+        request(baseURL + '/api/v1/albums?token='+ config.get('apikey'), function (err,resp) {
             assert(!err);
             assert.equal(200, resp.statusCode);
             done();
