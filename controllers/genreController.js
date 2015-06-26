@@ -23,15 +23,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchTerm:req.param('id')
-                };
-
-                query.genres(res, paramCollector.process(params));
+                query.genres(res, paramCollector.process(req));
             } else {
                 resultResponse.unauthorized(res);
             }
@@ -46,16 +38,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchKey:"genreName",
-                    searchTerm:req.param('id')
-                };
-
-                query.genres(res, paramCollector.process(params));
+                query.genres(res, paramCollector.process(req,"genreName"));
 
             } else {
                 resultResponse.unauthorized(res);

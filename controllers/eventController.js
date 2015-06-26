@@ -19,15 +19,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchTerm:req.param('id')
-                };
-
-                query.events(res, paramCollector.process(params));
+                query.events(res, paramCollector.process(req));
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -41,16 +33,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchKey:"_id",
-                    searchTerm:req.param('id')
-                };
-
-                query.events(res, paramCollector.process(params));
+                query.events(res, paramCollector.process(req, "_id"));
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -64,16 +47,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchKey:"date",
-                    searchTerm:req.param('id')
-                };
-
-                query.events(res, paramCollector.process(params));
+                query.events(res, paramCollector.process(req, "date"));
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -87,17 +61,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchKey:"city",
-                    searchTerm:req.param('id')
-                };
-                console.log("pre: %s", JSON.stringify(params));
-
-                query.events(res, paramCollector.process(params));
+                query.events(res, paramCollector.process(req, "city"));
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -112,16 +76,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchKey:"artist",
-                    searchTerm:req.param('id')
-                };
-
-                query.events(res, paramCollector.process(params));
+                query.events(res, paramCollector.process(req, "artist"));
             } else {
                 serverResponse.unauthorized(res);
             }
@@ -135,16 +90,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchKey:"genre",
-                    searchTerm:req.param('id')
-                };
-
-                query.events(res, paramCollector.process(params));
+                query.events(res, paramCollector.process(req, "genre"));
             } else {
                 serverResponse.unauthorized(res);
             }

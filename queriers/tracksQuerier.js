@@ -18,9 +18,11 @@ module.exports = {
         var range = pagination.range(params);
         var sortRule = params.sortRule;
         var searchRule = params.searchRule;
+        var fields = params.fields;
+
         console.log("searchQuery: %s", pretty.print(searchRule));
 
-        Track.find(searchRule).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
+        Track.find(searchRule,fields).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
             if (err) {
@@ -52,6 +54,7 @@ module.exports = {
         var range = pagination.range(params);
         var sortRule = params.sortRule;
         var searchRule = params.searchRule;
+        var fields = params.fields;
         var result = {};
 
         console.log("searchQuery: %s", pretty.print(searchRule));
@@ -62,7 +65,7 @@ module.exports = {
                 return
             }
             if (artist) {
-                Track.find({'artists.artistName':  artist.artistName}).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
+                Track.find({'artists.artistName':  artist.artistName}, fields).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
                     params.total = total;
                     var paging = pagination.paging(res,params);
                     if (err) {

@@ -23,15 +23,7 @@ module.exports = {
                 return;
             }
             if (token) {
-                var params = {
-                    limit:req.param('limit'),
-                    offset:req.param('offset'),
-                    sortKey:req.param('sort'),
-                    sortOrder:req.param('order'),
-                    searchTerm:req.param('id')
-                };
-
-                query.artists(res, paramCollector.process(params));
+                query.artists(res, paramCollector.process(req));
             } else {
                resultResponse.unauthorized(res)
             }
@@ -55,7 +47,7 @@ module.exports = {
                     searchTerm:req.param('id')
                 };
 
-                query.artists(res, paramCollector.process(params));
+                query.artists(res, paramCollector.process(req, "_id"));
 
             } else {
                 resultResponse.unauthorized(res)
