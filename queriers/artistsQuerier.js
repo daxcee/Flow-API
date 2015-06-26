@@ -17,9 +17,11 @@ module.exports = {
         var range = pagination.range(params);
         var sortRule = params.sortRule;
         var searchRule = params.searchRule;
+        var fields = params.fields;
+
         console.log("searchQuery: %s", pretty.print(searchRule));
 
-        Artist.find(searchRule).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
+        Artist.find(searchRule,fields).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
             if (err) {
