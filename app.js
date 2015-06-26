@@ -13,6 +13,10 @@ var bodyParser = require('body-parser');
 var requireDir = require('require-dir');
 var routes = requireDir('./routes',{camelcase: true});
 var config = require('config');
+var mongoose = require('mongoose');
+var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
+var Token = conn.model('Token');
+
 var expressSession = require('express-session');
 var serverResponse = require('./utils/resultResponse.js');
 var tokenValidator = require('./utils/tokenValidator.js');
