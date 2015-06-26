@@ -253,6 +253,9 @@
                 <h4>Sorting</h4><br>
                 Sorting on results is possible by providing the <b>sort</b> key, also <b>order</b> can be applied.<br><br>Here is an example thats sorts Events by date:<br><br>
                 <div class="jumbotron">/api/v1/events?<b>sort=date&order=desc</b>&apikey=KEY</div>
+                <h4>Field selection</h4><br>
+                Selection on which fields should be shown on the response result is possible by providing the <b>fields</b> key.<br><br>Here is an example query thats shows Events with only a title and date:<br><br>
+                <div class="jumbotron">/api/v1/events?<b>fields=title,date</b>&apikey=KEY</div>
             </div>
         </div>
     </div>
