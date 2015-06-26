@@ -1,26 +1,44 @@
 module.exports = {
 
-    process:function(param){
-        if(param.sortKey){
-            var sortOrder = param.sortOrder;
+    process:function(req, searchKey){
+
+        var params = {};
+
+        if(req.query.hasOwnProperty("limit")){
+            params["limit"] = req.query.limit;
+        }
+
+        if(req.query.hasOwnProperty("offset")){
+            params["offset"] = req.query.offset;
+        }
+
+        if(req.query.hasOwnProperty("order")){
+            var sortOrder = req.query.order;
             var sortRule = {};
 
             if(sortOrder)
-                sortRule[param.sortKey] = sortOrder;
+                sortRule[req.query.sort] = sortOrder;
             else
-                sortRule[param.sortKey] = "asc"; //fallback on default
+                sortRule[req.query.sort] = "asc"; //fallback on default
 
-            param.sortRule = sortRule;
+            req.sortRule = sortRule;
         }
 
-        if(param.searchTerm){
+        if(req.query.hasOwnProperty("fields")){
+            params["fields"]= req.query.fields.replace(/,/g, " ");
+        }
+
+        if(req.params.hasOwnProperty("id")){
+
             var searchRule = {};
-            searchRule[param.searchKey] = param.searchTerm;
+            searchRule[searchKey] = req.params.id;
 
-            param.searchRule = searchRule;
+            params["searchRule"] = searchRule;
         }
 
-        return param;
+        console.log("processed params: " + JSON.stringify(params));
+
+        return params;
     }
 
 };
