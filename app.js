@@ -43,7 +43,7 @@ passwordless.addDelivery(
 
         var message = 'Hi,\n\nYour API KEY (expires in 60 minutes) is:\n\n' +  tokenToSend +
             '\n\nUsage:\n\n' + 'To get all albums for example, your request on:\n' +
-            config.get('app_url') + '/api/v1/albums' + '\n\n' + 'will become:\n'  + config.get('app_url') + '/api/v1/albums?apikey=' + tokenToSend + '\n\n' +
+            config.get('app_url') + '/api/v1/albums' + '\n\n' + 'will become:\n'  + config.get('app_url') + '/api/v1/albums?token=' + tokenToSend + '\n\n' +
             'Full Endpoints overview:\n' + config.get('app_url') + '\n\nBest regards,\n---\nFlow API\n';
 
         // Send out token
