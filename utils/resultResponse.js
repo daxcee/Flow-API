@@ -1,5 +1,4 @@
 var pretty = require('./pretty');
-var excep = require('../utils/exception');
 var config = require('config');
 
 module.exports = {
@@ -8,7 +7,10 @@ module.exports = {
         res.statusCode = 500;
         var result =  {
             errorCode: 500,
-            error: err
+            error: {
+                description:"500 Server error",
+                message: err
+            }
         };
         res.end(pretty.print(result));
     },
@@ -17,7 +19,10 @@ module.exports = {
         res.statusCode = 401;
         var result =  {
             errorCode: 401,
-            error: "Unauthorized, need to provide a valid access token. To get a token, follow requestTokenURL",
+            error: {
+                description: "401 Unauthorized",
+                message:"Unauthorized, need to provide a valid access token. To get a token, follow requestTokenURL"
+            },
             requestTokenURL:config.get("app_url") + "/token-request"
         };
         res.end(pretty.print(result));
@@ -28,11 +33,14 @@ module.exports = {
         res.end(pretty.print(result));
     },
 
-    invalid_range: function(res) {
+    invalid_range: function(res,offset) {
         res.statusCode = 400;
         var result = {
             errorCode:400,
-            error: "Offset of " + offset + " is out of range, must start with 1"
+            error: {
+                description:"400 Bad request",
+                message:"Offset of " + offset + " is out of range, must start with 1"
+            }
         };
         res.end(pretty.print(result));
     }
