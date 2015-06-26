@@ -84,62 +84,9 @@ Open up a new browser tab and go to the follow to check if server is properly ru
 
 [http://localhost:3000](http://localhost:3000)
 
-## API 
+## API Overview
 
-Also see:[https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
-
-### Endpoints
-
-#### Album
-
-Path | Method | Parameters   | Description
------------- | ------------- | ------------ | -----------
-[/api/v1/albums](https://flow-api.herokuapp.com/api/v1/albums) | GET  | none | Retrieve albums details.
-[/api/v1/albums/albumId](https://flow-api.herokuapp.com/api/v1/albums/albumId) | GET  | String, albumId | Retrieve albums details for a specific album.
-[/api/v1/albums/artist/artistId](https://flow-api.herokuapp.com/api/v1/albums/artist/artistId) | GET  | String, artistId | Retrieve albums details of a specific artist.
-
-#### Artist
-
-Path | Method | Parameters   | Description
------------- | ------------- | ------------ | -----------
-[/api/v1/artists](https://flow-api.herokuapp.com/api/v1/artists) | GET  | none | Retrieve all artists details.
-[/api/v1/artists/artistId](https://flow-api.herokuapp.com/api/v1/artists/AAAA) | GET  | String, artistId | Retrieve details for a specific artist.
-
-#### Event
-
-Path | Method | Parameters   | Description
------------- | ------------- | ------------ | -----------
-[/api/v1/events](https://flow-api.herokuapp.com/api/v1/events) | GET  | none | Retrieve all events details.
-[/api/v1/events/eventId](https://flow-api.herokuapp.com/api/v1/events/eventId) | GET  | String, eventId | Retrieve event details for a specific event.
-[/v1/events/date/01-01-2015](https://flow-api.herokuapp.com/api/v1/events/date/01-01-2015) | GET  | String, dd-MM-YYYY | Retrieve event details for a specific event on a specific date.
-[/api/v1/events/genre/genreId](https://flow-api.herokuapp.com/api/v1/events/genre/genreId) | GET  | String, genreId | Retrieve events details based on a specific genre.
-[/api/v1/events/artist/artistId](https://flow-api.herokuapp.com/api/v1/events/artist/artistId) | GET  | String, artistId | Retrieve events details for a events where a specific artist is performing..
-
-#### Genre
-
-Path | Method | Parameters   | Description
------------- | ------------- | ------------ | -----------
-[/api/v1/genres](https://flow-api.herokuapp.com/api/v1/genres) | GET  | String | Retrieve all genres details.
-[/api/v1/genres/genreId](https://flow-api.herokuapp.com/api/v1/genres/Alternative) | GET  | String, genreId | Retrieve details for a specific genre.
-
-#### Track
-
-Path | Method | Parameters   | Description
------------- | ------------- | ------------ | -----------
-[/api/v1/tracks](https://flow-api.herokuapp.com/api/v1/tracks) | GET  | none | Retrieve all tracks details.
-[/api/v1/tracks/trackId](https://flow-api.herokuapp.com/api/v1/tracks/trackId) | GET  | String, trackId | Retrieve track details for a specific track.
-[/api/v1/tracks/artistId]() | * GET  | String, artistId | Retrieve all tracks details for a specific artist.
-[/api/v1/tracks/albumId/]() | * GET  | String, albumId | Retrieve all tracks details for a specific album.
-
-#### Video
-
-Path | Method | Parameters   | Description
------------- | ------------- | ------------ | -----------
-[/api/v1/videos](https://flow-api.herokuapp.com/api/v1/videos) | GET  | none | Retrieve all videos details.
-[/api/v1/videos/videoId](https://flow-api.herokuapp.com/api/v1/videos/videoId) | GET  | String, videoId | Retrieve video details for a specific video.
-[/api/v1/videos/artist/artistId](https://flow-api.herokuapp.com/api/v1/videos/artist/artistId) | * GET  | String, artistId | Retrieve all videos details for a specific artist.
-
-*Not yet implemented
+See: [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
 
 
 ## Mocha tests
