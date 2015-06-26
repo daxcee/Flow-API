@@ -1,5 +1,6 @@
 var config = require('config');
 var pretty = require('./pretty');
+var serverResponse = require('../utils/resultResponse.js');
 
 module.exports = {
 
@@ -11,13 +12,8 @@ module.exports = {
       var totalPages = Math.ceil(parseInt(params.total / pageCount));
 
       if(offset < 1 ) {
-          result = {
-              error: "offset of " + offset + " is out of range, must start with 1"
-          };
-
           res.statusCode = 200;
-          res.end(pretty.print(result));
-
+          serverResponse.invalid_range(res,offset);
           return;
       }
 
