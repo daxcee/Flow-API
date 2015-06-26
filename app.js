@@ -17,10 +17,6 @@ var mongoose = require('mongoose');
 var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
 var Token = conn.model('Token');
 
-var expressSession = require('express-session');
-var serverResponse = require('./utils/resultResponse.js');
-var tokenValidator = require('./utils/tokenValidator.js');
-
 var app = express();
 require('heroku-self-ping')(config.get('app_url'));
 
@@ -76,10 +72,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-//app.use(expressSession({secret: '-!49m$.;!``.x', saveUninitialized: false, resave: false}));
-//app.use(expressSession({secret: '42', saveUninitialized: false, resave: false}));
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(passwordless.sessionSupport());
 app.use(passwordless.acceptToken({ successRedirect: '/'}));
 
 // catch 404
