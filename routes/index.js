@@ -20,7 +20,7 @@ router.get('/send', function(req, res) {
 });
 
 router.get('/401', function(req, res) {
-    res.sendFile('401.html', { root: path.join(__dirname, '../public') });
+    res.sendFile('404.html', { root: path.join(__dirname, '../public') });
 });
 
 router.post('/sendtoken',

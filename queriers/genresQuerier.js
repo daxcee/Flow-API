@@ -27,7 +27,7 @@ module.exports = {
                 return;
             }
             if(paging.offset < 1 ) {
-                serverResponse.invalid_range(res);
+                serverResponse.invalid_range(res,paging.offset);
                 return;
             }
 
