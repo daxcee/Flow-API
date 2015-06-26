@@ -10,13 +10,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var fs = require('fs');
 var requireDir = require('require-dir');
 var routes = requireDir('./routes',{camelcase: true});
 var config = require('config');
 var expressSession = require('express-session');
-var mongoose = require('mongoose');
-var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
+var serverResponse = require('./utils/resultResponse.js');
+var tokenValidator = require('./utils/tokenValidator.js');
 
 var app = express();
 require('heroku-self-ping')(config.get('app_url'));
@@ -78,10 +77,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passwordless.sessionSupport());
 app.use(passwordless.acceptToken({ successRedirect: '/'}));
 
-// catch 404 and forward to error handler
+//Set up express global workers on every request
+
+// catch 404
 app.use(function(req, res) {
-    res.statusCode = 404;
-    res.sendFile(path.join(__dirname, 'public', '404.html'));
+    serverResponse.page_not_found(req,res);
+});
+
+app.use(function(req, res) {
+   tokenValidator.validate(req,res);
 });
 
 app.listen(app.get('port'), function() {

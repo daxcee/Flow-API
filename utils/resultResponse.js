@@ -1,5 +1,6 @@
 var pretty = require('./pretty');
 var config = require('config');
+var path = require('path');
 
 module.exports = {
 
@@ -43,6 +44,10 @@ module.exports = {
             }
         };
         res.end(pretty.print(result));
-    }
+    },
 
+     page_not_found:function(req, res) {
+         res.statusCode = 404;
+         res.sendFile(path.join(__dirname, '../public', '404.html'));
+     }
 };
