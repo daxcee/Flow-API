@@ -7,4 +7,4 @@ var newsSchema = new Schema({
     message: String
 });
 
-module.exports = mongoose.model('Event', newsSchema);
+module.exports = mongoose.model('News', newsSchema);

@@ -167,6 +167,34 @@
           </tr>
         </tbody>
       </table>
+        <h3>News</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Path</th>
+                <th>Method</th>
+                <th>Parameters</th>
+                <th>Description</th>
+                <th>Auth. required</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="col-md-4"><a href="/api/v1/news">api/v1/news</a></td>
+                <td class="col-md-1">GET</td>
+                <td class="col-md-2">None</td>
+                <td class="col-md-4">Retrieve all news details.</td>
+                <td class="col-md-1">Yes</td>
+            </tr>
+            <tr>
+                <td class="col-md-4"><a href="/api/v1/news/30-06-2015/date">api/v1/news/:newsDate/date</a></td>
+                <td class="col-md-1">GET</td>
+                <td class="col-md-2">String, newsDate</td>
+                <td class="col-md-4">Retrieve news details for a specific date.</td>
+                <td class="col-md-1">Yes</td>
+            </tr>
+            </tbody>
+        </table>
       <h3>Track</h3>
       <table class="table">
         <thead>
