@@ -10,7 +10,11 @@ var artistSchema = new Schema({
     artistSCID: String,
     artistSCURL: String,
     artistWebsite: String,
-    artistFBURL: String
+    artistFBURL: String,
+    images:{
+        thumb:String,
+        cover:String
+    }
 });
 
 module.exports = mongoose.model('Artist', artistSchema);

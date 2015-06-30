@@ -7,7 +7,11 @@
   "artistSCID": "00000",
   "artistSCURL": "http://soundcloud.com/artistname",
   "artistWebsite": "http://domain.com",
-  "artistFBURL": "http://facebook.com/pages/artistpage"
+  "artistFBURL": "http://facebook.com/pages/artistpage",
+  "images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -18,7 +22,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -29,7 +37,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -40,7 +52,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -51,7 +67,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -62,7 +82,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -73,7 +97,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -84,7 +112,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -95,7 +127,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -106,7 +142,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -117,7 +157,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -128,7 +172,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -139,7 +187,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -150,7 +202,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -161,7 +217,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -172,7 +232,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -183,7 +247,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -205,7 +273,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -216,7 +288,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -227,7 +303,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -238,7 +318,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -249,7 +333,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -260,7 +348,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -271,7 +363,11 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 },
 {
 "mediaType": "bio",
@@ -282,5 +378,9 @@
 "artistSCID": "00000",
 "artistSCURL": "http://soundcloud.com/artistname",
 "artistWebsite": "http://domain.com",
-"artistFBURL": "http://facebook.com/pages/artistpage"
+"artistFBURL": "http://facebook.com/pages/artistpage",
+"images": {
+    "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
+    "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
+  }
 }
