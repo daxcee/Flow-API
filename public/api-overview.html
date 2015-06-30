@@ -18,7 +18,15 @@
     <div class="container">
       <div class="text-center"><h2>Flow API - Endpoints</h2></div>
         <div class="text-center">
-            <a href="/token-request" class="text-center" >Request an API Token</a>
+            <a href="/token-request" class="text-center" >Request an API Key</a>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <h3>General info</h3><br>
+                <h4> API Access</h4><br>
+                In order to use this API, a valid access key is needed, request one <a href="/token-request" class="text-center" ><b>here</b></a>,
+                it will be send to your mail within a few minutes.<br><br>
+            </div>
         </div>
         <h3>Album</h3>
       <table class="table">
@@ -267,24 +275,30 @@
       </table>
     </div>
     <div class="container">
+
         <div class="row">
-            <div class="col-md-9">
-                <h3>General info</h3><br><br>
-                <h4> API Access</h4><br>
-                In order to use this API, a valid access token is needed, request one <a href="/token-request" class="text-center" ><b>here</b></a>,
-                <br>it will be send to your mail within a few minutes.<br><br>
-                <h4>Pagination</h4><br>
-                The API returns paginated results, with a default limit set to 100 results. To be able to paginate to next or previous
-                pages, use the previous and next links provided in the JSON Response. Below is an example JSON response, containing pagination details.
-                <img class="hidden-xs pagination-img img-responsive" src="images/pagination_sample.png"
-                     alt="pagination-sample"><br>
-                <h4>Sorting</h4><br>
-                Sorting on results is possible by providing the <b>sort</b> key, also <b>order</b> can be applied.<br><br>Here is an example thats sorts Events by date:<br><br>
-                <div class="jumbotron">/api/v1/events?<b>sort=date&order=desc</b>&token=KEY</div>
-                <h4>Field selection</h4><br>
-                Selection on which fields should be shown on the response result is possible by providing the <b>fields</b> key.<br><br>Here is an example query thats shows Events with only a title and date:<br><br>
-                <div class="jumbotron">/api/v1/events?<b>fields=title,date</b>&token=KEY</div>
-            </div>
+          <div class="col-md-12">
+            <h3>Pagination</h3><br>
+            The API returns paginated results, with a default limit set to 100 results. To be able to paginate to next or previous
+            pages, use the previous and next links provided in the JSON Response. Below is an example JSON response, containing pagination details.
+            <img class="hidden-xs pagination-img img-responsive" src="images/pagination_sample.png"
+                 alt="pagination-sample"><br>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-md-6">
+              <h3>Sorting</h3><br>
+              Sorting on results is possible by providing the <b>sort</b> key, also <b>order</b> can be applied.<br><br>Here is an example thats sorts Events by date:<br><br><br>
+            <div class="jumbotron">/api/v1/events?<b>sort=date&order=desc</b></div>
+          </div>
+
+          <div class="col-md-6">
+              <h3>Field selection</h3><br>
+              Selection on which fields should be shown on the response result is possible by providing the <b>fields</b> key.<br><br>Here is an example query thats shows Events with only a title and date:<br><br>
+              <div class="jumbotron">/api/v1/events?<b>fields=title,date</b></div>
+          </div>
+        </div>
         </div>
     </div>
     <div class="navbar navbar-fixed-bottom" role="navigation">
@@ -292,7 +306,7 @@
             <div class="footer-text text-center text-muted">
                 <div class="row">Flow API 2015</div>
                 <div class="row">
-                    <a href="/token-request" class="text-center text-muted">Request an API Token</a><span class="clearfix"></span>
+                    <a href="/token-request" class="text-center text-muted">Request an API Key</a><span class="clearfix"></span>
                 </div>
             </div>
         </div>

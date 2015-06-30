@@ -2,24 +2,20 @@
 
 Rest API: [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
 
-This API strives to aggregate data, for music events per month/week, per city. For artists and there music, may it be pre-recorded or live streamable audio, audio & video, or purchable tracks / EP's / albums, there upcomming shows/gigs per month/week, cities, genres and present it in a unified form.
+This REST API strives to aggregate data, for music events per month/week, per city. For artists and their music, may it be pre-recorded or live streamable audio, audio & video, or punchable tracks / EP's / albums, there upcoming shows/gigs per month/week, cities, genres and present it in a unified form.
 
 ## Prerequisites
 
 [Nodejs](https://nodejs.org)
 
+or via [brew (OS X)](http://brew.sh):
+
+    $ brew install node
+
 [NPM](https://www.npmjs.com)
 
 [MongoDB](https://www.mongodb.org)
 
-
-Nodejs install via brew (OSX):
-
-[http://brew.sh](http://brew.sh)
-
-then, install nodejs package:
-
-    brew install node
 
 ## Install dependencies
 
@@ -28,7 +24,7 @@ NPM is used as dependencies/package manager.
 To install the needed modules for this Nodejs app,
 run the following command from the `root`of the project:
 
-    sudo npm install
+    $  sudo npm install
 
 Note that these dependencies are not checked in on the repo
 and thus are only available on the local machine.
@@ -37,9 +33,8 @@ and thus are only available on the local machine.
 
 ### Environment variables
 
-Create a file named `.env` in the root directory of your project. Add these environment-specific variables on new lines in the form of NAME=VALUE:
-Here is a working example to get the application up and running locally, (copy and past it, *** is dont care):
-    
+Create a file named `.env` in the root directory of your project. Copy and past contents of example blow in the file and save it (*** are don't care values):
+
     DB_HOST=***
     DB_NAME=flow
     DB_PASSWORD=***
@@ -59,28 +54,28 @@ Here is a working example to get the application up and running locally, (copy a
 
 Startup mongo by running:
 
-	   mongo
+	  $ mongo
 
-Create a database, named `flow`:
+Create and use a database named `flow`:
 
-	   use flow
+	  $ use flow
 
 
 Sample data can be found in the [samples](https://github.com/srmds/FlowAPI/tree/master/samples) dir, import by running:
 
 via the provided shell script, found in root:
 
-    ./data_import.sh
+  $ ./data_import.sh
 
 or manually on each file:
 
-		mongoimport -d db_name -c collection_name --file filename.json --jsonArray
+    $ mongoimport -d db_name -c collection_name --file filename.json --jsonArray
 
 ### Start server
 
 Finally, from `root` of the project run:
 
-     nodemon app.js
+    $ nodemon app.js
 
 Nodemon will monitor for any changes and automatically restart the server if needed.
 Open up a new browser tab and go to the follow to check if server is properly running:
@@ -98,7 +93,7 @@ For every API endpoint there are tests, see test dir.
 
 To run the Mocha tests, from `root` run:
 
-      npm test
+    $ npm test
 
 Note that by running tests, the local mongodb is dropped and it's collections is dropped!
 
@@ -106,9 +101,9 @@ Every test will create a fresh collection and runs with that collection, afterwa
 the collection will again be dropped. You will have to (re)run the `data_import.sh` script, as described [here](https://github.com/srmds/FlowAPI#import-json-sample-data), to
 get sample data in to the database.
 
-## Deploy backend
-Every change to the master branch will trigger an automatic deployment
-of the backend to Heroku, after a succeeded build by the CI buildserver.
+## Deployed backend
+Every change to the master branch will trigger an *automatic deployment*
+of the backend to **Heroku**, after a succeeded build by the CI build-server.
 
 The backend is accessible via:
 
@@ -117,7 +112,7 @@ The backend is accessible via:
 ## MIT License
 Copyright 2015 srmds
 
-Licensed under the Apache License, Version 2.0 (the "License");
+Licensed under the Apache License, Version 2.0 (the "Software");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
