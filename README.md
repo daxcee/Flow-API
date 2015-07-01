@@ -33,7 +33,7 @@ and thus are only available on the local machine.
 
 ### Environment variables
 
-Create a file named `.env` in the root directory of your project. Copy and past contents of example blow in the file and save it (*** are don't care values):
+Create a file named `.env` in the root directory of your project. Copy and past contents of example below in the file and save it (*** are don't care values):
 
     DB_HOST=***
     DB_NAME=flow
@@ -65,7 +65,7 @@ Sample data can be found in the [samples](https://github.com/srmds/FlowAPI/tree/
 
 via the provided shell script, found in root:
 
-  $ ./data_import.sh
+    $ ./data_import.sh
 
 or manually on each file:
 
@@ -80,7 +80,7 @@ Finally, from `root` of the project run:
 Nodemon will monitor for any changes and automatically restart the server if needed.
 Open up a new browser tab and go to the follow to check if server is properly running:
 
-[http://localhost:3000](http://localhost:3000)
+    $ open http://localhost:3000
 
 ## API Overview
 
