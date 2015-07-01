@@ -2,7 +2,7 @@
 
 Rest API: [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
 
-This REST API strives to aggregate data, for music events per month/week, per city. For artists and their music, may it be pre-recorded or live streamable audio, audio & video, or punchable tracks / EP's / albums, there upcoming shows/gigs per month/week, cities, genres and present it in a unified form.
+This REST API strives to aggregate data, for music events per month/week, per city. For artists and their music, may it be pre-recorded or live streamable audio, audio & video, or punchable tracks / EP's / albums, their upcoming shows/gigs per month/week, cities, genres and present it in a unified form.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ and thus are only available on the local machine.
 
 ### Environment variables
 
-Create a file named `.env` in the root directory of your project. Copy and past contents of example below in the file and save it (*** are don't care values):
+Create a file named `.env` in the root directory of your project. Copy and paste contents of example below in the file and save it (*** are don't care values):
 
     DB_HOST=***
     DB_NAME=flow
