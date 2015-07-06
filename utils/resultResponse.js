@@ -30,7 +30,7 @@ module.exports = {
     },
 
     result:function(res,result){
-        res.statusCode = 200;
+        res.writeHead(200, {"Content-Type": "application/json"});
         res.end(pretty.print(result));
     },
 
