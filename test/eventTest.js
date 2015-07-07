@@ -16,7 +16,7 @@ describe('-------- EVENTS ENDPOINTS --------', function() {
     beforeEach(function(done) {
         db.dropAllCollections();
 
-        var options = db.createDateForEndpoint('event');
+        var options = db.createDataForEndpoint('event');
         artist =  options.artist;
         event = options.event;
 

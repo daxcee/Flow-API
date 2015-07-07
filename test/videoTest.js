@@ -15,7 +15,7 @@ describe('-------- VIDEO ENDPOINTS --------', function() {
     beforeEach(function(done) {
         db.dropAllCollections();
 
-        var options = db.createDateForEndpoint('video');
+        var options = db.createDataForEndpoint('video');
         artist =  options.artist;
         video = options.video;
 

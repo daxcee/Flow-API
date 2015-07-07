@@ -14,7 +14,7 @@ describe('-------- NEWS ENDPOINTS --------', function() {
     beforeEach(function(done) {
         db.dropAllCollections();
 
-        var options = db.createDateForEndpoint('news');
+        var options = db.createDataForEndpoint('news');
         news =  options.news;
 
         var tokenPrefix = '?token=';

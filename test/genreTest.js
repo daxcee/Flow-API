@@ -14,7 +14,7 @@ describe('-------- GENRE ENDPOINTS --------', function() {
     beforeEach(function(done) {
         db.dropAllCollections();
 
-        var options = db.createDateForEndpoint('genre');
+        var options = db.createDataForEndpoint('genre');
         genre =  options.genre;
 
         var tokenPrefix = '?token=';

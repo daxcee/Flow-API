@@ -14,7 +14,7 @@ describe('-------- ARTIST ENDPOINTS --------', function() {
     beforeEach(function(done) {
         db.dropAllCollections();
 
-        var options = db.createDateForEndpoint('artist');
+        var options = db.createDataForEndpoint('artist');
         artist =  options.artist;
 
         var tokenPrefix = '?token=';

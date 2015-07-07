@@ -15,7 +15,7 @@ describe('-------- ALBUM ENDPOINTS --------', function() {
     beforeEach(function(done) {
         db.dropAllCollections();
 
-        var options = db.createDateForEndpoint('album');
+        var options = db.createDataForEndpoint('album');
         artist =  options.artist;
         album = options.album;
 

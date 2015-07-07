@@ -116,7 +116,7 @@ module.exports = {
         Genre.remove({}, function(err) {if (err) throw err;});
     },
 
-    createDateForEndpoint: function createData(endpoint) {
+    createDataForEndpoint: function createData(endpoint) {
         switch (endpoint) {
             case 'album':
                 var artist = this.createArtist('Yoda');
