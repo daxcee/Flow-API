@@ -20,6 +20,9 @@ describe('-------- ALBUM ENDPOINTS --------', function() {
         artistName = options.artist.artistName;
         albumId = options.album._id;
 
+        var tokenPrefix = '?token=';
+        token = tokenPrefix + db.createToken().value;
+
         done();
     });
 
@@ -33,7 +36,7 @@ describe('-------- ALBUM ENDPOINTS --------', function() {
     describe('GET ' + basePath, function() {
         it('Should return an Album item', function(done) {
             httpRequest
-                .get(basePath)
+                .get(basePath + token)
                 .expect(200)
                 .set('Accept','application/json')
                 .expect('Content-Type', /json/)
@@ -52,7 +55,7 @@ describe('-------- ALBUM ENDPOINTS --------', function() {
     describe('GET ' + basePath + '/:artistId/artist', function() {
         it('Should return an Album item that belongs to the artist found by its id' + artistId, function(done) {
             httpRequest
-                .get(basePath + '/' + artistId + '/artist')
+                .get(basePath + '/' + artistId + '/artist' + token)
                 .expect(200)
                 .set('Accept','application/json')
                 .expect('Content-Type', /json/)

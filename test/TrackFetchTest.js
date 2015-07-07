@@ -10,6 +10,7 @@ describe('-------- TRACK ENDPOINTS --------', function() {
     var artistId;
     var artistName;
     var trackId;
+    var token;
 
     //Do preliminary setup, before running each testcase.
     beforeEach(function(done) {
@@ -19,6 +20,9 @@ describe('-------- TRACK ENDPOINTS --------', function() {
         artistId =  options.artist._id;
         artistName = options.artist.artistName;
         trackId = options.track._id;
+
+        var tokenPrefix = '?token=';
+        token = tokenPrefix + db.createToken().value;
 
         done();
     });
@@ -33,7 +37,7 @@ describe('-------- TRACK ENDPOINTS --------', function() {
     describe('GET ' + basePath, function() {
         it('Should return a Track item', function(done) {
             httpRequest
-                .get(basePath)
+                .get(basePath + token)
                 .expect(200)
                 .set('Accept','application/json')
                 .expect('Content-Type', /json/)
@@ -52,7 +56,7 @@ describe('-------- TRACK ENDPOINTS --------', function() {
     describe('GET ' + basePath + '/:trackId', function() {
         it('Should return a Track item whose id is provided', function(done) {
             httpRequest
-                .get(basePath + '/' + trackId)
+                .get(basePath + '/' + trackId + token)
                 .expect(200)
                 .set('Accept','application/json')
                 .expect('Content-Type', /json/)
@@ -71,7 +75,7 @@ describe('-------- TRACK ENDPOINTS --------', function() {
     describe('GET ' + basePath + '/:artistId/artist', function() {
         it('Should return a Track item whose id is provided', function(done) {
             httpRequest
-                .get(basePath + '/' + artistId + '/artist')
+                .get(basePath + '/' + artistId + '/artist' + token)
                 .expect(200)
                 .set('Accept','application/json')
                 .expect('Content-Type', /json/)

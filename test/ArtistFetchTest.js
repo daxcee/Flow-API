@@ -9,6 +9,7 @@ var basePath = '/api/v1/artists';
 describe('-------- ARTIST ENDPOINTS --------', function() {
     var artistId;
     var artistName;
+    var token;
 
     //Do preliminary setup, before running each testcase.
     beforeEach(function(done) {
@@ -17,6 +18,9 @@ describe('-------- ARTIST ENDPOINTS --------', function() {
         var options = db.createDateForEndpoint('artist');
         artistId =  options.artist._id;
         artistName = options.artist.artistName;
+
+        var tokenPrefix = '?token=';
+        token = tokenPrefix + db.createToken().value;
 
         done();
     });
@@ -31,7 +35,7 @@ describe('-------- ARTIST ENDPOINTS --------', function() {
     describe('GET ' + basePath, function() {
         it('Should return an Artist item', function(done) {
             httpRequest
-                .get(basePath)
+                .get(basePath + token)
                 .expect(200)
                 .set('Accept','application/json')
                 .expect('Content-Type', /json/)
@@ -50,7 +54,7 @@ describe('-------- ARTIST ENDPOINTS --------', function() {
     describe('GET ' + basePath + '/:artistId', function() {
         it('Should return Artist items of whose id is:' + artistId, function(done) {
             httpRequest
-                .get(basePath + '/' + artistId)
+                .get(basePath + '/' + artistId + token)
                 .expect(200)
                 .set('Accept','application/json')
                 .expect('Content-Type', /json/)

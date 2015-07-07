@@ -18,8 +18,7 @@ module.exports = {
     createToken:function createToken(){
         var token = new Token( {
             value: tokenGen.modules.generateToken(),
-            createdAt: new Date(),
-            recipient:name
+            createdAt: new Date()
         });
         token.save();
 
