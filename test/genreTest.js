@@ -58,7 +58,6 @@ describe('-------- GENRE ENDPOINTS --------', function() {
                 .end(function(err, res){
                     if (err)
                         throw err;
-                    console.log("RES: " + JSON.stringify(res.body));
 
                     assert.equal(res.body.result[0]._id, genre._id);
 
