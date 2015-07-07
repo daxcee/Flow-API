@@ -2,6 +2,8 @@ require('../models/token')();
 require('../models/artist')();
 require('../models/album')();
 require('../models/track')();
+require('../models/event')();
+require('../models/genre')();
 
 var tokenGen = require('../utils/tokenGenerator');
 var mongoose = require('mongoose');
@@ -12,6 +14,8 @@ var Token = conn.model('Token');
 var Album = conn.model('Album');
 var Artist = conn.model('Artist');
 var Track = conn.model('Track');
+var Event = conn.model('Event');
+var Genre = conn.model('Genre');
 
 module.exports = {
 
@@ -55,36 +59,43 @@ module.exports = {
         return album;
     },
 
-    createEvent: function createEvent() {
+    createEvent: function createEvent(name) {
+        var event = new Event({
+            date:createFormattedDate(),
+            title:'testEventTitle',
+            venue:'testEventVenue',
+            city:'testEventCity',
+            artists:[{artistName:name}]
+        });
+        event.save();
+
+        return event;
+    },
+
+    createNews: function createNews() {
         return null;
     },
 
-    createNews: function createEvent() {
-        return null;
+    createGenre:function createGenre() {
+        var genre = new Genre({
+            genreName: 'Jazz',
+            subGenres: [{genreName: 'Latin Jazz'}]
+        });
+        genre.save();
+
+        return genre;
     },
 
-    createGenre:function createEvent() {
+    createVideo:function createVideo() {
         return null
     },
 
     dropAllCollections: function dropAllCollections(){
-        Token.remove({}, function(err) {
-            if(err)
-                throw err;
-        });
-        Album.remove({}, function(err) {
-            if(err)
-                throw err;
-        });
-        Artist.remove({}, function(err) {
-            if (err)
-                throw err;
-        });
-
-        Track.remove({}, function(err) {
-            if (err)
-                throw err;
-        });
+        Token.remove({}, function(err) {if(err) throw err;});
+        Album.remove({}, function(err) {if(err) throw err;});
+        Artist.remove({}, function(err) {if (err) throw err;});
+        Track.remove({}, function(err) {if (err) throw err;});
+        Event.remove({}, function(err) {if (err) throw err;});
     },
 
     createDateForEndpoint: function createData(endpoint) {
@@ -92,16 +103,21 @@ module.exports = {
             case 'album':
                 var artist = this.createArtist('Yoda');
                 return {album:this.createAlbum(artist.artistName),artist:artist};
-
             case 'artist':
                 return {artist:this.createArtist('Chewbacca')};
-
             case 'track':
                 var artist =  this.createArtist('Darth Vader');
                 return {track:this.createTrack(artist.artistName),artist:artist};
-
+            case 'event':
+                var artist = this.createArtist('Padmé');
+                return {event:this.createEvent(artist.artistName), artist:artist};
             default:
                 break;
         }
     }
 };
+
+function createFormattedDate(){
+    var currentDate = new Date();
+    return currentDate.getDay() + '-' + '' + currentDate.getMonth() + '-' + currentDate.getFullYear();
+}
