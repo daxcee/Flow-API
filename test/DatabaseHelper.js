@@ -5,6 +5,7 @@ require('../models/track')();
 require('../models/event')();
 require('../models/genre')();
 require('../models/news')();
+require('../models/video')();
 
 var tokenGen = require('../utils/tokenGenerator');
 var mongoose = require('mongoose');
@@ -18,6 +19,7 @@ var Track = conn.model('Track');
 var Event = conn.model('Event');
 var Genre = conn.model('Genre');
 var News = conn.model('News');
+var Video = conn.model('Video');
 
 module.exports = {
 
@@ -94,8 +96,13 @@ module.exports = {
         return genre;
     },
 
-    createVideo:function createVideo() {
-        return null
+    createVideo:function createVideo(name) {
+        var video = new Video({
+            artists:[{artistName:name}]
+        });
+        video.save();
+
+        return video;
     },
 
     dropAllCollections: function dropAllCollections(){
@@ -105,7 +112,8 @@ module.exports = {
         Track.remove({}, function(err) {if (err) throw err;});
         Event.remove({}, function(err) {if (err) throw err;});
         News.remove({}, function(err) {if (err) throw err;});
-
+        Video.remove({}, function(err) {if (err) throw err;});
+        Genre.remove({}, function(err) {if (err) throw err;});
     },
 
     createDateForEndpoint: function createData(endpoint) {
@@ -123,6 +131,11 @@ module.exports = {
                 return {event:this.createEvent(artist.artistName), artist:artist};
             case 'news':
                 return {news:this.createNews()};
+            case 'video':
+                var artist = this.createArtist('C-3PO');
+                return {video:this.createVideo(artist.artistName), artist:artist};
+            case 'genre':
+                return {genre:this.createGenre()};
             default:
                 break;
         }
