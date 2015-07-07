@@ -4,6 +4,12 @@ Rest API: [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
 
 This REST API strives to aggregate data, for music events per month/week, per city. For artists and their music, may it be pre-recorded or live streamable audio, audio & video, or purchable tracks / EP's / albums, their upcoming shows/gigs per month/week, cities, genres and present it in a unified form.
 
+Below are `mobile clients` that currently utilize this REST API:
+
+* [Electro Deluxe iOS client](https://github.com/srmds/ElectroDeluxe-iOS-Obj-C)
+
+* [Flow Android client](https://github.com/srmds/Flow-Android-client)
+
 ## Prerequisites
 
 [Nodejs](https://nodejs.org)
