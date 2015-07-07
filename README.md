@@ -99,11 +99,11 @@ For every API endpoint there are tests, see test dir.
 
 To run the Mocha tests, from `root` run:
 
-    $ npm test
+    $ mocha
 
-Note that by running tests, the local mongodb is dropped and it's collections is dropped!
+Note that by running tests, the local mongodb and it's collections are dropped!
 
-Every test will create a fresh collection and runs with that collection, afterwards
+Every testcase will create a fresh collection of data and runs with that collection, afterwards
 the collection will again be dropped. You will have to (re)run the `data_import.sh` script, as described [here](https://github.com/srmds/FlowAPI#import-json-sample-data), to
 get sample data in to the database.
 
