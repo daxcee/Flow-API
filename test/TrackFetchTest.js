@@ -1,38 +1,89 @@
 var assert = require("assert");
-var server = require('../bin/www');
-var request = require('request');
-var basePath = 'http://localhost';
 var config = require('config');
+var app = require('../app.js');
+var httpRequest = require('supertest')(app);
+var db = require('./DatabaseHelper');
 
-var port = 3000;
-var baseURL = basePath + ':' + port;
+var basePath = '/api/v1/tracks';
 
-describe('server', function () {
-    before(function () {
-        server.listen(port);
+describe('-------- TRACK ENDPOINTS --------', function() {
+    var artistId;
+    var artistName;
+    var trackId;
+
+    //Do preliminary setup, before running each testcase.
+    beforeEach(function(done) {
+        db.dropAllCollections();
+
+        var options = db.createDateForEndpoint('track');
+        artistId =  options.artist._id;
+        artistName = options.artist.artistName;
+        trackId = options.track._id;
+
+        done();
     });
 
-    after(function () {
-        server.close();
+    afterEach(function(done) {
+        db.dropAllCollections();
+        done();
     });
-});
 
-describe('/', function () {
-    //Test whether the server is running
-    it('GET /', function (done) {
-        request(baseURL, function (err,resp) {
-            assert(!err);
-            assert.equal(200, resp.statusCode);
-            done();
+    //Testcases
+
+    describe('GET ' + basePath, function() {
+        it('Should return a Track item', function(done) {
+            httpRequest
+                .get(basePath)
+                .expect(200)
+                .set('Accept','application/json')
+                .expect('Content-Type', /json/)
+                .end(function(err, res){
+                    if (err)
+                        throw err;
+
+                    assert.equal(res.body.result[0]._id, trackId);
+                    assert.equal(res.body.result[0].artists[0].artistName, artistName);
+
+                    done();
+                });
         });
     });
 
-    //Test retrieve tracks of a specific artist
-    it('GET /api/v1/tracks/', function(done){
-        request(baseURL + '/api/v1/tracks?token=' + config.get('apikey'), function (err,resp) {
-            assert(!err);
-            assert.equal(200, resp.statusCode);
-            done();
+    describe('GET ' + basePath + '/:trackId', function() {
+        it('Should return a Track item whose id is provided', function(done) {
+            httpRequest
+                .get(basePath + '/' + trackId)
+                .expect(200)
+                .set('Accept','application/json')
+                .expect('Content-Type', /json/)
+                .end(function(err, res){
+                    if (err)
+                        throw err;
+
+                    assert.equal(res.body.result[0]._id, trackId);
+                    assert.equal(res.body.result[0].artists[0].artistName, artistName);
+
+                    done();
+                });
+        });
+    });
+
+    describe('GET ' + basePath + '/:artistId/artist', function() {
+        it('Should return a Track item whose id is provided', function(done) {
+            httpRequest
+                .get(basePath + '/' + artistId + '/artist')
+                .expect(200)
+                .set('Accept','application/json')
+                .expect('Content-Type', /json/)
+                .end(function(err, res){
+                    if (err)
+                        throw err;
+
+                    assert.equal(res.body.result[0]._id, trackId);
+                    assert.equal(res.body.result[0].artists[0].artistName, artistName);
+
+                    done();
+                });
         });
     });
 });

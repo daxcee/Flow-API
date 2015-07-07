@@ -1,39 +1,68 @@
 var assert = require("assert");
-var server = require('../bin/www');
-var request = require('request');
-var basePath = 'http://localhost';
 var config = require('config');
+var app = require('../app.js');
+var httpRequest = require('supertest')(app);
+var db = require('./DatabaseHelper');
 
-var port = 3000;
-var baseURL = basePath + ':' + port;
+var basePath = '/api/v1/artists';
 
-describe('server', function () {
-    before(function () {
-        server.listen(port);
+describe('-------- ARTIST ENDPOINTS --------', function() {
+    var artistId;
+    var artistName;
+
+    //Do preliminary setup, before running each testcase.
+    beforeEach(function(done) {
+        db.dropAllCollections();
+
+        var options = db.createDateForEndpoint('artist');
+        artistId =  options.artist._id;
+        artistName = options.artist.artistName;
+
+        done();
     });
 
-    after(function () {
-        server.close();
+    afterEach(function(done) {
+        db.dropAllCollections();
+        done();
     });
-});
 
-describe('/', function () {
-    //Test whether the server is running
-    it('GET /', function (done) {
-        request(baseURL, function (err,resp) {
-            assert(!err);
-            assert.equal(200, resp.statusCode);
-            done();
+    //Testcases
+
+    describe('GET ' + basePath, function() {
+        it('Should return an Artist item', function(done) {
+            httpRequest
+                .get(basePath)
+                .expect(200)
+                .set('Accept','application/json')
+                .expect('Content-Type', /json/)
+                .end(function(err, res){
+                    if (err)
+                        throw err;
+
+                    assert.equal(res.body.result[0]._id, artistId);
+                    assert.equal(res.body.result[0].artistName, artistName);
+
+                    done();
+                });
         });
     });
 
-    //Test retrieve all artists details
-    it('GET api/v1/artists', function (done) {
-        request(baseURL + '/api/v1/artists?token='+ config.get('apikey'), function (err,resp) {
-            assert(!err);
-            assert.equal(200, resp.statusCode);
-            done();
+    describe('GET ' + basePath + '/:artistId', function() {
+        it('Should return Artist items of whose id is:' + artistId, function(done) {
+            httpRequest
+                .get(basePath + '/' + artistId)
+                .expect(200)
+                .set('Accept','application/json')
+                .expect('Content-Type', /json/)
+                .end(function(err, res){
+                    if (err)
+                        throw err;
+
+                    assert.equal(res.body.result[0]._id, artistId);
+                    assert.equal(res.body.result[0].artistName, artistName);
+
+                    done();
+                });
         });
     });
-
 });

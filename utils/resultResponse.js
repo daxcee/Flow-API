@@ -5,7 +5,7 @@ var path = require('path');
 module.exports = {
 
     error:function serverError(res, err) {
-        res.statusCode = 500;
+        res.writeHead(500, {"Content-Type": "application/json"});
         var result =  {
             errorCode: 500,
             error: {
@@ -17,7 +17,7 @@ module.exports = {
     },
 
     unauthorized:function unauthorized(res) {
-        res.statusCode = 401;
+        res.writeHead(401, {"Content-Type": "application/json"});
         var result =  {
             errorCode: 401,
             error: {
@@ -35,7 +35,7 @@ module.exports = {
     },
 
     invalid_range: function(res,offset) {
-        res.statusCode = 400;
+        res.writeHead(400, {"Content-Type": "application/json"});
         var result = {
             errorCode:400,
             error: {
@@ -47,6 +47,8 @@ module.exports = {
     },
 
      page_not_found:function(req, res) {
+         res.writeHead(404, {"Content-Type": "text/html; charset=UTF-8"});
+
          res.statusCode = 404;
          res.sendFile(path.join(__dirname, '../public', '404.html'));
      }
