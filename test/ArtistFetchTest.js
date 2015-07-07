@@ -7,8 +7,7 @@ var db = require('./DatabaseHelper');
 var basePath = '/api/v1/artists';
 
 describe('-------- ARTIST ENDPOINTS --------', function() {
-    var artistId;
-    var artistName;
+    var artist;
     var token;
 
     //Do preliminary setup, before running each testcase.
@@ -16,8 +15,7 @@ describe('-------- ARTIST ENDPOINTS --------', function() {
         db.dropAllCollections();
 
         var options = db.createDateForEndpoint('artist');
-        artistId =  options.artist._id;
-        artistName = options.artist.artistName;
+        artist =  options.artist;
 
         var tokenPrefix = '?token=';
         token = tokenPrefix + db.createToken().value;
@@ -43,8 +41,8 @@ describe('-------- ARTIST ENDPOINTS --------', function() {
                     if (err)
                         throw err;
 
-                    assert.equal(res.body.result[0]._id, artistId);
-                    assert.equal(res.body.result[0].artistName, artistName);
+                    assert.equal(res.body.result[0]._id, artist._id);
+                    assert.equal(res.body.result[0].artistName, artist.artistName);
 
                     done();
                 });
@@ -52,9 +50,9 @@ describe('-------- ARTIST ENDPOINTS --------', function() {
     });
 
     describe('GET ' + basePath + '/:artistId', function() {
-        it('Should return Artist items of whose id is:' + artistId, function(done) {
+        it('Should return Artist items of whose id is provided', function(done) {
             httpRequest
-                .get(basePath + '/' + artistId + token)
+                .get(basePath + '/' + artist._id + token)
                 .expect(200)
                 .set('Accept','application/json')
                 .expect('Content-Type', /json/)
@@ -62,8 +60,8 @@ describe('-------- ARTIST ENDPOINTS --------', function() {
                     if (err)
                         throw err;
 
-                    assert.equal(res.body.result[0]._id, artistId);
-                    assert.equal(res.body.result[0].artistName, artistName);
+                    assert.equal(res.body.result[0]._id, artist._id);
+                    assert.equal(res.body.result[0].artistName, artist.artistName);
 
                     done();
                 });

@@ -7,9 +7,8 @@ var db = require('./DatabaseHelper');
 var basePath = '/api/v1/tracks';
 
 describe('-------- TRACK ENDPOINTS --------', function() {
-    var artistId;
-    var artistName;
-    var trackId;
+    var artist;
+    var track;
     var token;
 
     //Do preliminary setup, before running each testcase.
@@ -17,9 +16,8 @@ describe('-------- TRACK ENDPOINTS --------', function() {
         db.dropAllCollections();
 
         var options = db.createDateForEndpoint('track');
-        artistId =  options.artist._id;
-        artistName = options.artist.artistName;
-        trackId = options.track._id;
+        artist =  options.artist;
+        track = options.track;
 
         var tokenPrefix = '?token=';
         token = tokenPrefix + db.createToken().value;
@@ -45,8 +43,8 @@ describe('-------- TRACK ENDPOINTS --------', function() {
                     if (err)
                         throw err;
 
-                    assert.equal(res.body.result[0]._id, trackId);
-                    assert.equal(res.body.result[0].artists[0].artistName, artistName);
+                    assert.equal(res.body.result[0]._id, track._id);
+                    assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
 
                     done();
                 });
@@ -56,7 +54,7 @@ describe('-------- TRACK ENDPOINTS --------', function() {
     describe('GET ' + basePath + '/:trackId', function() {
         it('Should return a Track item whose id is provided', function(done) {
             httpRequest
-                .get(basePath + '/' + trackId + token)
+                .get(basePath + '/' + track._id + token)
                 .expect(200)
                 .set('Accept','application/json')
                 .expect('Content-Type', /json/)
@@ -64,8 +62,8 @@ describe('-------- TRACK ENDPOINTS --------', function() {
                     if (err)
                         throw err;
 
-                    assert.equal(res.body.result[0]._id, trackId);
-                    assert.equal(res.body.result[0].artists[0].artistName, artistName);
+                    assert.equal(res.body.result[0]._id, track._id);
+                    assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
 
                     done();
                 });
@@ -75,7 +73,7 @@ describe('-------- TRACK ENDPOINTS --------', function() {
     describe('GET ' + basePath + '/:artistId/artist', function() {
         it('Should return a Track item whose id is provided', function(done) {
             httpRequest
-                .get(basePath + '/' + artistId + '/artist' + token)
+                .get(basePath + '/' + artist._id + '/artist' + token)
                 .expect(200)
                 .set('Accept','application/json')
                 .expect('Content-Type', /json/)
@@ -83,8 +81,8 @@ describe('-------- TRACK ENDPOINTS --------', function() {
                     if (err)
                         throw err;
 
-                    assert.equal(res.body.result[0]._id, trackId);
-                    assert.equal(res.body.result[0].artists[0].artistName, artistName);
+                    assert.equal(res.body.result[0]._id, track._id);
+                    assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
 
                     done();
                 });
