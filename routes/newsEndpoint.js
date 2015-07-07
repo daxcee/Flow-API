@@ -10,6 +10,7 @@ router.use(base,function(req,res,next){
 });
 
 router.get(base, controllerLoader.newsController.getAllNews);
+router.get(base + '/:newsId/', controllerLoader.newsController.getNewsById);
 router.get(base + '/:id/date',controllerLoader.newsController.getNewsByDate);
 
 module.exports = router;

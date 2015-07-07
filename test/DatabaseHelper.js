@@ -4,6 +4,7 @@ require('../models/album')();
 require('../models/track')();
 require('../models/event')();
 require('../models/genre')();
+require('../models/news')();
 
 var tokenGen = require('../utils/tokenGenerator');
 var mongoose = require('mongoose');
@@ -16,6 +17,7 @@ var Artist = conn.model('Artist');
 var Track = conn.model('Track');
 var Event = conn.model('Event');
 var Genre = conn.model('Genre');
+var News = conn.model('News');
 
 module.exports = {
 
@@ -73,7 +75,13 @@ module.exports = {
     },
 
     createNews: function createNews() {
-        return null;
+        var news = new News({
+            title:'testNewsTitle',
+            date:createFormattedDate()
+        });
+        news.save();
+
+        return news;
     },
 
     createGenre:function createGenre() {
@@ -96,6 +104,8 @@ module.exports = {
         Artist.remove({}, function(err) {if (err) throw err;});
         Track.remove({}, function(err) {if (err) throw err;});
         Event.remove({}, function(err) {if (err) throw err;});
+        News.remove({}, function(err) {if (err) throw err;});
+
     },
 
     createDateForEndpoint: function createData(endpoint) {
@@ -111,6 +121,8 @@ module.exports = {
             case 'event':
                 var artist = this.createArtist('Padmé');
                 return {event:this.createEvent(artist.artistName), artist:artist};
+            case 'news':
+                return {news:this.createNews()};
             default:
                 break;
         }
