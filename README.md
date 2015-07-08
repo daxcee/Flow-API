@@ -71,6 +71,8 @@ Sample data can be found in the [samples](https://github.com/srmds/FlowAPI/tree/
 
 via the provided shell script, found in root:
 
+ First open up a new tab in terminal via `cmd + t` (OSX), then:
+
     $ ./data_import.sh
 
 or manually on each file:
