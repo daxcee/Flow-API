@@ -1,9 +1,8 @@
 machine:
   node:
     version: 0.12.3
-
   services:
-  - mongodb
+    - mongodb
 
 deployment:
   staging:
@@ -13,5 +12,4 @@ deployment:
 notify:
   webhooks:
     # gitter hook
-    - url: https://webhooks.gitter.im/e/2931d5c95d1047743d95      
-      
+    - url: https://webhooks.gitter.im/e/2931d5c95d1047743d95
