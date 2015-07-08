@@ -2,4 +2,14 @@
   "genres": [{"genreName": "Alternative" }],
   "title": "AlbumTitle",
   "artists": [{"artistName": "AAAA"}]
+},
+{
+"genres": [{"genreName": "Alternative" }],
+"title": "AlbumTitle",
+"artists": [{"artistName": "BBBB"},{"artistName": "CCCC"}]
+},
+{
+"genres": [{"genreName": "Alternative" }],
+"title": "AlbumTitle",
+"artists": [{"artistName": "AAAA"}]
 }

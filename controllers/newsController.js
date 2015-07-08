@@ -6,6 +6,10 @@ module.exports = {
         query.news(res, paramCollector.process(req));
     },
 
+    getNewsById: function (req, res) {
+        query.news(res, paramCollector.process(req, "_id"));
+    },
+
     getNewsByDate: function (req, res) {
         query.news(res, paramCollector.process(req, "date"));
     }

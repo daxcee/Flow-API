@@ -16,7 +16,7 @@ module.exports = {
        query.events(res, paramCollector.process(req, "city"));
     },
     getEventByArtist: function (req, res) {
-        query.events(res, paramCollector.process(req, "artist"));
+        query.eventsByArtist(res, paramCollector.process(req, "_id"));
     },
     getEventByGenre: function (req, res) {
         query.events(res, paramCollector.process(req, "genre"));
