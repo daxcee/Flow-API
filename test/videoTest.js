@@ -7,25 +7,24 @@ var db = require('./testRunnerHelper');
 var basePath = '/api/v1/videos';
 
 describe('-------- VIDEO ENDPOINTS --------', function() {
+
     var artist;
     var video;
     var token;
+    var tokenPrefix = '?token=';
 
     //Do preliminary setup, before running each testcase.
-    beforeEach(function(done) {
-        db.dropAllCollections();
+    before(function(done) {
 
         var options = db.createDataForEndpoint('video');
         artist =  options.artist;
         video = options.video;
-
-        var tokenPrefix = '?token=';
-        token = tokenPrefix + db.createToken().value;
+        token = tokenPrefix + db.createToken();
 
         done();
     });
 
-    afterEach(function(done) {
+    after(function(done) {
         db.dropAllCollections();
         done();
     });

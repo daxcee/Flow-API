@@ -7,23 +7,21 @@ var db = require('./testRunnerHelper');
 var basePath = '/api/v1/news';
 
 describe('-------- NEWS ENDPOINTS --------', function() {
+
     var news;
     var token;
+    var tokenPrefix = '?token=';
 
     //Do preliminary setup, before running each testcase.
-    beforeEach(function(done) {
-        db.dropAllCollections();
-
+    before(function(done) {
         var options = db.createDataForEndpoint('news');
-        news =  options.news;
-
-        var tokenPrefix = '?token=';
-        token = tokenPrefix + db.createToken().value;
+        news = options.news;
+        token = tokenPrefix + db.createToken();
 
         done();
     });
 
-    afterEach(function(done) {
+    after(function(done) {
         db.dropAllCollections();
         done();
     });
@@ -84,6 +82,4 @@ describe('-------- NEWS ENDPOINTS --------', function() {
                 });
         });
     });
-
-
 });

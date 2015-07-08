@@ -7,25 +7,23 @@ var db = require('./testRunnerHelper');
 var basePath = '/api/v1/tracks';
 
 describe('-------- TRACK ENDPOINTS --------', function() {
+
     var artist;
     var track;
     var token;
+    var tokenPrefix = '?token=';
 
     //Do preliminary setup, before running each testcase.
-    beforeEach(function(done) {
-        db.dropAllCollections();
-
+    before(function(done) {
         var options = db.createDataForEndpoint('track');
         artist =  options.artist;
         track = options.track;
-
-        var tokenPrefix = '?token=';
-        token = tokenPrefix + db.createToken().value;
+        token = tokenPrefix + db.createToken();
 
         done();
     });
 
-    afterEach(function(done) {
+    after(function(done) {
         db.dropAllCollections();
         done();
     });

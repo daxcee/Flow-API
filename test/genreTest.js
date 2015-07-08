@@ -7,23 +7,21 @@ var db = require('./testRunnerHelper');
 var basePath = '/api/v1/genres';
 
 describe('-------- GENRE ENDPOINTS --------', function() {
+
     var genre;
     var token;
+    var tokenPrefix = '?token=';
 
     //Do preliminary setup, before running each testcase.
-    beforeEach(function(done) {
-        db.dropAllCollections();
-
+    before(function(done) {
         var options = db.createDataForEndpoint('genre');
         genre =  options.genre;
-
-        var tokenPrefix = '?token=';
-        token = tokenPrefix + db.createToken().value;
+        token = tokenPrefix + db.createToken();
 
         done();
     });
 
-    afterEach(function(done) {
+    after(function(done) {
         db.dropAllCollections();
         done();
     });
@@ -58,7 +56,7 @@ describe('-------- GENRE ENDPOINTS --------', function() {
                 .end(function(err, res){
                     if (err)
                         throw err;
-
+                    console.log('RES: ' + res.body.result[0]);
                     assert.equal(res.body.result[0]._id, genre._id);
 
                     done();

@@ -7,30 +7,35 @@ var db = require('./testRunnerHelper');
 var basePath = '/api/v1/albums';
 
 describe('-------- ALBUM ENDPOINTS --------', function() {
+
     var artist;
     var album;
     var token;
+    var tokenPrefix = '?token=';
 
-    //Do preliminary setup, before running each testcase.
-    beforeEach(function(done) {
-        db.dropAllCollections();
+    before(function(done) {
+
+        setTimeout(function () {
+            db.init();
+
+            done()
+
+        },1500);
+
 
         var options = db.createDataForEndpoint('album');
         artist =  options.artist;
         album = options.album;
-
-        var tokenPrefix = '?token=';
-        token = tokenPrefix + db.createToken().value;
-
-        done();
+        token = tokenPrefix + db.createToken();
     });
 
-    afterEach(function(done) {
+    after(function(done) {
         db.dropAllCollections();
         done();
     });
 
     //Testcases
+
 
     describe('GET ' + basePath, function() {
         it('Should return an Album item', function(done) {
@@ -61,7 +66,7 @@ describe('-------- ALBUM ENDPOINTS --------', function() {
                 .end(function(err, res){
                     if (err)
                         throw err;
-
+                    console.log('RES: 0-----' + res.body.result[0]);
                     assert.equal(res.body.result[0]._id, album._id);
                     assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
 

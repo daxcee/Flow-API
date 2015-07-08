@@ -7,11 +7,10 @@ require('../models/genre')();
 require('../models/news')();
 require('../models/video')();
 
-var tokenGen = require('../utils/tokenGenerator');
 var mongoose = require('mongoose');
 var config = require('config');
 
-var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 4 }});
+var conn = mongoose.createConnection(config.get('db_uri'));
 var Token = conn.model('Token');
 var Album = conn.model('Album');
 var Artist = conn.model('Artist');
@@ -23,14 +22,18 @@ var Video = conn.model('Video');
 
 module.exports = {
 
+    init:function() {
+        conn = mongoose.createConnection(config.get('db_uri'));
+    },
+
     createToken:function createToken(){
-        var token = new Token( {
-            value: tokenGen.modules.generateToken(),
+        var token = new Token({
+            value: Math.random().toString(10).substr(2, 5),
             createdAt: new Date()
         });
         token.save();
 
-        return token;
+        return token.value;
     },
 
     createArtist:function createArtist(name){
@@ -117,6 +120,7 @@ module.exports = {
     },
 
     createDataForEndpoint: function createData(endpoint) {
+
         switch (endpoint) {
             case 'album':
                 var artist = this.createArtist('Yoda');
@@ -145,4 +149,8 @@ module.exports = {
 function createFormattedDate(){
     var currentDate = new Date();
     return currentDate.getDay() + '-' + '' + currentDate.getMonth() + '-' + currentDate.getFullYear();
+}
+
+function generateToken(){
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16)
 }
