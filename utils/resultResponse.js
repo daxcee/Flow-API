@@ -5,12 +5,23 @@ var path = require('path');
 module.exports = {
 
     error:function serverError(res, err) {
-        res.writeHead(500, {"Content-Type": "application/json"});
+        res.writeHead(res.statusCode, {"Content-Type": "application/json"});
         var result =  {
-            errorCode: 500,
+            errorCode: res.statusCode,
             error: {
-                description:"500 Server error",
+                description: res.statusCode + "Server error",
                 message: err
+            }
+        };
+        res.end(pretty.print(result));
+    },
+
+    invalidFBToken:function invalidFBToken(res,data) {
+        res.writeHead(401, {"Content-Type": "application/json"});
+        var result =  {
+            errorCode: 401,
+            error: {
+                message:data['error']['message']
             }
         };
         res.end(pretty.print(result));

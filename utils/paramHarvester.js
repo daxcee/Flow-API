@@ -4,6 +4,10 @@ module.exports = {
 
         var params = {};
 
+        if(req.query.hasOwnProperty("token")){
+            params["token"] = req.query.token;
+        }
+
         if(req.query.hasOwnProperty("limit")){
             params["limit"] = req.query.limit;
         }
