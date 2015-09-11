@@ -27,7 +27,7 @@ module.exports = {
 
         fbGraphAPI.debugToken(token, function(err,result,data) {
             if(err) {
-                serverResponse.error(res,pretty.print(err));
+                serverResponse.error(res,err);
                 return
             }
 
@@ -53,16 +53,16 @@ module.exports = {
                                     email:user.email,
                                     tokenIsValid:tokenDetails.isValid
                                 };
-                                serverResponse.result(res, pretty.print(result));
+                                serverResponse.result(res, result);
                             } else {
                                 self.registerNewUser(tokenDetails,userCredentials,function(result){
-                                    serverResponse.result(res, pretty.print(result));
+                                    serverResponse.result(res, result);
                                 });
                             }
                         });
                     });
                 } else {
-                    serverResponse.invalidFBToken(res, pretty.print(data['data']));
+                    serverResponse.invalidFBToken(res, data['data']);
                 }
             }
             else {
@@ -109,7 +109,7 @@ module.exports = {
                             user: user,
                             token: token
                         };
-                        callback(JSON.stringify(result))
+                        callback(result)
                     }
                 });
             }
