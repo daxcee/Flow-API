@@ -1,26 +1,20 @@
 var assert = require("assert");
-var config = require('config');
-var app = require('../app.js');
-var httpRequest = require('supertest')(app);
 var db = require('./utils/dbHelper');
-
-var basePath = '/api/v1/videos';
+var MockedHTTPResponse = require('./utils/HTTPResponse.js');
+var HTTPClient = require('./utils/HTTPClient.js');
 
 describe('-------- VIDEO ENDPOINTS --------', function() {
 
+    var basePath = '/api/v1';
+    var endpoint = '/videos';
     var artist;
     var video;
-    var token;
-    var tokenPrefix = '?token=';
 
     //Do preliminary setup, before running each testcase.
     before(function(done) {
-
         var options = db.createDataForEndpoint('video');
         artist =  options.artist;
         video = options.video;
-        token = tokenPrefix + db.createToken();
-
         done();
     });
 
@@ -33,57 +27,68 @@ describe('-------- VIDEO ENDPOINTS --------', function() {
 
     describe('GET ' + basePath, function() {
         it('Should return a Video item', function(done) {
-            httpRequest
-                .get(basePath + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var httpResponse = new MockedHTTPResponse(basePath,endpoint);
+            httpResponse.setGETResponse(200,{ video:video});
 
-                    assert.equal(res.body.result[0]._id, video._id);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(endpoint,options,function(res){
+                assert.equal(res.body.video._id, video._id);
+                done()
+            });
         });
     });
 
     describe('GET ' + basePath, function() {
         it('Should a Video item whose id is provided', function(done) {
-            httpRequest
-                .get(basePath + '/' + video._id + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/' + video._id;
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
+            httpResponse.setGETResponse(200,{ video:video});
 
-                    assert.equal(res.body.result[0]._id, video._id);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+                assert.equal(res.body.video._id, video._id);
+                done()
+            });
         });
     });
 
-
     describe('GET ' + basePath + '/:artistId/artist', function() {
         it('Should return a Video item that belongs to the artist found by its id', function(done) {
-            httpRequest
-                .get(basePath + '/' + artist._id + '/artist' + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/' + artist._id + '/artist';
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
+            httpResponse.setGETResponse(200,{ video:video});
 
-                    assert.equal(res.body.result[0]._id, video._id);
-                    assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+                assert.equal(res.body.video._id, video._id);
+                assert.equal(res.body.video.artists[0].artistName, artist.artistName);
+
+                done()
+            });
         });
     });
 });
