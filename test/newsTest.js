@@ -1,23 +1,17 @@
 var assert = require("assert");
-var config = require('config');
-var app = require('../app.js');
-var httpRequest = require('supertest')(app);
 var db = require('./utils/dbHelper');
-
-var basePath = '/api/v1/news';
+var MockedHTTPResponse = require('./utils/HTTPResponse.js');
+var HTTPClient = require('./utils/HTTPClient.js');
 
 describe('-------- NEWS ENDPOINTS --------', function() {
-
+    var basePath = '/api/v1/news';
+    var endpoint = '/news';
     var news;
-    var token;
-    var tokenPrefix = '?token=';
 
     //Do preliminary setup, before running each testcase.
     before(function(done) {
         var options = db.createDataForEndpoint('news');
         news = options.news;
-        token = tokenPrefix + db.createToken();
-
         done();
     });
 
@@ -30,56 +24,70 @@ describe('-------- NEWS ENDPOINTS --------', function() {
 
     describe('GET ' + basePath, function() {
         it('Should return a News item', function(done) {
-            httpRequest
-                .get(basePath + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var httpResponse = new MockedHTTPResponse(basePath,endpoint);
 
-                    assert.equal(res.body.result[0]._id, news._id);
+            httpResponse.setGETResponse(200,{ news:news});
 
-                    done();
-                });
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
+
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(endpoint,options,function(res){
+                assert.equal(res.body.news._id, news._id);
+                done()
+            });
         });
     });
 
     describe('GET ' + basePath + '/:newsId', function() {
         it('Should a News item whose id is provided', function(done) {
-            httpRequest
-                .get(basePath + '/' + news._id + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/:newsId';
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
 
-                    assert.equal(res.body.result[0]._id, news._id);
+            httpResponse.setGETResponse(200,{ news:news});
 
-                    done();
-                });
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
+
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+                assert.equal(res.body.news._id, news._id);
+                done()
+            });
         });
     });
 
     describe('GET ' + basePath + '/:date(dd-mm-yyyy)/date', function() {
         it('Should a News item whose id is provided', function(done) {
-            httpRequest
-                .get(basePath + '/' + news.date + '/date' + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/' + news.date + '/date';
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
 
-                    assert.equal(res.body.result[0]._id, news._id);
-                    assert.equal(res.body.result[0].date, news.date);
+            httpResponse.setGETResponse(200,{ news:news});
 
-                    done();
-                });
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
+
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+                assert.equal(res.body.news._id, news._id);
+                assert.equal(res.body.news.date, news.date);
+                done()
+            });
         });
     });
 });
