@@ -1,10 +1,7 @@
 var assert = require("assert");
-var config = require('config');
-var app = require('../app.js');
 var db = require('./utils/dbHelper');
 var MockedHTTPResponse = require('./utils/HTTPResponse.js');
 var HTTPClient = require('./utils/HTTPClient.js');
-
 
 describe('-------- ALBUM ENDPOINTS --------', function() {
 
@@ -13,13 +10,11 @@ describe('-------- ALBUM ENDPOINTS --------', function() {
     var token;
     var basePath = '/api/v1';
     var endpoint = '/albums';
-    var tokenPrefix = '?token=';
 
     before(function(done) {
         var options = db.createDataForEndpoint('album');
         artist =  options.artist;
         album = options.album;
-        token = tokenPrefix + db.createToken();
         done();
     });
 

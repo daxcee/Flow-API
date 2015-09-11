@@ -1,5 +1,4 @@
 var assert = require("assert");
-var config = require('config');
 var db = require('./utils/dbHelper');
 var MockedHTTPResponse = require('./utils/HTTPResponse.js');
 var HTTPClient = require('./utils/HTTPClient.js');
