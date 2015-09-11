@@ -1,23 +1,17 @@
 var assert = require("assert");
-var config = require('config');
-var app = require('../app.js');
-var httpRequest = require('supertest')(app);
 var db = require('./utils/dbHelper');
-
-var basePath = '/api/v1/genres';
+var MockedHTTPResponse = require('./utils/HTTPResponse.js');
+var HTTPClient = require('./utils/HTTPClient.js');
 
 describe('-------- GENRE ENDPOINTS --------', function() {
-
+    var basePath = '/api/v1';
+    var endpoint = '/genre';
     var genre;
-    var token;
-    var tokenPrefix = '?token=';
 
     //Do preliminary setup, before running each testcase.
     before(function(done) {
         var options = db.createDataForEndpoint('genre');
         genre =  options.genre;
-        token = tokenPrefix + db.createToken();
-
         done();
     });
 
@@ -30,37 +24,46 @@ describe('-------- GENRE ENDPOINTS --------', function() {
 
     describe('GET ' + basePath, function() {
         it('Should return a Genre item', function(done) {
-            httpRequest
-                .get(basePath + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var httpResponse = new MockedHTTPResponse(basePath,endpoint);
 
-                    assert.equal(res.body.result[0]._id, genre._id);
+            httpResponse.setGETResponse(200,{ genre:genre});
 
-                    done();
-                });
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
+
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(endpoint,options,function(res){
+                assert.equal(res.body.genre._id, genre._id);
+                done()
+            });
         });
     });
 
     describe('GET ' + basePath + '/:genreName', function() {
         it('Should return a Genre item whose name is provided', function(done) {
-            httpRequest
-                .get(basePath + '/' + genre.genreName + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
-                    console.log('RES: ' + res.body.result[0]);
-                    assert.equal(res.body.result[0]._id, genre._id);
+            var resource = endpoint + '/:genreName';
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
 
-                    done();
-                });
+            httpResponse.setGETResponse(200,{ genre:genre});
+
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
+
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+                assert.equal(res.body.genre._id, genre._id);
+                done()
+            });
         });
     });
 });
