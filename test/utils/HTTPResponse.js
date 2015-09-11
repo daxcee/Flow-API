@@ -27,7 +27,7 @@ HTTPResponse.prototype.setGETResponse = function(statusCode, response) {
         response: response
     };
 
-    console.log('incoming options:' + JSON.stringify(options));
+   // console.log('incoming options:' + JSON.stringify(options));
 
     var scope =  nock(this.appURL + this.basePath, {
         reqheaders: options.headers

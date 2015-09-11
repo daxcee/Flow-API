@@ -1,32 +1,26 @@
 var assert = require("assert");
 var config = require('config');
 var app = require('../app.js');
-var httpRequest = require('supertest')(app);
 var db = require('./utils/dbHelper');
+var MockedHTTPResponse = require('./utils/HTTPResponse.js');
+var HTTPClient = require('./utils/HTTPClient.js');
 
-var basePath = '/api/v1/albums';
 
 describe('-------- ALBUM ENDPOINTS --------', function() {
 
     var artist;
     var album;
     var token;
+    var basePath = '/api/v1';
+    var endpoint = '/albums';
     var tokenPrefix = '?token=';
 
     before(function(done) {
-
-        setTimeout(function () {
-            db.init();
-
-            done()
-
-        },1500);
-
-
         var options = db.createDataForEndpoint('album');
         artist =  options.artist;
         album = options.album;
         token = tokenPrefix + db.createToken();
+        done();
     });
 
     after(function(done) {
@@ -39,39 +33,54 @@ describe('-------- ALBUM ENDPOINTS --------', function() {
 
     describe('GET ' + basePath, function() {
         it('Should return an Album item', function(done) {
-            httpRequest
-                .get(basePath + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var httpResponse = new MockedHTTPResponse(basePath,endpoint);
 
-                    assert.equal(res.body.result[0]._id, album._id);
-                    assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
+            httpResponse.setGETResponse(200,{'album':album});
 
-                    done();
-                });
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
+
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(endpoint,options,function(res){
+
+                assert.equal(res.body.album._id, album._id);
+                assert.equal(res.body.album.artists[0].artistName, artist.artistName);
+
+                done()
+            });
         });
     });
 
     describe('GET ' + basePath + '/:artistId/artist', function() {
         it('Should return an Album item that belongs to the artist found by its id', function(done) {
-            httpRequest
-                .get(basePath + '/' + artist._id + '/artist' + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
-                    console.log('RES: 0-----' + res.body.result[0]);
-                    assert.equal(res.body.result[0]._id, album._id);
-                    assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
+            var resource =  + endpoint + '/' + artist._id + '/artist';
 
-                    done();
-                });
+            var httpResponse = new MockedHTTPResponse(basePath, resource);
+            httpResponse.setGETResponse(200,{'album':album});
+
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
+
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+
+                assert.equal(res.body.album._id, album._id);
+                assert.equal(res.body.album.artists[0].artistName, artist.artistName);
+
+                done()
+            });
+
+
         });
     });
 });

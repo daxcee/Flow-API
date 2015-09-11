@@ -18,12 +18,13 @@ HTTPClient.prototype.setEndpoint = function(endpoint){
     this.endpoint = endpoint
 };
 
-HTTPClient.prototype.doGet = function(endpoint,options, callback){
+HTTPClient.prototype.doGet = function(endpoint, options, callback){
     this.endpoint = endpoint;
     //processHeaders(request,options);
-
+    var requestURL = this.basePath + this.endpoint;
+    console.log('requestURL: ' + requestURL);
     var request = httpRequest
-        .get(this.basePath + this.endpoint)
+        .get(requestURL)
         .expect(200)
         .set('Accept','application/json')
         .expect('Content-Type', 'application/json')
