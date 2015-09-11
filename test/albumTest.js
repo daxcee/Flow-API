@@ -58,7 +58,7 @@ describe('-------- ALBUM ENDPOINTS --------', function() {
 
     describe('GET ' + basePath + '/:artistId/artist', function() {
         it('Should return an Album item that belongs to the artist found by its id', function(done) {
-            var resource =  + endpoint + '/' + artist._id + '/artist';
+            var resource =  endpoint + '/' + artist._id + '/artist';
 
             var httpResponse = new MockedHTTPResponse(basePath, resource);
             httpResponse.setGETResponse(200,{'album':album});
