@@ -1,26 +1,21 @@
 var assert = require("assert");
 var config = require('config');
-var app = require('../app.js');
-var httpRequest = require('supertest')(app);
 var db = require('./utils/dbHelper');
-
-var basePath = '/api/v1/events';
+var MockedHTTPResponse = require('./utils/HTTPResponse.js');
+var HTTPClient = require('./utils/HTTPClient.js');
 
 describe('-------- EVENTS ENDPOINTS --------', function() {
-
+    var basePath = '/api/v1';
+    var endpoint = '/events';
     var artist;
     var event;
     var genre;
-    var token;
-    var tokenPrefix = '?token=';
 
     //Do preliminary setup, before running each testcase.
     before(function(done) {
         var options = db.createDataForEndpoint('event');
         artist =  options.artist;
         event = options.event;
-        token = tokenPrefix + db.createToken();
-
         done()
     });
 
@@ -33,96 +28,124 @@ describe('-------- EVENTS ENDPOINTS --------', function() {
 
     describe('GET ' + basePath, function() {
         it('Should return an Event item', function(done) {
-            httpRequest
-                .get(basePath + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var httpResponse = new MockedHTTPResponse(basePath,endpoint);
+            httpResponse.setGETResponse(200,{ event:event});
 
-                    assert.equal(res.body.result[0]._id, event._id);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(endpoint,options,function(res){
+
+                assert.equal(res.body.event._id, event._id);
+
+                done()
+            });
         });
     });
 
     describe('GET ' + basePath + '/:eventId', function() {
         it('Should an Event item whose id is provided', function(done) {
-            httpRequest
-                .get(basePath + '/' + event._id + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/:eventId';
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
+            httpResponse.setGETResponse(200,{ event:event});
 
-                    assert.equal(res.body.result[0]._id, event._id);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+
+                assert.equal(res.body.event._id, event._id);
+
+                done()
+            });
         });
     });
 
     describe('GET ' + basePath + '/:city/city', function() {
         it('Should return Event items that takes place in provided City ', function(done) {
-            httpRequest
-                .get(basePath + '/' + event.city + '/city' + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/' + event.city + '/city';
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
+            httpResponse.setGETResponse(200,{ event:event});
 
-                    assert.equal(res.body.result[0]._id, event._id);
-                    assert.equal(res.body.result[0].city, event.city);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+
+                assert.equal(res.body.event._id, event._id);
+                assert.equal(res.body.event._id, event._id);
+                assert.equal(res.body.event.city, event.city);
+                done()
+            });
         });
     });
 
     describe('GET ' + basePath + '/:date(dd-mm-yyyy)/date', function() {
         it('Should return Event items that belong to provided Date', function(done) {
-            httpRequest
-                .get(basePath + '/' + event.date + '/date' + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/' + event.date + '/date';
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
+            httpResponse.setGETResponse(200,{ event:event});
 
-                    assert.equal(res.body.result[0]._id, event._id);
-                    assert.equal(res.body.result[0].date, event.date);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+
+                assert.equal(res.body.event._id, event._id);
+                assert.equal(res.body.event.date, event.date);
+                done()
+            });
         });
     });
 
 
     describe('GET ' + basePath + '/:artistId/artist', function() {
         it('Should return Event items that contain provided artist in line-up ', function(done) {
-            httpRequest
-                .get(basePath + '/' + artist._id + '/artist' + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/' + artist._id + '/artist';
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
+            httpResponse.setGETResponse(200,{ event:event});
 
-                    assert.equal(res.body.result[0]._id, event._id);
-                    assert.equal(res.body.result[0].date, event.date);
-                    assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+
+                assert.equal(res.body.event._id, event._id);
+                assert.equal(res.body.event.date, event.date);
+                assert.equal(res.body.event.artists[0].artistName, artist.artistName);
+
+                done()
+            });
         });
     });
 });
