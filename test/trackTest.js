@@ -1,25 +1,20 @@
 var assert = require("assert");
-var config = require('config');
-var app = require('../app.js');
-var httpRequest = require('supertest')(app);
 var db = require('./utils/dbHelper');
-
-var basePath = '/api/v1/tracks';
+var MockedHTTPResponse = require('./utils/HTTPResponse.js');
+var HTTPClient = require('./utils/HTTPClient.js');
 
 describe('-------- TRACK ENDPOINTS --------', function() {
 
+    var basePath = '/api/v1';
+    var endpoint = '/tracks';
     var artist;
     var track;
-    var token;
-    var tokenPrefix = '?token=';
 
     //Do preliminary setup, before running each testcase.
     before(function(done) {
         var options = db.createDataForEndpoint('track');
         artist =  options.artist;
         track = options.track;
-        token = tokenPrefix + db.createToken();
-
         done();
     });
 
@@ -32,58 +27,69 @@ describe('-------- TRACK ENDPOINTS --------', function() {
 
     describe('GET ' + basePath, function() {
         it('Should return a Track item', function(done) {
-            httpRequest
-                .get(basePath + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var httpResponse = new MockedHTTPResponse(basePath,endpoint);
+            httpResponse.setGETResponse(200,{ track:track});
 
-                    assert.equal(res.body.result[0]._id, track._id);
-                    assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(endpoint,options,function(res){
+                assert.equal(res.body.track._id, track._id);
+                assert.equal(res.body.track.artists[0].artistName, artist.artistName);
+                done()
+            });
         });
     });
 
-    describe('GET ' + basePath + '/:trackId', function() {
+   describe('GET ' + basePath + '/:trackId', function() {
         it('Should return a Track item whose id is provided', function(done) {
-            httpRequest
-                .get(basePath + '/' + track._id + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/' + track._id;
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
+            httpResponse.setGETResponse(200,{ track:track});
 
-                    assert.equal(res.body.result[0]._id, track._id);
-                    assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+                assert.equal(res.body.track._id, track._id);
+                assert.equal(res.body.track.artists[0].artistName, artist.artistName);
+                done()
+            });
         });
     });
 
     describe('GET ' + basePath + '/:artistId/artist', function() {
         it('Should return a Track item whose id is provided', function(done) {
-            httpRequest
-                .get(basePath + '/' + artist._id + '/artist' + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/' + artist._id + '/artist';
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
+            httpResponse.setGETResponse(200,{ track:track});
 
-                    assert.equal(res.body.result[0]._id, track._id);
-                    assert.equal(res.body.result[0].artists[0].artistName, artist.artistName);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+                assert.equal(res.body.track._id, track._id);
+                assert.equal(res.body.track.artists[0].artistName, artist.artistName);
+                done()
+            });
         });
     });
 });
