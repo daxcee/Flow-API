@@ -20,27 +20,25 @@ HTTPClient.prototype.setEndpoint = function(endpoint){
 
 HTTPClient.prototype.doGet = function(endpoint, options, callback){
     this.endpoint = endpoint;
-    //processHeaders(request,options);
     var requestURL = this.basePath + this.endpoint;
-    console.log('requestURL: ' + requestURL);
-    var request = httpRequest
-        .get(requestURL)
-        .expect(200)
-        .set('Accept','application/json')
-        .expect('Content-Type', 'application/json')
-        .end(function(err, res){
-            if (err) {
-                callback(err);
-                done();
-                return
-            }
 
-            callback(res);
+    console.log('requestURL: ' + requestURL);
+
+    var request = httpRequest.get(requestURL);
+    processHeaders(request,options);
+    request.end(function(err, res){
+        if (err) {
+            callback(err);
             done();
-        });
+            return
+        }
+        callback(res);
+        done();
+    });
 };
 
 function processHeaders(request, options) {
+    request.expect(options.statusCode);
     setAcceptHeaders(request, options.headers.accept);
     setExpectHeaders(request, options.headers.expect)
 }
