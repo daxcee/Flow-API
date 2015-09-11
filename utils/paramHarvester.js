@@ -40,8 +40,6 @@ module.exports = {
             params["searchRule"] = searchRule;
         }
 
-        console.log("processed params: " + JSON.stringify(params));
-
         return params;
     }
 

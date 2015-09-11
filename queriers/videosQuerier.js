@@ -21,8 +21,6 @@ module.exports = {
         var searchRule = params.searchRule;
         var fields = params.fields;
 
-        console.log("searchQuery: %s", pretty.print(searchRule));
-
         Video.find(searchRule,fields).sort(sortRule).paginate(range.offset, range.limit, function(err, docs, total) {
             params.total = total;
             var paging = pagination.paging(res,params);
@@ -58,8 +56,6 @@ module.exports = {
         var fields = params.fields;
 
         var result = {};
-
-        console.log("searchQuery: %s", pretty.print(searchRule));
 
         Artist.findOne(searchRule, function (err, artist) {
             if (err) {
