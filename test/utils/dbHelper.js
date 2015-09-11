@@ -1,11 +1,13 @@
-require('../models/token')();
-require('../models/artist')();
-require('../models/album')();
-require('../models/track')();
-require('../models/event')();
-require('../models/genre')();
-require('../models/news')();
-require('../models/video')();
+require('../../models/token')();
+require('../../models/artist')();
+require('../../models/album')();
+require('../../models/track')();
+require('../../models/event')();
+require('../../models/genre')();
+require('../../models/news')();
+require('../../models/video')();
+require('../../models/user')();
+require('../../models/fbtoken')();
 
 var mongoose = require('mongoose');
 var config = require('config');
@@ -19,6 +21,8 @@ var Event = conn.model('Event');
 var Genre = conn.model('Genre');
 var News = conn.model('News');
 var Video = conn.model('Video');
+var User = conn.model('User');
+var FBToken = conn.model('FBToken');
 
 module.exports = {
 
@@ -108,15 +112,44 @@ module.exports = {
         return video;
     },
 
+    createUser: function createUser() {
+        var user = new User({
+            _Id:1298372311,
+            name:'Jar Jar Binks',
+            email:'jarjar@binks.com'
+        });
+        user.save();
+
+        return user;
+    },
+
+    createFBToken: function createFBToken(user){
+        var fbToken = new FBToken({
+            _userid: user._id,
+            expires: Math.floor(Date.now()+1 / 1000),
+            appId: 'testAppId',
+            scopes:['email','public_profile'],
+            isValid:true
+        });
+
+        fbToken.save();
+
+        return fbToken;
+    },
+
     dropAllCollections: function dropAllCollections(){
-        Token.remove({}, function(err) {if(err) throw err;});
-        Album.remove({}, function(err) {if(err) throw err;});
-        Artist.remove({}, function(err) {if (err) throw err;});
-        Track.remove({}, function(err) {if (err) throw err;});
-        Event.remove({}, function(err) {if (err) throw err;});
-        News.remove({}, function(err) {if (err) throw err;});
-        Video.remove({}, function(err) {if (err) throw err;});
-        Genre.remove({}, function(err) {if (err) throw err;});
+        if(process.env.NODE_ENV === 'development') {
+            Token.remove({}, function(err) {if(err) throw err;});
+            Album.remove({}, function(err) {if(err) throw err;});
+            Artist.remove({}, function(err) {if (err) throw err;});
+            Track.remove({}, function(err) {if (err) throw err;});
+            Event.remove({}, function(err) {if (err) throw err;});
+            News.remove({}, function(err) {if (err) throw err;});
+            Video.remove({}, function(err) {if (err) throw err;});
+            Genre.remove({}, function(err) {if (err) throw err;});
+            FBToken.remove({}, function(err) {if(err) throw err;});
+            User.remove({}, function(err) {if(err) throw err;});
+        }
     },
 
     createDataForEndpoint: function createData(endpoint) {
@@ -140,6 +173,11 @@ module.exports = {
                 return {video:this.createVideo(artist.artistName), artist:artist};
             case 'genre':
                 return {genre:this.createGenre()};
+            case 'user':
+                return {user:this.createUser()};
+            case 'fbtoken':
+                var user = this.createUser();
+                return {fbtoken:this.createFBToken(user),user:user};
             default:
                 break;
         }
