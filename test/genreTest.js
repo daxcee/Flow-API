@@ -2,7 +2,7 @@ var assert = require("assert");
 var config = require('config');
 var app = require('../app.js');
 var httpRequest = require('supertest')(app);
-var db = require('./testRunnerHelper');
+var db = require('./utils/dbHelper');
 
 var basePath = '/api/v1/genres';
 
