@@ -1,8 +1,9 @@
 var config = require('config');
-var httpRequest = require('supertest')(config.get('app_url'));
+var httpRequest = require('supertest')(config.get('test_app_url'));
+var express = require('express');
 
 function HTTPClient(basePath) {
-    this.appURL = 'http://' + config.get('app_url');
+    this.appURL = 'http://' + config.get('test_app_url');
     this.basePath = basePath;
 }
 
