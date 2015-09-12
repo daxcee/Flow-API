@@ -11,14 +11,13 @@ var conn = mongoose.createConnection(config.get('db_uri'),{ server: { poolSize: 
 var User = conn.model('User');
 
 module.exports = {
-    userById: function(res, userId,callback){
+    userById: function(userId,callback){
         User.findOne({ _Id: userId }, function (err, user) {
             if (err) {
-                serverResponse.error(res,err);
-                return;
+                callback(err);
+            } else{
+                callback(user);
             }
-
-            callback(user);
         });
     }
 };

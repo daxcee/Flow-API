@@ -11,6 +11,7 @@ module.exports = {
     //Validate every API endpoint request, check if a token is: provided, valid, expired.
     validate:function(req,res,next){
         if(process.env.NODE_ENV === 'development') {
+            console.log("In dev mode, no token authentication");
             next();
 
             return;
@@ -25,13 +26,16 @@ module.exports = {
                 }
 
                 if (token) {
+                    console.log("Token is valid: %s", token);
                     next();
                 } else {
+                    console.log("Token provided but is invalid");
                     resultResponse.unauthorized(res);
                     return false;
                 }
             });
         } else {
+            console.log("No token provided.");
             resultResponse.unauthorized(res);
             return false;
         }

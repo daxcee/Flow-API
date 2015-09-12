@@ -33,9 +33,8 @@ module.exports = {
             errorCode: 401,
             error: {
                 description: "401 Unauthorized",
-                message:"Unauthorized, need to provide a valid access token. To get a token, follow requestTokenURL"
-            },
-            requestTokenURL:config.get("app_url") + "/token-request"
+                message:"Unauthorized, need to provide a valid access token."
+            }
         };
         res.end(pretty.print(result));
     },

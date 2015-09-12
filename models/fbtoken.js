@@ -6,7 +6,8 @@ var FBTokenSchema = new Schema({
     expires: Number,
     appId: String,
     scopes:[],
-    isValid:Boolean
+    isValid:Boolean,
+    value: String
 });
 
 module.exports = mongoose.model('FBToken', FBTokenSchema);

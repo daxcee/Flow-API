@@ -3,6 +3,6 @@ var fbAuthenticator = require('../authenticators/facebook/facebookAuthenticator.
 module.exports = {
 
     authenticate: function (req, res) {
-        fbAuthenticator.verifyUser(req,res)
+        fbAuthenticator.registerUser(req,res)
     }
 };
