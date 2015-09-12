@@ -1,8 +1,9 @@
 var config = require('config');
 var nock = require('nock');
+var app = require('../../app.js');
 
 function HTTPResponse(basePath, endpoint) {
-    this.appURL = 'http://' + config.get('app_url');
+    this.appURL = 'http://' + config.get('test_app_url');
     this.basePath = basePath;
     this.endpoint = endpoint;
 }

@@ -1,15 +1,13 @@
 var config = require('config');
+var app = require('../../app.js');
 var httpRequest = require('supertest')(config.get('test_app_url'));
 var express = require('express');
 
 function HTTPClient(basePath) {
-    this.appURL = 'http://' + config.get('test_app_url');
+    //console.log(app.address());
     this.basePath = basePath;
-}
 
-HTTPClient.prototype.setApp = function(appURL){
-    this.appURL = appURL
-};
+}
 
 HTTPClient.prototype.setBasePath = function(basePath){
     this.basePath = basePath
