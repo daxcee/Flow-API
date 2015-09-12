@@ -1,4 +1,4 @@
-{
+[{
   "pid":"000000",
   "FBId":"FBEventId",
   "date":"01-01-2015",
@@ -140,4 +140,4 @@
 "venue":"Venue",
 "city":"City",
 "artists":[]
-}
+}]

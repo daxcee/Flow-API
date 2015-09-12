@@ -1,4 +1,4 @@
-{
+[{
   "mediaType": "bio",
   "artistName": "AAAA",
   "artistBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -383,4 +383,4 @@
     "thumb": "https://placeholdit.imgix.net/~text?txtsize=15&txt=70×70&w=70&h=70",
     "cover": "https://placeholdit.imgix.net/~text?txtsize=33&txt=600×240&w=600&h=240"
   }
-}
+}]

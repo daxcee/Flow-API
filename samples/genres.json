@@ -1,4 +1,4 @@
-{
+[{
   "genreName": "Alternative",
   "subGenres": [{"genreName": "subGenre1"}]
 },
@@ -65,4 +65,4 @@
 {
 "genreName": "World",
 "subGenres": [{"genreName": "subGenre1"}]
-}
+}]
