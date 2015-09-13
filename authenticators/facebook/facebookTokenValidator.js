@@ -17,12 +17,17 @@ module.exports = {
             return;
         }
 
-        if (req.headers.authorization === undefined) {
-            serverResponse.result(res, "FB token not provided, please provide a valid FB app token");
+        if (req.headers.authorization === undefined && !req.query.hasOwnProperty("token")) {
+            resultResponse.unauthorized(res);
             return
         }
 
-        var token = req.headers.authorization;
+        var token = null;
+        if(req.headers.authorization !== undefined){
+            token = req.headers.authorization;
+        } else {
+            token = req.query.token;
+        }
 
         tokenQuery.tokenById(token, function (err, result) {
             if (err) {
@@ -34,6 +39,7 @@ module.exports = {
             if (result) {
                 if(result.value === token) {
                     next();
+
                 } else {
                     resultResponse.unauthorized(res);
                 }
