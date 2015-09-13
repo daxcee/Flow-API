@@ -60,7 +60,7 @@ window.fbAsyncInit = function() {
 function registerUser(token, callback) {
     var basePath = '/api/v1';
     var endpoint = '/authenticate';
-    var requestURL = 'http://flow-api.herokuapp.com' + basePath + endpoint;
+    var requestURL = 'https://flow-api.herokuapp.com' + basePath + endpoint;
 
     $.ajax({
         url: requestURL,
