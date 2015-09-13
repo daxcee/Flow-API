@@ -1,4 +1,4 @@
-{
+[{
   "genres": [{"genreName": "Alternative" }],
   "title": "AlbumTitle",
   "artists": [{"artistName": "AAAA"}]
@@ -12,4 +12,4 @@
 "genres": [{"genreName": "Alternative" }],
 "title": "AlbumTitle",
 "artists": [{"artistName": "AAAA"}]
-}
+}]

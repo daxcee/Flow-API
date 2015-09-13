@@ -1,4 +1,4 @@
-{
+[{
   "mediaType": "track",
   "artists": [{"artistName": "AAAA"},{"artistName": "BBBB"}],
   "albums" : [{"title": "AlbumTitle"}],
@@ -13,4 +13,4 @@
 "duration": 30000,
 "genres": [{"genreName": "Alternative"}],
 "songTitle": "SongTitle"
-}
+}]

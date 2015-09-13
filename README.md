@@ -55,6 +55,9 @@ Create a file named `.env` in the root directory of your project. Copy and paste
     MS_HOST=***
     PRODAPIKEY=***
     APIKEY=***
+    FB_APP_ID=***
+    FB_APP_SECRET=***
+    FB_CALLBACK_URL=***
 
 ### Import JSON sample data
 

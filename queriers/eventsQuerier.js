@@ -56,8 +56,6 @@ module.exports = {
         var searchRule = params.searchRule;
         var fields = params.fields;
 
-        console.log("searchQuery: %s", pretty.print(searchRule));
-
         Artist.findOne(searchRule, function (err, artist) {
             var result = {};
             if (err) {

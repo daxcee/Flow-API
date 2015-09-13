@@ -1,7 +1,7 @@
 var controllerLoader = require('../controllers/controllerLoader.js');
 var express = require('express');
 var router = express.Router();
-var tokenValidator = require('../utils/tokenValidator.js');
+var tokenValidator = require('../authenticators/facebook/facebookTokenValidator.js');
 
 var base = '/api/v1/news';
 

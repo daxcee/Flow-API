@@ -1,24 +1,18 @@
 var assert = require("assert");
-var config = require('config');
-var app = require('../app.js');
-var httpRequest = require('supertest')(app);
-var db = require('./testRunnerHelper');
-
-var basePath = '/api/v1/artists';
+var db = require('./utils/dbHelper');
+var MockedHTTPResponse = require('./utils/HTTPResponse.js');
+var HTTPClient = require('./utils/HTTPClient.js');
 
 describe('-------- ARTIST ENDPOINTS --------', function() {
 
+    var basePath = '/api/v1';
+    var endpoint = '/artists';
     var artist;
-    var token;
-    var tokenPrefix = '?token=';
 
     //Do preliminary setup, before running each testcase.
     before(function(done) {
-
         var options = db.createDataForEndpoint('artist');
         artist =  options.artist;
-        token = tokenPrefix + db.createToken();
-
         done()
     });
 
@@ -32,39 +26,53 @@ describe('-------- ARTIST ENDPOINTS --------', function() {
 
     describe('GET ' + basePath, function() {
         it('Should return an Artist item', function(done) {
-            httpRequest
-                .get(basePath + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var httpResponse = new MockedHTTPResponse(basePath,endpoint);
+            httpResponse.setGETResponse(200,{'artist':artist});
 
-                    assert.equal(res.body.result[0]._id, artist._id);
-                    assert.equal(res.body.result[0].artistName, artist.artistName);
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
 
-                    done();
-                });
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(endpoint,options,function(res){
+
+               assert.equal(res.body.artist._id, artist._id);
+                assert.equal(res.body.artist.artistName, artist.artistName);
+
+                done()
+            });
+
+
         });
     });
 
     describe('GET ' + basePath + '/:artistId', function() {
         it('Should return Artist items of whose id is provided', function(done) {
-            httpRequest
-                .get(basePath + '/' + artist._id + token)
-                .expect(200)
-                .set('Accept','application/json')
-                .expect('Content-Type', /json/)
-                .end(function(err, res){
-                    if (err)
-                        throw err;
+            var resource = endpoint + '/' + artist._id;
 
-                    assert.equal(res.body.result[0]._id, artist._id);
-                    assert.equal(res.body.result[0].artistName, artist.artistName);
+            var httpResponse = new MockedHTTPResponse(basePath,resource);
+            httpResponse.setGETResponse(200,{'artist':artist});
 
-                    done();
-                });
+            var options = {
+                statusCode:200,
+                headers:{
+                    accept: [{Accept:'application/json'}],
+                    expect: [{'Content-Type':'application/json'}]
+                }
+            };
+
+            var httpClient = new HTTPClient(basePath);
+            httpClient.doGet(resource,options,function(res){
+
+                assert.equal(res.body.artist._id, artist._id);
+                assert.equal(res.body.artist.artistName, artist.artistName);
+
+                done()
+            });
         });
     });
 });
