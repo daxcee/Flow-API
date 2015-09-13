@@ -58,10 +58,9 @@ window.fbAsyncInit = function() {
 
 
 function registerUser(token, callback) {
-    console.log('register usr');
     var basePath = '/api/v1';
     var endpoint = '/authenticate';
-    var requestURL = 'http://localhost:3000' + basePath + endpoint;
+    var requestURL = 'http://flow-api.herokuapp.com' + basePath + endpoint;
 
     $.ajax({
         url: requestURL,
@@ -75,6 +74,6 @@ function registerUser(token, callback) {
     });
 }
 
-function getToken(uri){
+function doRequest(uri){
     window.location.replace(uri + '?token=' + sessionStorage.getItem("flow-token"));
 }
