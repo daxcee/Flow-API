@@ -2,10 +2,9 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
 
         var token = FB.getAuthResponse()['accessToken'];
-        var userId = response.authResponse.userID;
+        //var userId = response.authResponse.userID;
 
         if(sessionStorage.getItem("flow-token") == null ) {
-            console.log('setting new token');
             sessionStorage.setItem("flow-token", token);
         }
 
@@ -21,12 +20,10 @@ function statusChangeCallback(response) {
 
     } else if (response.status === 'not_authorized') {
         sessionStorage.clear();
-
         document.getElementById('status').innerHTML = 'Please log ' +
             'into this app.';
     } else {
         sessionStorage.clear();
-
         document.getElementById('status').innerHTML = 'Please log ' +
             'into Facebook.';
     }
@@ -73,7 +70,6 @@ function registerUser(token, callback) {
             xhr.setRequestHeader("authorization", token);
         },
         success: function(data) {
-            console.log('registered succes: ' + JSON.stringify(data));
             callback(data)
         }
     });
