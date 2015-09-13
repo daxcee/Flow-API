@@ -13,23 +13,16 @@ var FBToken = conn.model('FBToken');
 
 module.exports = {
     tokenById: function(token,callback){
-        console.log('query tokne: ' + token);
-
         FBToken.findOne({value:token }, function (err, result) {
             if (err) {
-                console.log('error on finding token: ' + err);
                 callback(err,result);
                 return
             }
 
             if(result) {
-                console.log('found token: ' + JSON.stringify(result));
                 callback(err,result);
-                return
-            }
-            else {
-                console.log('did not finnd token: ' + JSON.stringify(result));
-                callback(err,result);
+            } else {
+                callback(err,null);
             }
         });
     }
