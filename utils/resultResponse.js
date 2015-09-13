@@ -21,7 +21,7 @@ module.exports = {
         var result =  {
             errorCode: 401,
             error: {
-                message:data['error']['message']
+                message:data
             }
         };
         res.end(pretty.print(result));
