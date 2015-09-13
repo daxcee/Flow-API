@@ -53,6 +53,12 @@ module.exports = {
                 return
             }
 
+            if(tokenDetails === undefined){
+                serverResponse.error(res,'Could not retrieve token debug details');
+                return;
+            }
+
+            console.log('retrievedTokenDetails: ' + JSON.stringify(tokenDetails));
             //query local datastore for user
             self.getUserById(tokenDetails, function(user){
                 //matching user is found, register complete.
@@ -102,13 +108,15 @@ module.exports = {
     },
 
     getUserById:function(tokenDetails, callback){
-        userQuery.userById(tokenDetails.userId, function(user){
+        userQuery.userById(tokenDetails, function(user){
             if (user != null) {
                 var result = {
-                    id: user._id,
+                    _id:user._id,
+                    fbId: user.fbId,
                     name: user.name,
                     email: user.email,
-                    tokenIsValid: tokenDetails.isValid
+                    token:user.token.value,
+                    tokenIsValid: user.token.isValid
                 };
                 callback(result)
             } else {
@@ -117,7 +125,7 @@ module.exports = {
         });
     },
 
-    getUserFBCredentials: function getUser(tokenDetails, callback){
+    getUserFBCredentials: function(tokenDetails, callback){
         fbGraphAPI.userCredentials(tokenDetails, function(err,result,data) {
             if(err) {
                 callback(err);
@@ -131,25 +139,29 @@ module.exports = {
     },
 
     saveUser: function(tokenDetails, userCredentials, callback){
-        var user = new User({
-            _Id: userCredentials['id'],
-            name: userCredentials['name'],
-            email: userCredentials['email']
+
+        var token = new FBToken({
+            value:tokenDetails.token,
+            expires: tokenDetails.expires,
+            appId: tokenDetails.appId,
+            scopes: tokenDetails.scopes,
+            isValid:tokenDetails.isValid
         });
-        user.save(function (err) {
+
+        token.save(function (err) {
             if (err) {
                 callback(err);
             } else {
-                var token = new FBToken({
-                    _userId: user._Id,
-                    value:tokenDetails.token,
-                    expires: tokenDetails.expires,
-                    appId: tokenDetails.appId,
-                    scopes: tokenDetails.scopes,
-                    isValid:tokenDetails.isValid,
-                });
 
-                token.save(function (err) {
+                var user = new User({
+                    fbId: userCredentials['id'],
+                    name: userCredentials['name'],
+                    email: userCredentials['email']
+                });
+                user.token.push(token._id);
+
+                user.save(function (err) {
+
                     if (err) {
                         callback(err);
                     } else {

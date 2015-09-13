@@ -2,20 +2,16 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
 
         var token = FB.getAuthResponse()['accessToken'];
-        //var userId = response.authResponse.userID;
 
         if(sessionStorage.getItem("flow-token") == null ) {
             sessionStorage.setItem("flow-token", token);
         }
 
         registerUser(token, function (res){
-            console.log('callb: regis user: ' + res);
-            //if(res.id === userId.toString()){
                 FB.api('/me', function(response) {
                     document.getElementById('status').innerHTML =
                         'Logged in as: ' + response.name;
                 });
-            //}
         });
 
     } else if (response.status === 'not_authorized') {
