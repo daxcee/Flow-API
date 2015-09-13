@@ -49,7 +49,7 @@ module.exports = {
 
             if(result.statusCode != 200){
                 //provided token is in valid
-                serverResponse.invalidFBToken(res, data['data']);
+                serverResponse.invalidFBToken(res, tokenDetails);
                 return
             }
 
