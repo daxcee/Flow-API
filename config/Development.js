@@ -9,5 +9,6 @@ module.exports = {
     apikey:process.env.APIKEY,
     fb_app_id:process.env.FB_APP_ID,
     fb_app_secret:process.env.FB_APP_SECRET,
-    fb_callback_url:process.env.FB_CALLBACK_URL
+    fb_callback_url:process.env.FB_CALLBACK_URL,
+    test_app_url:process.env.TEST_APP_URL
 };
