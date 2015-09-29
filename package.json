@@ -7,8 +7,8 @@
   "scripts": {
     "test": "mocha --reporter list",
     "blanket": {
-        "pattern": "test",
-        "data-cover-never": "node_modules"
+      "pattern": "test",
+      "data-cover-never": "node_modules"
     },
     "coveralls": "./node_modules/.bin/mocha -r blanket  -R mocha-lcov-reporter test/ | ./node_modules/coveralls/bin/coveralls.js"
   },
@@ -40,6 +40,7 @@
     "supertest": "^1.0.1"
   },
   "devDependencies": {
+    "coveralls": "^2.11.4",
     "mocha": "^2.2.5"
   },
   "keywords": [
