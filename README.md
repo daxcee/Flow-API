@@ -50,6 +50,7 @@ Create a file named `.env` in the root directory of your project. Copy and paste
     LOCAL_HOST=localhost
     LOCAL_DBPORT=27017
     APP_URL=localhost:3000
+    TEST_APP_URL=127.0.0.1
     MS_USER=***
     MS_PASSWORD=***
     MS_HOST=***
