@@ -20,11 +20,10 @@ HTTPClient.prototype.setEndpoint = function(endpoint){
 HTTPClient.prototype.doGet = function(endpoint, options, callback){
     this.endpoint = endpoint;
     var requestURL = this.basePath + this.endpoint;
-
-    console.log('requestURL: ' + requestURL);
-
     var request = httpRequest.get(requestURL);
+
     processHeaders(request,options);
+
     request.end(function(err, res){
         if (err) {
             callback(err);
