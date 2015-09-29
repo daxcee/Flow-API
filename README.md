@@ -93,6 +93,34 @@ Open up a new browser tab and go to the follow to check if server is properly ru
 
     $ open http://localhost:3000
 
+#### Debugger
+
+There are two ways of utilizing a debugger one: using `Node-Inspector` or using `Intellij Nodejs plugin`:
+
+##### Node-Inspector
+
+Starting server with node-inspector debugger:
+
+First start the debugger:
+
+    $ node-inspector
+
+then start express with debug flag:
+
+    $ nodemon --debug app.js
+
+Finally, open the following via a browser:
+
+    $ open http://127.0.0.1:8080/?ws=127.0.0.1:8080&port=5858
+
+Breakpoints can be set to files in the `Sources` directory via the browser.
+
+##### Intellij Nodejs plugin
+
+Read the below instructions on installing and configuring Intellij IDEA, Nodejs plugin
+
+[Plugin and Debugger configuration](https://www.jetbrains.com/idea/help/installing-updating-and-uninstalling-repository-plugins.html)    
+
 ## API Overview
 
 See: [https://flow-api.herokuapp.com](https://flow-api.herokuapp.com)
@@ -105,13 +133,13 @@ For every API endpoint there are tests, see test dir.
 To run the Mocha tests, from `root` run:
 
     $ mocha
-    
+
 To run Mocha tests, with Coverage report generations, run:
-    
+
     $ mocha -r blanket -R html-cov > coverage.html
-    
+
 Finally, open the `coverage.html` file in the root of the project in a browser to.
-    
+
 
 Note that by running tests, the local mongodb and it's collections are dropped!
 
