@@ -9,6 +9,11 @@ deployment:
     branch: master
     heroku:
       appname: flow-api
+
+test:
+  post:
+    - npm run coveralls
+    
 notify:
   webhooks:
     # gitter hook
