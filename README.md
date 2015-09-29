@@ -105,6 +105,13 @@ For every API endpoint there are tests, see test dir.
 To run the Mocha tests, from `root` run:
 
     $ mocha
+    
+To run Mocha tests, with Coverage report generations, run:
+    
+    $ mocha -r blanket -R html-cov > coverage.html
+    
+Finally, open the `coverage.html` file in the root of the project in a browser to.
+    
 
 Note that by running tests, the local mongodb and it's collections are dropped!
 
