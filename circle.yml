@@ -5,10 +5,7 @@ machine:
     - mongodb
 test:
   post:
-    - NODE_ENV=test ./node_modules/.bin/mocha \
-      --require blanket \
-      --reporter mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js
-deployment:
+   - npm run coveralls
   staging:
     branch: master
     heroku:
