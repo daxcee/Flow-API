@@ -165,10 +165,13 @@ module.exports = {
                     if (err) {
                         callback(err);
                     } else {
+
                         var result = {
-                            user: user,
-                            token: token
+                            fbId:user.fbId,
+                            name:user.name,
+                            email:user.email
                         };
+
                         callback(result)
                     }
                 });
