@@ -119,7 +119,7 @@ Breakpoints can be set to files in the `Sources` directory via the browser.
 
 Read the below instructions on installing and configuring Intellij IDEA, Nodejs plugin
 
-[Plugin and Debugger configuration](https://www.jetbrains.com/idea/help/installing-updating-and-uninstalling-repository-plugins.html)    
+[Plugin and Debugger configuration](https://www.jetbrains.com/idea/help/running-and-debugging-node-js.html)    
 
 ## API Overview
 
