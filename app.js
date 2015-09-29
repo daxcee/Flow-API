@@ -1,6 +1,5 @@
 require('dotenv').load();
 
-var mailer = require('./utils/mailer');
 var compression = require('compression');
 var express = require('express');
 var path = require('path');
@@ -30,9 +29,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mailer.initStore();
-mailer.config();
-app.use(mailer.instance().acceptToken({ successRedirect: '/'}));
 
 // catch 404
 app.use(function(req, res) {
