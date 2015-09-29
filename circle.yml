@@ -3,13 +3,13 @@ machine:
     version: 0.12.3
   services:
     - mongodb
-test:
-  post:
-   - npm run coveralls
   staging:
     branch: master
     heroku:
       appname: flow-api
+  test:
+    post:
+      - npm run coveralls
 notify:
   webhooks:
     # gitter hook
