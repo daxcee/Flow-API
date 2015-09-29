@@ -5,13 +5,18 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "mocha --reporter list"
+    "test": "mocha --reporter list",
+    "blanket": {
+        "pattern": "test",
+        "data-cover-never": "node_modules"
+    }
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/srmds/FlowAPI.git"
   },
   "dependencies": {
+    "blanket": "^1.1.7",
     "body-parser": "~1.8.1",
     "compression": "^1.4.4",
     "config": "1.13.0",
