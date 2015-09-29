@@ -41,7 +41,8 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.4",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "mocha-lcov-reporter": "^1.0.0"
   },
   "keywords": [
     "Flow",
